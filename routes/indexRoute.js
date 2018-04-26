@@ -112,8 +112,8 @@ router.post('/companydetails_upload', upload.single('filename_1'), function(req,
                         var fmcotino = req.body.fmcotino1;
                         var companyname = req.body.companyname1;
                         var address = req.body.address1;
-                        var state = req.body.state;
-                        var city = req.body.city;
+                        var state = req.body.state1;
+                        var city = req.body.city1;
                         var zipcode = req.body.zipcode1;
                         var phonenumber = req.body.phonenumber1;
                         var email = req.body.email1;
@@ -167,8 +167,8 @@ router.post('/companydetails_upload', upload.single('filename_1'), function(req,
                     var fmcotino = req.body.fmcotino1;
                     var companyname = req.body.companyname1;
                     var address = req.body.address1;
-                    var state = req.body.state;
-                    var city = req.body.city;
+                    var state = req.body.state1;
+                    var city = req.body.city1;
                     var zipcode = req.body.zipcode1;
                     var phonenumber = req.body.phonenumber1;
                     var email = req.body.email1;
@@ -187,5 +187,8 @@ router.post('/companydetails_upload', upload.single('filename_1'), function(req,
     }
 
 });
+
+
+//contries
 
 module.exports = router

@@ -4,7 +4,11 @@ const Schema = mongoose.Schema;
 
 
 var StateSchema = new mongoose.Schema({
-  statename: String,
+    statename: String,
+    Country: {
+        type: Schema.Types.ObjectId,
+        ref: 'Countries'
+    }
 });
 
 
