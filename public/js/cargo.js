@@ -166,34 +166,37 @@ $(document).ready(function() {
 
 
     function saveCargo(cargo_id) {
-        //get data
-        var data = {};
-        data.cargo_id = cargo_id;
-        data.client_ID = $(".client_ID").attr("id");
-        data.cardetails = $("#cardetails").val();
-        //data.date_ = $("#date_").val();
-        data.vin = $("#vin").val();
-        data.aes = $("#aes").val();
-        data.personal_effect = $("#personal_effect").val();
+        if ($("#vin").val() !== "") {
+            //get data
+            var data = {};
+            data.cargo_id = cargo_id;
+            data.client_ID = $(".client_ID").attr("id");
+            data.cardetails = $("#cardetails").val();
+            //data.date_ = $("#date_").val();
+            data.vin = $("#vin").val();
+            data.aes = $("#aes").val();
+            data.personal_effect = $("#personal_effect").val();
 
-        //send data to server
-        $.post("/cargo/new", { data: data }, function(result) {
-            console.log(result._id);
-            //add cargo id to save button
-            $(".saveAndNew").attr("id", result._id);
-            $(".saveAndClose").attr("id", result._id);
+            //send data to server
+            $.post("/cargo/new", { data: data }, function(result) {
+                console.log(result._id);
+                //add cargo id to save button
+                $(".saveAndNew").attr("id", result._id);
+                $(".saveAndClose").attr("id", result._id);
 
-            //clear input filds
-            $("#cardetails").val('');
-            $("#vin").val('');
-            $("#aes").val('');
+                //clear input filds
+                $("#cardetails").val('');
+                $("#vin").val('');
+                $("#aes").val('');
 
-            //display snackbar
-            var x = document.getElementById("snackbar");
-            x.className = "show";
-            setTimeout(function() { x.className = x.className.replace("show", ""); }, 3000);
+                //display snackbar
+                var x = document.getElementById("snackbar");
+                x.className = "show";
+                setTimeout(function() { x.className = x.className.replace("show", ""); }, 3000);
 
-        });
+            });
+        }
+
 
     }
 
@@ -220,32 +223,34 @@ $(document).ready(function() {
 
     function addMoreCars(id) {
 
+        if ($("#vin").val() !== "") {
+            //get data
+            var data = {};
+            data.cardetails = $("#cardetails").val();
+            data.vin = $("#vin").val();
+            data.aes = $("#aes").val();
+            //send data to server
+            $.post('/cargo/' + id + '/addmorecars', { data: data }, function(result) {
+                console.log(result);
+                //append new car to table
+                $("#cars_columnId" + id).prepend($("#cardetails").val() + ', ');
+                //clear input filds
+                $("#cardetails").val('');
+                $("#vin").val('');
+                $("#aes").val('');
 
-        //get data
-        var data = {};
-        data.cardetails = $("#cardetails").val();
-        data.vin = $("#vin").val();
-        data.aes = $("#aes").val();
-        //send data to server
-        $.post('/cargo/' + id + '/addmorecars', { data: data }, function(result) {
-            console.log(result);
-            //append new car to table
-            $("#cars_columnId" + id).prepend($("#cardetails").val() + ', ');
-            //clear input filds
-            $("#cardetails").val('');
-            $("#vin").val('');
-            $("#aes").val('');
-
-            if (result !== false) {
-                //display snackbar
-                var x = document.getElementById("snackbar");
-                x.className = "show";
-                setTimeout(function() { x.className = x.className.replace("show", ""); }, 3000);
-            }
+                if (result !== false) {
+                    //display snackbar
+                    var x = document.getElementById("snackbar");
+                    x.className = "show";
+                    setTimeout(function() { x.className = x.className.replace("show", ""); }, 3000);
+                }
 
 
 
-        });
+            });
+        }
+
 
 
     }
