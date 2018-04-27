@@ -92,7 +92,7 @@ router.post("/consignee/new", function(req, res) {
     //console.log(req.body);
     var cfirst_name = req.body.data.cfirst_name;
     var clast_name = req.body.data.clast_name;
-    var cfull_name = req.body.data.clast_name + ', ' + req.body.data.cfirst_name;
+    var cfull_name = req.body.data.cfirst_name;
     var cpnum = req.body.data.cpnum;
     var cemail = req.body.data.cemail;
     var address = req.body.data.address;
@@ -131,7 +131,7 @@ router.put("/consignees/:id/edit", function(req, res) {
     //console.log(req.body);
     var cfirst_name = req.body.data.cfirst_name;
     var clast_name = req.body.data.clast_name;
-    var cfull_name = req.body.data.clast_name + ', ' + req.body.data.cfirst_name;
+    var cfull_name = req.body.data.cfirst_name;
     var cpnum = req.body.data.cpnum;
     var cemail = req.body.data.cemail;
     var address = req.body.data.address;

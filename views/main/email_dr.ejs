@@ -39,12 +39,13 @@ th, td {
   <div class="container">
   
     <div style="display:inline-block;">
-       <span style="font-size:13px;"><%=stringText("OLDSAILORS OCEAN SHIPPING")%> </span><br>
+       <span style="font-size:17px;"><b><%=stringText("OLDSAILORS OCEAN SHIPPING LLC")%></b> </span><br>
       
-        <span style="font-size:13px;">FMC-OTI No: <%=stringText("026435N")%></span>
+        <span style="font-size:17px;"><b>FMC-OTI No: <%=stringText("026435N")%></b></span>
     </div>
     <div style="display:inline-block;float:right;">
         <span style="font-size:20px"><b>DOCK&nbsp;RECEIPT</b></span><br>
+        <span>Date: <%=moment(Dock_R.createdAt).format("l")%></span>
         
     </div>
      <div class="row">
@@ -81,18 +82,18 @@ th, td {
                                     <div class="row">
                                         <div class="col-md-6">
                                             <span style="font-size:10px;"><b>VESSEL</b></span><br>
-                                            <span style="font-size:12px;"><%=stringText(BookingConfirmation.vessel_name !== "" ? BookingConfirmation.vessel_name : "" )%></span>
+                                            <span style="font-size:14px;"><%=stringText(BookingConfirmation.vessel_name !== "" ? BookingConfirmation.vessel_name : "" )%></span>
                                         </div>
                                          <div class="col-md-6">
                                             <span style="font-size:10px;"><b>VOYAGE</b></span><br>
-                                            <span style="font-size:12px;"><%=stringText(BookingConfirmation.voyage_number !== "" ? BookingConfirmation.voyage_number : "" )%></span>
+                                            <span style="font-size:14px;"><%=stringText(BookingConfirmation.voyage_number !== "" ? BookingConfirmation.voyage_number : "" )%></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <span style="font-size:10px;"><b><%=stringText("PORT OF LOADING")%></b></span><br>
-                                <span style="font-size:12px;"><%=stringText(BookingConfirmation.port_of_loading !== "" ? BookingConfirmation.port_of_loading : "" )%></span>
+                                <span style="font-size:14px;"><%=stringText(BookingConfirmation.port_of_loading !== "" ? BookingConfirmation.port_of_loading : "" )%></span>
                             </div>
                         </div>
                      </div>
@@ -102,11 +103,11 @@ th, td {
                                 <div class="row">
                                     <div class="col-md-7" style="border-right:1px solid #000;">
                                             <span style="font-size:10px;"><b><%=stringText("PORT OF DISCHARGE")%></b></span><br>
-                                            <span style="font-size:12px;"><%=stringText(BookingConfirmation.port_of_discharge !== "" ? BookingConfirmation.port_of_discharge : "" )%></span>
+                                            <span style="font-size:14px;"><%=stringText(BookingConfirmation.port_of_discharge !== "" ? BookingConfirmation.port_of_discharge : "" )%></span>
                                      </div>
                                       <div class="col-md-5">
                                         <span style="font-size:10px;"><b><%=stringText("PRE-CARRIAGE BY")%></b></span><br>
-                                        <span style="font-size:12px;"><%=BookingConfirmation.carrier%></span>
+                                        <span style="font-size:14px;"><%=BookingConfirmation.carrier%></span>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +120,7 @@ th, td {
                                 <div class="row">
                                     <div class="col-md-6" style="border-right:1px solid #000;">
                                             <span style="font-size:10px;"><b><%=stringText("LOADING TERMINAL")%></b></span><br>
-                                            <span style="font-size:12px;"><%=stringText(BookingConfirmation.loading_terminal !== "" ? BookingConfirmation.loading_terminal : "" )%></span>
+                                            <span style="font-size:14px;"><%=stringText(BookingConfirmation.loading_terminal !== "" ? BookingConfirmation.loading_terminal : "" )%></span>
                                      </div>
                                       <div class="col-md-6">
                                         <span style="font-size:10px;"><b><%=stringText("ORIGINAL (S) TO BE RELEASED")%></b></span><br>
@@ -203,7 +204,7 @@ th, td {
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <span style="font-size:10px;"><b><%=stringText("RETURN DEPORT")%></b></span><br>
+                                <span style="font-size:10px;"><b><%=stringText("TYPE OF MOVE")%></b></span><br>
                                 <span style="font-size:12px;"><%=stringText(BookingConfirmation.return_depot )%></span>
                             </div>
                         </div>
@@ -211,7 +212,7 @@ th, td {
                      <div>
                           <b style="font-size:12px;"><%=stringText("NOTIFY PARTY / INTERMEDIATE CONSIGNEE ")%></b><br> 
                         <span><%=Dock_R.n_name%></span><br>
-                        <span><%=Dock_R.n_address%><br>
+                        <span><%=stringText(Dock_R.n_address)%><br>
                         <%=Dock_R.n_country%></span><br>
                         <span><%=Dock_R.n_pnum !== "" ? "Tel: "+Dock_R.n_pnum : "" %></span>
                      </div>
@@ -250,15 +251,15 @@ th, td {
                        <div class="col-md-2" style="border:1px solid #000;">
                            <div class="row">
                                <div style="padding:7px;">
-                                <b> Container #</b><br>
-                               <%=Dock_R.container_num%><br>
-                                <b>Seal&nbsp;#:</b>
-                               <%=Dock_R.seal_num%><br>
-                               <b>Cut Off Date</b><br>
-                               <%=moment(BookingConfirmation.cut_off_date).format("l")%><br>
-                               <b>Sailing/ETD</b><br>
-                                <%=moment(BookingConfirmation.sail_date).format("l")%><br>
-                               <b>Arrival/ETA</b><br>
+                                <b> CONTAINER #</b><br>
+                               <span style="font-size:14px;"><%=Dock_R.container_num%></span><br><br>
+                                <b>SEAL&nbsp;#:</b>
+                               <%=Dock_R.seal_num%><br><br>
+                               <b>CUT&nbsp;OFF&nbsp;DATE</b><br>
+                               <%=moment(BookingConfirmation.cut_off_date).format("l")%><br><br>
+                               <b>SAILING/ETD&nbsp;DATE</b><br>
+                                <%=moment(BookingConfirmation.sail_date).format("l")%><br><br>
+                               <b>ARRIVAL/ETA&nbsp;DATE</b><br>
                                <%=moment(BookingConfirmation.arrival_date).format("l")%><br>
                                </div>
                            </div>
@@ -266,21 +267,23 @@ th, td {
                         <div class="col-md-6" style="border:1px solid #000;">
                            <div class="row" >
                               <div style="padding:7px;">
-                                   <%=stringText(BookingConfirmation.equipment_size)%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>AES#:&nbsp;<%=Dock_R.aes_num%></span><br>
-                                  <div style="width:290px;">
-                                         <span style="font-size:10px;"><b><%=stringText1(Cargos.personal_effect)%></b></span>
-                                     </div>
-                                     <div  style="height:340px;">
+                                   <span style="font-size:14px;"><%=stringText(BookingConfirmation.equipment_size)%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AES#:&nbsp;<%=Dock_R.aes_num%></span><br>
+                                    
+                                     <div  style="height:340px;font-size:17px;">
                                          <% Cargos.Cars.forEach(function(carsdata){ %>
                                            <span>
                                               <span><%=stringText(carsdata.cardetails)%></span><br>
                                               <span>VIN:<%=carsdata.vin%></span><br>
                                            </span>
                                         <% }) %>
+                                        <div style="width:290px;">
+                                         <span style="font-size:12px;"><b><%=stringText1(Cargos.personal_effect)%></b></span>
+                                       </div>
                                      </div>
                                      
+                                     
                                    <div>
-                                       <span style="font-size:15px;margin-left:260px;"><b> <%=stringText("Total Weight: "+parseFloat(Cargos.total_weight).toFixed(2))%></b></span>
+                                       <span style="font-size:15px;margin-left:300px;"><b> <%=stringText("Total Weight: "+parseFloat(Cargos.total_weight).toFixed(2))%>kg</b></span>
                                    </div>
                                    <div style="float:left;font-size:10px;">
                                        <span><b><%=stringText("SHIPPER ON THIS DOCK RECEIPT CONFIRMS THAT, GAS TANK")%></b></span><br>
@@ -294,15 +297,15 @@ th, td {
                         <div class="col-md-2" style="border:1px solid #000;">
                            <div class="row">
                                <div style="padding:7px;">
-                                     <br>
-                                    <span><%=Cargos.personal_effect_weight !== undefined ? Cargos.personal_effect_weight+"kg" : "" %></span>
+                                    
                                    <div>
                                         <% Cargos.Cars.forEach(function(carsdata){ %>
                                            <span style="text-align:left;">
                                              <br><span><%=carsdata.weight !== undefined ? carsdata.weight+"kg" : "" %></span>
                                            </span><br>
                                      <% }) %>
-                                     
+                                     <br>
+                                    <span><%=Cargos.personal_effect_weight !== undefined ? Cargos.personal_effect_weight+"kg" : "" %></span>
                                    </div>
                                     
                                      <br> 
@@ -313,8 +316,7 @@ th, td {
                        </div> 
                         <div class="col-md-2" style="border:1px solid #000;">
                            <div class="row">
-                               <div style="padding:7px;"><br>
-                                    <span><%=Cargos.personal_effect_m === undefined ? "" : Cargos.personal_effect_m %></span>
+                               <div style="padding:7px;">
                                    <div>
                                         <% Cargos.Cars.forEach(function(carsdata){ %>
                                            <span style="text-align:left;">
@@ -322,7 +324,8 @@ th, td {
                                            </span><br>
                                      <% }) %><br>
                                    </div>
-                                    
+                                <span><%=Cargos.personal_effect_m === undefined || Cargos.personal_effect_m === "0" ? "" : Cargos.personal_effect_m %></span>
+
                                </div>
                            </div>
                        </div> 
