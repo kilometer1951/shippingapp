@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Preview || Bill of lading</title>
+        <title><%=stringText(ClientData.full_name)%></title>
          <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -8,8 +8,8 @@
          <script src="/js/html2pdf.js"></script>
    <style>
    body {
-       line-height:0.9em;
-       font-size:18px;
+       line-height:1em;
+       font-size:24px;
    }
        .h_1 {
            width:100%;
@@ -33,10 +33,16 @@ th, td {
         
 }
    </style>
+    <style media="print">
+ 
+        #d {
+          display:none;
+        }
+</style>
     </head>
-    <body><br>
+    <body>
     
-<div class="container"><br><br>
+<div class="container" id="d"><br><br>
 <input type="button" id="create_pdf" value="Generate Document" class="btn btn-info" style="float:left;margin-right:10px;">  
 
 
@@ -62,7 +68,7 @@ th, td {
         <span style="font-size:17px;"><b>FMC-OTI No: <%=stringText("026435N")%></b></span>
     </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <div style="display:inline-block;">
-        <span style="font-size:20px"><b>BILL&nbsp;OF&nbsp;LADING</b></span><br>
+        <span style="font-size:20px"><b>BILL OF LADING</b></span><br>
         <span style="font-size:12px;">Date: <%=moment(Dock_R.createdAt).format("l")%></span>
         
     </div><br>
@@ -71,9 +77,9 @@ th, td {
             <div class="row">
                 <div class="col-md-6" style="border-right:1px solid #000;">
                     <!--Shipper -->
-                      <div>
+                     <div>
                          <b style="font-size:11px;"><%=stringText("SHIPPER EXPORTER")%></b><br>
-                        <span><%=stringText("OLDSAILORS OCEAN SHIPPING LLC")%>,</span><br>
+                        <span style="font-size:15px;"><%=stringText("OLDSAILORS OCEAN SHIPPING LLC")%>,</span><br>
                         <span style="font-size:15px;"><%=stringText("13903 CHADSWORTH TERRACE")%></span><br>
                         <span style="font-size:15px;"><%=stringText("LAUREL, MD,")%></span>
                         <span style="font-size:15px;">&nbsp;USA,</span>&nbsp;
@@ -82,7 +88,7 @@ th, td {
                      <!-- CONSIGNEE  -->
                      <div  style="border-top:1px solid #000;">
                         <b style="font-size:11px;"><%=stringText("CONSIGNEE")%></b><br>
-                        <span><%=stringText(Consignee.full_name)%></span><br>
+                        <span style="font-size:15px;"><%=stringText(Consignee.full_name)%></span><br>
                         <span style="font-size:15px;"><%=stringText(Consignee.address)%>,</span><br>
                         <span style="font-size:15px;"><%=stringText(Consignee.city)%>,&nbsp;<%=stringText(Consignee.state)%>,</span><br>
                         <span style="font-size:15px;"><%=stringText(Consignee.Country.countryname)%>,&nbsp;Tel: <%=stringText(Consignee.pnum)%></span>
@@ -155,7 +161,7 @@ th, td {
                                             <span style="font-size:11px;"><b><%=stringText("BOOKING #")%></b></span><br>
                                             <span style="font-size:12px;"><%=stringText(BookingConfirmation.booking_number !== "" ? BookingConfirmation.booking_number : "" )%></span>
                                      </div>
-                                      <div class="col-md-6">
+                                     <div class="col-md-6">
                                         <span style="font-size:10px;"><b><%=stringText("BILL OF LADING NUMBER")%></b></span><br>
                                         <span style="font-size:12px;"><%=stringText(BookingConfirmation.booking_number !== "" ? BookingConfirmation.booking_number : "" )%></span>
                                     </div>
@@ -172,7 +178,7 @@ th, td {
                                 <div class="row">
                                     <div class="col-md-12">
                                             <span style="font-size:11px;"><b><%=stringText("EXPORTER REFERENCES")%></b></span><br>
-                                            <span style="font-size:13px;"><%=string_ID_1(Dock_R._id)%></span>
+                                            <span style="font-size:13px;"><%=string_ID(Dock_R._id)%></span>
                                      </div>
                                 </div>
                             </div>
@@ -201,7 +207,7 @@ th, td {
                      </div>
 
                      <div  style="border-bottom:1px solid #000;">
-                        <div class="row">14
+                        <div class="row">
                             <div class="col-md-8" >
                                 <div style="border-right:1px solid #000;">
                                     <div class="row">
@@ -284,21 +290,21 @@ th, td {
                               <div style="padding:7px;">
                                    <span style="font-size:14px;"><%=stringText(BookingConfirmation.equipment_size)%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AES#:&nbsp;<%=Dock_R.aes_num%></span><br>
                                     
-                                     <div  style="height:340px;font-size:17px;margin-top:5px;">
+                                     <div  style="height:540px;font-size:17px;margin-top:5px;">
                                          <% Cargos.Cars.forEach(function(carsdata){ %>
                                            <span>
                                               <span><%=stringText(carsdata.cardetails)%></span><br>
                                               <span>VIN:<%=carsdata.vin%></span><br><br>
                                            </span>
                                         <% }) %>
-                                        <div style="width:290px;">
-                                         <span style="font-size:14px;"><b><%=stringText(Cargos.personal_effect)%></b></span>
+                                        <div style="width:400px;">
+                                         <span style="font-size:14px;"><b><%=Cargos.personal_effect%></b></span>
                                        </div>
                                      </div>
                                      
                                      
-                                   <div>
-                                       <span style="font-size:15px;margin-left:300px;"><b> <%=stringText("Total Weight: "+parseFloat(Cargos.total_weight).toFixed(2))%>kg</b></span>
+                                   <div style="font-size:16px;margin-left:350px;">
+                                       <span ><b> <%=stringText("Total Weight")%></b></span>
                                    </div>
                                    <div style="float:left;font-size:10px;">
                                        <span><b><%=stringText("SHIPPER ON THIS BILL OF LADING CONFIRMS THAT, GAS TANK")%></b></span><br>
@@ -313,7 +319,7 @@ th, td {
                            <div class="row">
                                <div style="padding:7px;">
                                     
-                                   <div style="margin-top:5px;">
+                                   <div style="margin-top:5px;height:564px;">
                                         <% Cargos.Cars.forEach(function(carsdata){ %>
                                            <span style="text-align:left;">
                                              <br><span><%=carsdata.weight !== undefined ? carsdata.weight+"kg" : "" %></span>
@@ -322,9 +328,9 @@ th, td {
                                      <br>
                                     <span><%=Cargos.personal_effect_weight !== undefined ? Cargos.personal_effect_weight+"kg" : "" %></span>
                                    </div>
-                                    
-                                     <br> 
-                                       <!--<p style="font-size:15px;margin-top:15px;"><b></b></p>-->
+                                    <div style="font-size:16px;">
+                                       <span ><b> <%= parseFloat(Cargos.total_weight).toFixed(2)%>kg</b></span>
+                                   </div>
                                    
                                </div>
                            </div>
@@ -1490,16 +1496,7 @@ and the employees of each them.
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script>
 $('#create_pdf').on('click', function () {  
-  var fileName =  $("#filename").val();
-          
-          var element = document.getElementById('element-to-print');
-          html2pdf(element, {
-            margin:       0.1,
-            filename:     fileName+'_NRA_BC-ALL_3.pdf',
-            image:        { type: 'jpeg', quality: 1 },
-            html2canvas:  { dpi: 202, letterRendering: true },
-            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-          });
+  window.print();
           
            $("#send_emailForm").css("display", "block")
 });      

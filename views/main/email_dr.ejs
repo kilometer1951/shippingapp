@@ -32,7 +32,14 @@ th, td {
         text-align:left;
         
 }
+
    </style>
+   <style media="print">
+ 
+        #d {
+          display:none;
+        }
+</style>
     </head>
     <body><br>
 <div id="element-to-print" class="element-to-print">
@@ -278,8 +285,8 @@ th, td {
                                               <span>VIN:<%=carsdata.vin%></span><br><br>
                                            </span>
                                         <% }) %>
-                                        <div style="width:290px;">
-                                         <span style="font-size:14px;"><b><%=stringText(Cargos.personal_effect)%></b></span>
+                                        <div style="width:400px;">
+                                         <span style="font-size:14px;"><b><%=Cargos.personal_effect%></b></span>
                                        </div>
                                      </div>
                                      
@@ -373,7 +380,23 @@ th, td {
 </div>
 
 
+<div class="container" id="d"><br><br>
+<input type="button" id="create_pdf" value="Generate Document" class="btn btn-info" style="float:left;margin-right:10px;">  
 
+
+<form  id="send_emailForm" style="display:none;">
+    <input value='<%=ClientData.full_name%>' type="hidden" id="filename">
+
+  <a href="mailto:<%=ClientData.email%>" class="btn btn-success"><i class="fas fa-envelope-open"></i> Send Email</a>
+</form>
+
+  <a href="/dock_r" class="btn btn-warning"> Cancel</a>
+
+<br>
+<br>
+<br>
+
+</div>
 
 
 <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
@@ -397,7 +420,7 @@ $('#create_pdf').on('click', function () {
 //             html2canvas:  { dpi: 202, letterRendering: true },
 //             jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
 //           });
-          
+         window.print();
            $("#send_emailForm").css("display", "block");
 });     
 // (function () {  

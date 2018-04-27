@@ -62,6 +62,7 @@
                     <td><%= content.email%></td>
                     <td><%= content.address%></td>
                     <td>
+                        <a href="mailto:<%=content.email%>" class="btn btn-dark btn-sm" ><i class="far fa-envelope-open"></i> Send Email</a>
                         <button class="btn btn-info btn-sm openEditModal" id="<%= content._id%>" data-toggle="modal" data-target="#editClientModal"><i class="far fa-edit"></i> Edit</button>
                         <button class="btn btn-danger btn-sm deleteMessage" id="<%= content._id%>" data-toggle="modal" data-target=".deleteMessageModal"><i class="far fa-trash-alt"></i> Delete</button>
                     </td>

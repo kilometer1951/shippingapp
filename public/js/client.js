@@ -16,6 +16,7 @@ function getClients(value) {
                     client_table += '<td>' + result.email + '</td>';
                     client_table += '<td>' + result.address + '</td>';
                     client_table += '<td>';
+                    client_table += '<a href="mailto:' + result.email + '" class="btn btn-dark btn-sm" ><i class="far fa-envelope-open"></i> Send Email</a>';
                     client_table += '<button class="btn btn-info btn-sm openEditModal" id="' + result._id + '" data-toggle="modal" data-target="#editClientModal"><i class="far fa-edit"></i> Edit</button>';
                     client_table += ' <button class="btn btn-danger btn-sm deleteMessage" id="' + result._id + '" data-toggle="modal" data-target=".deleteMessageModal"><i class="far fa-trash-alt"></i> Delete</button>';
                     client_table += '</td>';
@@ -57,6 +58,7 @@ function getClients(value) {
                 client_table += '<td>' + result.email + '</td>';
                 client_table += '<td>' + result.address + '</td>';
                 client_table += '<td>';
+                client_table += '<a href="mailto:' + result.email + '" class="btn btn-dark btn-sm" ><i class="far fa-envelope-open"></i> Send Email</a>';
                 client_table += '<button class="btn btn-info btn-sm openEditModal" id="' + result._id + '" data-toggle="modal" data-target="#editClientModal"><i class="far fa-edit"></i> Edit</button>';
                 client_table += ' <button class="btn btn-danger btn-sm deleteMessage" id="' + result._id + '" data-toggle="modal" data-target=".deleteMessageModal"><i class="far fa-trash-alt"></i> Delete</button>';
                 client_table += '</td>';
