@@ -1,11 +1,14 @@
 <html>
     <head>
-        <title>Preview || NRA</title>
+        <title><%=foundAllData.Client[0].full_name%></title>
          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
          <script src="/js/html2pdf.js"></script>
     <style>
+      body {
+       font-size:17px;
+   }
        .h_1 {
            width:100%;
            float:left;
@@ -27,6 +30,12 @@ th, td {
         text-align:left;
 }
    </style>
+      <style media="print">
+ 
+        #d {
+          display:none;
+        }
+</style>
     </head>
     <body><br>
 <div id="element-to-print">
@@ -542,7 +551,7 @@ By signing this document I am in agreement that if any charges in a monetary or 
 </div>
 
 
-<div class="container"><br><br>
+<div class="container" id="d"><br><br>
 <input type="button" id="create_pdf" value="Generate Document" class="btn btn-info" style="float:left;margin-right:10px;">  
 
 <form  id="send_emailForm" style="display:none;">
@@ -573,20 +582,19 @@ By signing this document I am in agreement that if any charges in a monetary or 
 <script src="/js/cargo.js"></script>
 <script>
 $('#create_pdf').on('click', function () {  
-  var fileName =  $("#filename").val();
-          
-          var element = document.getElementById('element-to-print');
-          html2pdf(element, {
-            margin:       0.1,
-            filename:     fileName+'_NRA_BC-ALL_3.pdf',
-            image:        { type: 'jpeg', quality: 1 },
-            html2canvas:  { dpi: 202, letterRendering: true },
-            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-          });
-          
+//   var fileName =  $("#filename").val();
+           
+//           var element = document.getElementById('element-to-print');
+//           html2pdf(element, {
+//             margin:       0.1,
+//             filename:     fileName+'_POA.pdf',
+//             image:        { type: 'jpeg', quality: 1 },
+//             html2canvas:  { dpi: 192, letterRendering: true },
+//             jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+//           });
+           window.print();
            $("#send_emailForm").css("display", "block")
 });  
-        
         
        
  
