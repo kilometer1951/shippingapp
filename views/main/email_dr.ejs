@@ -42,12 +42,12 @@ th, td {
        <span style="font-size:17px;"><b><%=stringText("OLDSAILORS OCEAN SHIPPING LLC")%></b> </span><br>
       
         <span style="font-size:17px;"><b>FMC-OTI No: <%=stringText("026435N")%></b></span>
-    </div>
-    <div style="display:inline-block;float:right;">
+    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div style="display:inline-block;">
         <span style="font-size:20px"><b>DOCK&nbsp;RECEIPT</b></span><br>
-        <span>Date: <%=moment(Dock_R.createdAt).format("l")%></span>
+        <span style="font-size:12px;">Date: <%=moment(Dock_R.createdAt).format("l")%></span>
         
-    </div>
+    </div><br>
      <div class="row">
          <div style="border-top:1px solid #000;width:100%;">
             <div class="row">
@@ -61,7 +61,7 @@ th, td {
                            <span><%=stringText(ClientData.full_name)%>,</span><br>
                          <% } %>
                         <span style="font-size:15px;"><%=stringText(ClientData.address)%></span><br>
-                        <span style="font-size:15px;"><%=stringText(ClientData.City.cityname)%>,</span>
+                        <span style="font-size:15px;"><%=stringText(ClientData.City.cityname)%>,&nbsp;&nbsp;</span>
                         <span style="font-size:15px;"><%=stringText(ClientData.State.statename)%>,</span><br>
                         <span style="font-size:15px;"><%=stringText(ClientData.zipcode)%>, USA,</span>&nbsp;
                         <span style="font-size:15px;">Tel:<%=ClientData.pnum%></span>
@@ -209,8 +209,8 @@ th, td {
                             </div>
                         </div>
                      </div>
-                     <div>
-                          <b style="font-size:12px;"><%=stringText("NOTIFY PARTY / INTERMEDIATE CONSIGNEE ")%></b><br> 
+                     <div style="font-size:12px;">
+                          <b ><%=stringText("NOTIFY PARTY / INTERMEDIATE CONSIGNEE ")%></b><br> 
                         <span><%=Dock_R.n_name%></span><br>
                         <span><%=stringText(Dock_R.n_address)%><br>
                         <%=Dock_R.n_country%></span><br>
@@ -251,15 +251,15 @@ th, td {
                        <div class="col-md-2" style="border:1px solid #000;">
                            <div class="row">
                                <div style="padding:7px;">
-                                <b> CONTAINER #</b><br>
+                                <b> CONTAINER&nbsp;#</b><br>
                                <span style="font-size:14px;"><%=Dock_R.container_num%></span><br><br>
                                 <b>SEAL&nbsp;#:</b>
                                <%=Dock_R.seal_num%><br><br>
                                <b>CUT&nbsp;OFF&nbsp;DATE</b><br>
                                <%=moment(BookingConfirmation.cut_off_date).format("l")%><br><br>
-                               <b>SAILING/ETD&nbsp;DATE</b><br>
+                               <b>SAILING&nbsp;DATE</b><br>
                                 <%=moment(BookingConfirmation.sail_date).format("l")%><br><br>
-                               <b>ARRIVAL/ETA&nbsp;DATE</b><br>
+                               <b>ARRIVAL&nbsp;DATE</b><br>
                                <%=moment(BookingConfirmation.arrival_date).format("l")%><br>
                                </div>
                            </div>
@@ -273,7 +273,7 @@ th, td {
                                          <% Cargos.Cars.forEach(function(carsdata){ %>
                                            <span>
                                               <span><%=stringText(carsdata.cardetails)%></span><br>
-                                              <span>VIN:<%=carsdata.vin%></span><br>
+                                              <span>VIN:<%=carsdata.vin%></span><br><br>
                                            </span>
                                         <% }) %>
                                         <div style="width:290px;">
@@ -302,7 +302,7 @@ th, td {
                                         <% Cargos.Cars.forEach(function(carsdata){ %>
                                            <span style="text-align:left;">
                                              <br><span><%=carsdata.weight !== undefined ? carsdata.weight+"kg" : "" %></span>
-                                           </span><br>
+                                           </span><br><br>
                                      <% }) %>
                                      <br>
                                     <span><%=Cargos.personal_effect_weight !== undefined ? Cargos.personal_effect_weight+"kg" : "" %></span>
@@ -321,7 +321,7 @@ th, td {
                                         <% Cargos.Cars.forEach(function(carsdata){ %>
                                            <span style="text-align:left;">
                                              <br> <span><%=carsdata.measurement%></span>
-                                           </span><br>
+                                           </span><br><br>
                                      <% }) %><br>
                                    </div>
                                 <span><%=Cargos.personal_effect_m === undefined || Cargos.personal_effect_m === "0" ? "" : Cargos.personal_effect_m %></span>
