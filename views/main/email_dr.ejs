@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Preview || Dock Receipt</title>
+        <title><%=stringText(ClientData.full_name)%></title>
          <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -8,8 +8,8 @@
          <script src="/js/html2pdf.js"></script>
    <style>
    body {
-       line-height:0.9em;
-       font-size:18px;
+       line-height:1em;
+       font-size:24px;
    }
        .h_1 {
            width:100%;
@@ -69,7 +69,7 @@ th, td {
                      <!-- CONSIGNEE  -->
                      <div  style="border-top:1px solid #000;">
                         <b style="font-size:11px;"><%=stringText("CONSIGNEE")%></b><br>
-                        <span><%=stringText(Consignee.full_name)%></span><br>
+                        <span style="font-size:15px;"><%=stringText(Consignee.full_name)%></span><br>
                         <span style="font-size:15px;"><%=stringText(Consignee.address)%>,</span><br>
                         <span style="font-size:15px;"><%=stringText(Consignee.city)%>,&nbsp;<%=stringText(Consignee.state)%>,</span><br>
                         <span style="font-size:15px;"><%=stringText(Consignee.Country.countryname)%>,&nbsp;Tel: <%=stringText(Consignee.pnum)%></span>
@@ -232,12 +232,12 @@ th, td {
                        <span style="font-size:10px;font-weight:bold;">MARKS&nbsp;AND&nbsp;NUMBERS</span>
 
                      </div>
-                     <div class="col-md-7" style="border:1px solid #000;">
+                     <div class="col-md-6" style="border:1px solid #000;">
                            
                                <span style="font-size:10px;font-weight:bold;padding:7px;">DESCRIPTION&nbsp;OF&nbsp;PACKAGES&nbsp;AND&nbsp;GOODS&nbsp;IN&nbsp;SCHEDULE</span>
 
                      </div>
-                     <div class="col-md-1" style="border:1px solid #000;">
+                     <div class="col-md-2" style="border:1px solid #000;">
                            
                                <span style="font-size:10px;font-weight:bold;padding:7px;">WEIGHT</span>
 
@@ -266,12 +266,12 @@ th, td {
                                </div>
                            </div>
                        </div> 
-                        <div class="col-md-7" style="border:1px solid #000;">
+                        <div class="col-md-6" style="border:1px solid #000;">
                            <div class="row" >
                               <div style="padding:7px;">
                                    <span style="font-size:14px;"><%=stringText(BookingConfirmation.equipment_size)%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AES#:&nbsp;<%=Dock_R.aes_num%></span><br>
                                     
-                                     <div  style="height:340px;font-size:17px;margin-top:5px;">
+                                     <div  style="height:540px;font-size:17px;margin-top:5px;">
                                          <% Cargos.Cars.forEach(function(carsdata){ %>
                                            <span>
                                               <span><%=stringText(carsdata.cardetails)%></span><br>
@@ -284,8 +284,8 @@ th, td {
                                      </div>
                                      
                                      
-                                   <div>
-                                       <span style="font-size:14px;margin-left:372px;"><b> <%=stringText("Total Weight: "+parseFloat(Cargos.total_weight).toFixed(2))%>kg</b></span>
+                                   <div style="font-size:16px;margin-left:350px;">
+                                       <span ><b> <%=stringText("Total Weight")%></b></span>
                                    </div>
                                    <div style="float:left;font-size:10px;">
                                        <span><b><%=stringText("SHIPPER ON THIS DOCK RECEIPT CONFIRMS THAT, GAS TANK")%></b></span><br>
@@ -296,11 +296,11 @@ th, td {
                               </div>
                            </div>
                        </div> 
-                        <div class="col-md-1" style="border:1px solid #000;">
+                        <div class="col-md-2" style="border:1px solid #000;">
                            <div class="row">
                                <div style="padding:7px;">
                                     
-                                   <div style="margin-top:5px;">
+                                   <div style="margin-top:5px;height:564px;">
                                         <% Cargos.Cars.forEach(function(carsdata){ %>
                                            <span style="text-align:left;">
                                              <br><span><%=carsdata.weight !== undefined ? carsdata.weight+"kg" : "" %></span>
@@ -309,9 +309,9 @@ th, td {
                                      <br>
                                     <span><%=Cargos.personal_effect_weight !== undefined ? Cargos.personal_effect_weight+"kg" : "" %></span>
                                    </div>
-                                    
-                                     <br> 
-                                       <!--<p style="font-size:15px;margin-top:15px;"><b></b></p>-->
+                                    <div style="font-size:16px;">
+                                       <span ><b> <%= parseFloat(Cargos.total_weight).toFixed(2)%>kg</b></span>
+                                   </div>
                                    
                                </div>
                            </div>
@@ -375,25 +375,6 @@ th, td {
 
 
 
-<div class="container"><br><br>
-<input type="button" id="create_pdf" value="Generate Document" class="btn btn-info" style="float:left;margin-right:10px;">  
-
-
-<form  id="send_emailForm" style="display:none;">
-    <input value='<%=ClientData.full_name%>' type="hidden" id="filename">
-
-  <a href="mailto:<%=ClientData.email%>" class="btn btn-success"><i class="fas fa-envelope-open"></i> Send Email</a>
-</form>
-
-  <a href="/dock_r" class="btn btn-warning"> Cancel</a>
-
-<br>
-<br>
-<br>
-
-</div>
-
-
 
 <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
         <!-- jQuery library -->
@@ -406,18 +387,18 @@ th, td {
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script>
 $('#create_pdf').on('click', function () {  
-  var fileName =  $("#filename").val();
+//   var fileName =  $("#filename").val();
           
-          var element = document.getElementById('element-to-print');
-          html2pdf(element, {
-            margin:       0.1,
-            filename:     fileName+'_NRA_BC-ALL_3.pdf',
-            image:        { type: 'jpeg', quality: 1 },
-            html2canvas:  { dpi: 202, letterRendering: true },
-            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-          });
+//           var element = document.getElementById('element-to-print');
+//           html2pdf(element, {
+//             margin:       0.1,
+//             filename:     fileName+'_NRA_BC-ALL_3.pdf',
+//             image:        { type: 'jpeg', quality: 1 },
+//             html2canvas:  { dpi: 202, letterRendering: true },
+//             jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+//           });
           
-           $("#send_emailForm").css("display", "block")
+           $("#send_emailForm").css("display", "block");
 });     
 // (function () {  
   
