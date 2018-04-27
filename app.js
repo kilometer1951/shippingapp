@@ -79,7 +79,7 @@ app.use(function(req, res, next) {
         }
     };
     res.locals.string_ID = function(str) {
-        return `OLD-${str}`.substring(0, 10);
+        return `OLD-${str}`.substring(0, 10).toUpperCase();
     };
     res.locals.string_ID_1 = function(str) {
         return `OLDBILL${str}`.substring(0, 10);
