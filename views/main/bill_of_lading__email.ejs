@@ -35,6 +35,24 @@ th, td {
    </style>
     </head>
     <body><br>
+    
+<div class="container"><br><br>
+<input type="button" id="create_pdf" value="Generate Document" class="btn btn-info" style="float:left;margin-right:10px;">  
+
+
+<form  id="send_emailForm" style="display:none;">
+    <input value='<%=ClientData.full_name%>' type="hidden" id="filename">
+
+  <a href="mailto:<%=ClientData.email%>" class="btn btn-success"><i class="fas fa-envelope-open"></i> Send Email</a>
+</form>
+
+  <a href="/dock_r" class="btn btn-warning"> Cancel</a>
+
+<br>
+<br>
+<br>
+
+</div>
 <div id="element-to-print" class="element-to-print">
   <div class="container">
   
@@ -283,7 +301,7 @@ th, td {
                                        <span style="font-size:15px;margin-left:300px;"><b> <%=stringText("Total Weight: "+parseFloat(Cargos.total_weight).toFixed(2))%>kg</b></span>
                                    </div>
                                    <div style="float:left;font-size:10px;">
-                                       <span><b><%=stringText("SHIPPER ON THIS DOCK RECEIPT CONFIRMS THAT, GAS TANK")%></b></span><br>
+                                       <span><b><%=stringText("SHIPPER ON THIS BILL OF LADING CONFIRMS THAT, GAS TANK")%></b></span><br>
                                        <span><b><%=stringText(" HAS BEEN DRAINED OFF FUEL, BATTERIES DISCONNECTED,")%></b></span><br>
                                        <span><b><%=stringText("VEHICLES HAVE BEEN BLOCKED AND BRACED, CONTAINER LOADED ")%></b></span>
                                        <span><b><%=stringText("IN ACCORDANCE TO GENERAL INTO IMDG CODE PARAGRAPH 12.3.7 & 17.7.7")%></b></span><br>
