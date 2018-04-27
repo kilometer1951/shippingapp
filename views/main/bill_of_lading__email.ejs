@@ -157,7 +157,7 @@ th, td {
                                      </div>
                                       <div class="col-md-6">
                                         <span style="font-size:10px;"><b><%=stringText("BILL OF LADING NUMBER")%></b></span><br>
-                                        <span style="font-size:12px;"><%=string_ID_1(Dock_R._id)%></span>
+                                        <span style="font-size:12px;"><%=stringText(BookingConfirmation.booking_number !== "" ? BookingConfirmation.booking_number : "" )%></span>
                                     </div>
                                 </div>
                             </div>
