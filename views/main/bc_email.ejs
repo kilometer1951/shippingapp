@@ -39,7 +39,7 @@ th, td {
                      <table style="width:100%">
                            <tr>
                             <td><b>File Number</b></td>
-                            <td><%=foundAllData_1._id%></td>
+                            <td><%=string_ID(foundAllData_1._id)%></td>
                           </tr>
                           <tr>
                             <td><b>Date</b></td>
@@ -59,12 +59,11 @@ th, td {
             </div>
             <div class="col-md-6" >
                 <div class="h_2">
-                   <img src="/css/e.jpg" width="140" height="140" style="float:left;margin-right:10px;">
-                   <span><b>Company Name</b> Name Name Name Name Name </span><br>
-                   <span><b>Company address:</b> address address address</span><br>
-                   <span><b>Tel:</b> 8888888</span><br>
-                   <span><b>Fax:</b> 8888888</span><br>
-                   <span><b>Email:</b> sss@gmail.com</span><br>
+                   <span><b>Company Name</b> <%=stringText("OLDSAILORS OCEAN SHIPPING")%> </span><br>
+                   <span><b>Company address:</b> <%=stringText("13903 CHADSWORTH TERRACE, Laurel, MD 20707, USA")%></span><br>
+                   <span><b>Tel:</b> <%=stringText("301-213-6961")%></span><br>
+                   <span><b>Fax:</b> <%=stringText("301-281-4034")%></span><br>
+                   <span><b>Email:</b> info@oldsailorsshippingonline.com</span><br>
                 </div>
             </div>
         </div>

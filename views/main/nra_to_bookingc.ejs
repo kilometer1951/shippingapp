@@ -33,7 +33,7 @@ th, td {
   <div class="container">
      <div class="i_1">
        <h4 style="text-align:center;">NRA Contract</h4>
-       <p><b>From:</b> Company Name here</p>
+       <p><b>From:</b> <%=stringText("OLDSAILORS OCEAN SHIPPING")%></p>
        <p><b>To:</b> <%=foundAllData[0].Client[0].full_name%></p>
        <p><b>Attn:</b> <%=foundAllData[0].Client[0].full_name%></p>
        <p>
@@ -52,28 +52,31 @@ Please reference the following NRA number on all documents for the shipment(s) m
      </div>
      <div class="i_2">
         <div class="row">
-          <div class="col-md-6">
-            <p style="font-size:20px;">
-             <b>NRA No.: <%=foundAllData[0]._id%></b>
+          <div class="col-md-12">
+           <p style="font-size:20px;">
+             <b>NRA No.: <%=string_ID(foundAllData[0]._id)%></b>
             </p>
             <p>Effective: <%=moment(foundAllData[0].effective_date).format("l")%></p>
             <p>Expiration: <%=moment(foundAllData[0].expiration).format("l")%></p>
-            <p>Reference: <%=foundAllData[0].Client[0]._id%></p><br><br><br>
-            <p>Shipper: <%=foundAllData[0].Client[0].full_name%></p>
+            <p>Reference: <%=foundAllData[0].Client[0]._id%></p><br>
+            
+             <p style="font-size:17px;">
+             <b>Company Name: <%=stringText("OLDSAILORS OCEAN SHIPPING")%></b>
+            </p>
+            <p>Carrier Rep: <%=foundAllData[0].carrier_rep%></p>
+            <p>Email: info@oldsailorsshippingonline.com</p>
+            <p>Phone: <%=stringText("301-213-6961")%></p>
+            <p>Address:  <%=stringText("13903 CHADSWORTH TERRACE, Laurel, MD 20707, USA")%></p>
+            <p>FMC-OTI No: <%=stringText("026435N")%> </p>
+            
+            
+            <br><br><br>
+            <p><b>SHIPPER: <%=foundAllData[0].Client[0].full_name%></b></p>
             <p>Email: <%=foundAllData[0].Client[0].email%></p>
             <p>Contact: <%=foundAllData[0].Client[0].pnum%></p>
            
           </div>
-          <div class="col-md-6">
-            <p style="font-size:17px;">
-             <b>Company Name</b>
-            </p>
-            <p>Carrier Rep:: </p>
-            <p>Email: </p>
-            <p>Phone: </p>
-            <p>Address: </p>
-            <p>FMC- OT I No: </p>
-          </div>
+          
         </div>
      </div>
      <div class="i_3 "><br><br>
