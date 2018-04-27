@@ -216,8 +216,10 @@ th, td {
                         <%=Dock_R.n_country%></span><br>
                         <span><%=Dock_R.n_pnum !== "" ? "Tel: "+Dock_R.n_pnum : "" %></span>
                      </div>
-                     
-                     
+                     <div style="border-top:1px solid #000;font-size:12px;">
+                          <b ><%=stringText("DEMURRAGE")%></b><br> 
+                        <span><%=Dock_R.demurrage%></span><br>
+                     </div>
                 </div>
             </div>
          </div>
