@@ -58,7 +58,7 @@ th, td {
                         <span><%=stringText("OLDSAILORS OCEAN SHIPPING LLC")%>,</span><br>
                         <span style="font-size:15px;"><%=stringText("13903 CHADSWORTH TERRACE")%></span><br>
                         <span style="font-size:15px;"><%=stringText("LAUREL, MD,")%></span>
-                        <span style="font-size:15px;">&nbsp;&nbsp;TABALA ROLAND20707,&nbsp;USA,</span>&nbsp;
+                        <span style="font-size:15px;">&nbsp;USA,</span>&nbsp;
                         <span style="font-size:15px;">Tel:301-213-6961</span>
                      </div>
                      <!-- CONSIGNEE  -->
@@ -295,7 +295,7 @@ th, td {
                            <div class="row">
                                <div style="padding:7px;">
                                     
-                                   <div>
+                                   <div style="margin-top:5px;">
                                         <% Cargos.Cars.forEach(function(carsdata){ %>
                                            <span style="text-align:left;">
                                              <br><span><%=carsdata.weight !== undefined ? carsdata.weight+"kg" : "" %></span>
@@ -314,7 +314,7 @@ th, td {
                         <div class="col-md-2" style="border:1px solid #000;">
                            <div class="row">
                                <div style="padding:7px;">
-                                   <div>
+                                   <div style="margin-top:5px;">
                                         <% Cargos.Cars.forEach(function(carsdata){ %>
                                            <span style="text-align:left;">
                                              <br> <span><%=carsdata.measurement%></span>
