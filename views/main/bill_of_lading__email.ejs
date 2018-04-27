@@ -216,9 +216,9 @@ th, td {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" style="padding:0">
                                 <span style="font-size:10px;"><b><%=stringText("TYPE OF MOVE")%></b></span><br>
-                                <span style="font-size:12px;"><%=stringText(BookingConfirmation.return_depot )%></span>
+                                <span style="font-size:10px;"><%=stringText(BookingConfirmation.return_depot )%></span>
                             </div>
                         </div>
                      </div>
@@ -231,7 +231,7 @@ th, td {
                      </div>
                      <div style="border-top:1px solid #000;font-size:12px;">
                           <b ><%=stringText("DEMURRAGE")%></b><br> 
-                        <span><%=Dock_R.demurrage%></span><br>
+                        <span><%=stringText(Dock_R.demurrage)%></span><br>
                      </div>
                 </div>
             </div>

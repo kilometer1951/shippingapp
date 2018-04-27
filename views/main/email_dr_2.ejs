@@ -198,9 +198,9 @@ th, td {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" style="padding:0">
                                 <span style="font-size:10px;"><b><%=stringText("TYPE OF MOVE")%></b></span><br>
-                                <span style="font-size:12px;"><%=stringText(BookingConfirmation.return_depot )%></span>
+                                <span style="font-size:10px;"><%=stringText(BookingConfirmation.return_depot )%></span>
                             </div>
                         </div>
                      </div>
@@ -213,7 +213,7 @@ th, td {
                      </div>
                      <div style="border-top:1px solid #000;font-size:12px;">
                           <b ><%=stringText("DEMURRAGE")%></b><br> 
-                        <span><%=Dock_R.demurrage%></span><br>
+                        <span><%=stringText(Dock_R.demurrage)%></span><br>
                      </div>
                 </div>
             </div>
@@ -227,12 +227,12 @@ th, td {
                        <span style="font-size:10px;font-weight:bold;">MARKS&nbsp;AND&nbsp;NUMBERS</span>
 
                      </div>
-                     <div class="col-md-6" style="border:1px solid #000;">
+                     <div class="col-md-7" style="border:1px solid #000;">
                            
                                <span style="font-size:10px;font-weight:bold;padding:7px;">DESCRIPTION&nbsp;OF&nbsp;PACKAGES&nbsp;AND&nbsp;GOODS&nbsp;IN&nbsp;SCHEDULE</span>
 
                      </div>
-                     <div class="col-md-2" style="border:1px solid #000;">
+                     <div class="col-md-1" style="border:1px solid #000;">
                            
                                <span style="font-size:10px;font-weight:bold;padding:7px;">WEIGHT</span>
 
@@ -261,7 +261,7 @@ th, td {
                                </div>
                            </div>
                        </div> 
-                        <div class="col-md-6" style="border:1px solid #000;">
+                        <div class="col-md-7" style="border:1px solid #000;">
                            <div class="row" >
                               <div style="padding:7px;">
                                    <span style="font-size:14px;"><%=stringText(BookingConfirmation.equipment_size)%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AES#:&nbsp;<%=Dock_R.aes_num%></span><br>
@@ -280,7 +280,7 @@ th, td {
                                      
                                      
                                    <div>
-                                       <span style="font-size:15px;margin-left:300px;"><b> <%=stringText("Total Weight: "+parseFloat(Cargos.total_weight).toFixed(2))%>kg</b></span>
+                                       <span style="font-size:14px;margin-left:372px;"><b> <%=stringText("Total Weight: "+parseFloat(Cargos.total_weight).toFixed(2))%>kg</b></span>
                                    </div>
                                    <div style="float:left;font-size:10px;">
                                        <span><b><%=stringText("SHIPPER ON THIS DOCK RECEIPT CONFIRMS THAT, GAS TANK")%></b></span><br>
@@ -291,7 +291,7 @@ th, td {
                               </div>
                            </div>
                        </div> 
-                        <div class="col-md-2" style="border:1px solid #000;">
+                        <div class="col-md-1" style="border:1px solid #000;">
                            <div class="row">
                                <div style="padding:7px;">
                                     
