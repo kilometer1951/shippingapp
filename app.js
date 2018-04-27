@@ -85,8 +85,9 @@ app.use(function(req, res, next) {
         return `${str}`.substring(0, 14).toUpperCase();
     };
     res.locals.string_ID_1 = function(str) {
-        return `OLDBILL${str}`.substring(0, 10);
+        return `OLD${str}`.substring(0, 15).toUpperCase();
     };
+
     res.locals.stringText = function(str) {
         // var str = "COMPANY ADDRESS";
         var r = str.split(' ').join('\xa0');
