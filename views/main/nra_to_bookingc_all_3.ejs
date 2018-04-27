@@ -58,7 +58,7 @@ Please reference the following NRA number on all documents for the shipment(s) m
             </p>
             <p>Effective: <%=moment(foundAllData.effective_date).format("l")%></p>
             <p>Expiration: <%=moment(foundAllData.expiration).format("l")%></p>
-            <p>Reference: <%=foundAllData.Client[0]._id%></p><br>
+            <p>Reference: <%=String_ID_2(foundAllData.Client[0]._id)%></p><br>
             
              <p style="font-size:17px;">
              <b>Company Name: <%=stringText("OLDSAILORS OCEAN SHIPPING")%></b>
