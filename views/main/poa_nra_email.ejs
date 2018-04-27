@@ -11,7 +11,7 @@
 <div id="element-to-print">
   <div class="container">
      <div class="i_1">
-       <p><b>From:</b> <%=stringText("OLDSAILORS OCEAN SHIPPING")%></p>
+       <p><b>From:</b> <%=stringText("OLDSAILORS OCEAN SHIPPING LLC")%></p>
        <p><b>To:</b> <%=foundAllData[0].Client[0].full_name%></p>
        <p><b>Attn:</b> <%=foundAllData[0].Client[0].full_name%></p>
        <p>
@@ -32,7 +32,7 @@ Please reference the following NRA number on all documents for the shipment(s) m
         <div class="row">
           <div class="col-md-12">
             <p style="font-size:20px;">
-             <b>NRA No.: <%=string_ID(foundAllData[0]._id)%></b>
+             <b>NRA No: <%=string_ID(foundAllData[0]._id)%></b>
             </p>
             <p>Effective: <%=moment(foundAllData[0].effective_date).format("l")%></p>
             <p>Expiration: <%=moment(foundAllData[0].expiration).format("l")%></p>

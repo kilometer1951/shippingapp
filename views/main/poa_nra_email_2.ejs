@@ -33,7 +33,7 @@ th, td {
   <div class="container">
      <div class="i_1">
        <h4 style="text-align:center;">NRA Contract</h4>
-       <p><b>From:</b> <%=stringText("OLDSAILORS OCEAN SHIPPING")%></p>
+       <p><b>From:</b> <%=stringText("OLDSAILORS OCEAN SHIPPING LLC")%></p>
        <p><b>To:</b> <%=foundAllData.Client[0].full_name%></p>
        <p><b>Attn:</b> <%=foundAllData.Client[0].full_name%></p>
        <p>
@@ -54,7 +54,7 @@ Please reference the following NRA number on all documents for the shipment(s) m
         <div class="row">
           <div class="col-md-12">
            <p style="font-size:20px;">
-             <b>NRA No.: <%=string_ID(foundAllData._id)%></b>
+             <b>NRA No: <%=string_ID(foundAllData._id)%></b>
             </p>
             <p>Effective: <%=moment(foundAllData.effective_date).format("l")%></p>
             <p>Expiration: <%=moment(foundAllData.expiration).format("l")%></p>
@@ -126,6 +126,7 @@ Please reference the following NRA number on all documents for the shipment(s) m
             
           </tbody>
         </table>
+        
         <p><b>Special Conditions</b></p>
         <div style="border:1px solid #bdbdbd;padding:10px;">
           <p><%=foundAllData.special_conditions%></p>

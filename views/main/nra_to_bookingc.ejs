@@ -54,14 +54,14 @@ Please reference the following NRA number on all documents for the shipment(s) m
         <div class="row">
           <div class="col-md-12">
            <p style="font-size:20px;">
-             <b>NRA No.: <%=string_ID(foundAllData[0]._id)%></b>
+             <b>NRA No: <%=string_ID(foundAllData[0]._id)%></b>
             </p>
             <p>Effective: <%=moment(foundAllData[0].effective_date).format("l")%></p>
             <p>Expiration: <%=moment(foundAllData[0].expiration).format("l")%></p>
             <p>Reference: <%=String_ID_2(foundAllData[0].Client[0]._id)%></p><br>
             
              <p style="font-size:17px;">
-             <b>Company Name: <%=stringText("OLDSAILORS OCEAN SHIPPING")%></b>
+             <b>Company Name: <%=stringText("OLDSAILORS OCEAN SHIPPING LLC")%></b>
             </p>
             <p>Carrier Rep: <%=foundAllData[0].carrier_rep%></p>
             <p>Email: info@oldsailorsshippingonline.com</p>
