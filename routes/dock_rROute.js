@@ -45,6 +45,41 @@ router.get("/dock_r", function(req, res) {
 });
 
 
+//show route
+router.get("/invoice", function(req, res) {
+
+    if (req.user) {
+        async.parallel([
+
+            function(callback) {
+                Clients.find({}, function(err, foundData) {
+                    callback(err, foundData);
+                });
+            },
+            function(callback) {
+                Dock_R
+                    .find({})
+                    .populate("Client")
+                    .sort('-createdAt')
+                    .exec(function(err, foundAllData) {
+                        callback(err, foundAllData);
+                    });
+            }
+
+        ], (err, results) => {
+            var clientsData = results[0];
+            var foundAllData = results[1];
+            res.render("main/invoice", { title: 'Oldsailor Ocean Shipping LLC || Dock Receipt', clientsData: clientsData, foundAllData: foundAllData });
+
+        });
+    }
+    else {
+
+    }
+
+});
+
+
 //show route Bill of lading
 router.get("/bill_lading", function(req, res) {
 
@@ -244,6 +279,9 @@ router.post("/dock_r/new", function(req, res) {
     var cargo_id_ = req.body.cargo_id_;
     var fowarding_agent_ref = req.body.fowarding_agent_ref;
 
+    var for_transhipment_to = req.body.for_transhipment_to;
+    var point_and_contry_of_origin = req.body.point_and_contry_of_origin;
+
 
     var newData = {
         createdAt: moment.parseZone(new Date()).format('l'),
@@ -261,7 +299,9 @@ router.post("/dock_r/new", function(req, res) {
         aes_num: aes_num,
         cleint_is_agent: cleint_is_agent,
         fowarding_agent_ref: fowarding_agent_ref,
-        originals_tobe_released: originals_tobe_released
+        originals_tobe_released: originals_tobe_released,
+        for_transhipment_to: for_transhipment_to,
+        point_and_contry_of_origin: point_and_contry_of_origin
     };
     //console.log(req.body.data.cfirst_name)
     Dock_R.create(newData, function(err, newlyCreated) {
@@ -360,6 +400,8 @@ router.post("/d_r/:id/edit", function(req, res) {
     var cleint_is_agent = req.body.cleint_is_agent;
     var originals_tobe_released = req.body.originals_tobe_released;
     var fowarding_agent_ref = req.body.fowarding_agent_ref;
+    var point_and_contry_of_origin = req.body.point_and_contry_of_origin;
+    var for_transhipment_to = req.body.for_transhipment_to;
 
 
     var editData = {
@@ -373,7 +415,9 @@ router.post("/d_r/:id/edit", function(req, res) {
         aes_num: aes_num,
         cleint_is_agent: cleint_is_agent,
         originals_tobe_released: originals_tobe_released,
-        fowarding_agent_ref: fowarding_agent_ref
+        fowarding_agent_ref: fowarding_agent_ref,
+        point_and_contry_of_origin: point_and_contry_of_origin,
+        for_transhipment_to: for_transhipment_to,
 
     };
 

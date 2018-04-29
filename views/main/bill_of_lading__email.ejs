@@ -65,10 +65,10 @@ th, td {
     <div style="display:inline-block;">
        <span style="font-size:17px;"><b><%=stringText("OLDSAILORS OCEAN SHIPPING LLC")%></b> </span><br>
       
-        <span style="font-size:17px;"><b>FMC-OTI No: <%=stringText("026435N")%></b></span>
+        <span style="font-size:17px;visibility:hidden;"><b>FMC-OTI No: <%=stringText("026435N")%></b></span>
     </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <div style="display:inline-block;">
-        <span style="font-size:20px"><b>BILL OF LADING</b></span><br>
+        <span style="font-size:20px"><b>DOCK&nbsp;RECEIPT</b></span><br>
         <span style="font-size:12px;">Date: <%=moment(Dock_R.createdAt).format("l")%></span>
         
     </div><br>
@@ -78,12 +78,13 @@ th, td {
                 <div class="col-md-6" style="border-right:1px solid #000;">
                     <!--Shipper -->
                      <div>
-                         <b style="font-size:11px;"><%=stringText("SHIPPER EXPORTER")%></b><br>
+                        <b style="font-size:11px;"><%=stringText("SHIPPER EXPORTER")%></b><br>
                         <span style="font-size:15px;"><%=stringText("OLDSAILORS OCEAN SHIPPING LLC")%>,</span><br>
                         <span style="font-size:15px;"><%=stringText("13903 CHADSWORTH TERRACE")%></span><br>
-                        <span style="font-size:15px;"><%=stringText("LAUREL, MD,")%></span>
+                        <span style="font-size:15px;">LAUREL, MD, 20707,</span>
                         <span style="font-size:15px;">&nbsp;USA,</span>&nbsp;
-                        <span style="font-size:15px;">Tel:301-213-6961</span>
+                        <span style="font-size:15px;">Tel:301-213-6961</span><br>
+                        <span style="font-size:17px;"><b>FMC-OTI No: <%=stringText("026435N")%></b></span>
                      </div>
                      <!-- CONSIGNEE  -->
                      <div  style="border-top:1px solid #000;">
@@ -161,9 +162,9 @@ th, td {
                                             <span style="font-size:11px;"><b><%=stringText("BOOKING #")%></b></span><br>
                                             <span style="font-size:12px;"><%=stringText(BookingConfirmation.booking_number !== "" ? BookingConfirmation.booking_number : "" )%></span>
                                      </div>
-                                     <div class="col-md-6">
-                                        <span style="font-size:10px;"><b><%=stringText("BILL OF LADING NUMBER")%></b></span><br>
-                                        <span style="font-size:12px;"><%=stringText(BookingConfirmation.booking_number !== "" ? BookingConfirmation.booking_number : "" )%></span>
+                                      <div class="col-md-6">
+                                        <span style="font-size:10px;"><b><%=stringText("FILE NUMBER")%></b></span><br>
+                                        <span style="font-size:12px;"><%=string_ID(Dock_R._id)%></span>
                                     </div>
                                 </div>
                             </div>
@@ -212,19 +213,19 @@ th, td {
                                 <div style="border-right:1px solid #000;">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <span style="font-size:10px;"><b>POINT&nbsp;AND&nbsp;COUNTRY<br>OF&nbsp;ORIGIN</b></span><br>
-                                            <span style="font-size:12px;">USA</span>
+                                            <span style="font-size:10px;"><b>FOR TRANSHIPMENT TO</b></span><br>
+                                            <span style="font-size:12px;"><%=Dock_R.for_transhipment_to%></span>
                                         </div>
                                          <div class="col-md-6" style="border-left:1px solid #000;">
                                             <span style="font-size:10px;"><b><%=stringText("PLACE OF RECEIPT")%></b></span><br>
-                                            <span style="font-size:12px;"><%=stringText(BookingConfirmation.place_of_recript )%></span>
+                                            <span style="font-size:11px;"><%=stringText(BookingConfirmation.place_of_recript )%></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4" style="padding:0">
                                 <span style="font-size:10px;"><b><%=stringText("TYPE OF MOVE")%></b></span><br>
-                                <span style="font-size:10px;"><%=stringText(BookingConfirmation.return_depot )%></span>
+                                <span style="font-size:12px;"><%=stringText(BookingConfirmation.return_depot )%></span>
                             </div>
                         </div>
                      </div>
@@ -236,8 +237,8 @@ th, td {
                         <span><%=Dock_R.n_pnum !== "" ? "Tel: "+Dock_R.n_pnum : "" %></span>
                      </div>
                      <div style="border-top:1px solid #000;font-size:12px;">
-                          <b ><%=stringText("DEMURRAGE")%></b><br> 
-                        <span><%=stringText(Dock_R.demurrage)%></span><br>
+                          <b>POINT AND COUNTRY OF ORIGIN</b><br> 
+                        <span><%=Dock_R.point_and_contry_of_origin%></span><br>
                      </div>
                 </div>
             </div>
@@ -276,12 +277,10 @@ th, td {
                                <span style="font-size:14px;"><%=Dock_R.container_num%></span><br><br>
                                 <b>SEAL&nbsp;#:</b>
                                <%=Dock_R.seal_num%><br><br>
-                               <b>CUT&nbsp;OFF&nbsp;DATE</b><br>
-                               <%=moment(BookingConfirmation.cut_off_date).format("l")%><br><br>
+                               
                                <b>SAILING&nbsp;DATE</b><br>
                                 <%=moment(BookingConfirmation.sail_date).format("l")%><br><br>
-                               <b>ARRIVAL&nbsp;DATE</b><br>
-                               <%=moment(BookingConfirmation.arrival_date).format("l")%><br>
+                              
                                </div>
                            </div>
                        </div> 
@@ -302,12 +301,13 @@ th, td {
                                        </div>
                                      </div>
                                      
-                                     
+                                   <span><%=Dock_R.demurrage%></span><br>
                                    <div style="font-size:16px;margin-left:350px;">
+                                       
                                        <span ><b> <%=stringText("Total Weight")%></b></span>
                                    </div>
                                    <div style="float:left;font-size:10px;">
-                                       <span><b><%=stringText("SHIPPER ON THIS BILL OF LADING CONFIRMS THAT, GAS TANK")%></b></span><br>
+                                       <span><b><%=stringText("SHIPPER ON THIS DOCK RECEIPT CONFIRMS THAT, GAS TANK")%></b></span><br>
                                        <span><b><%=stringText(" HAS BEEN DRAINED OFF FUEL, BATTERIES DISCONNECTED,")%></b></span><br>
                                        <span><b><%=stringText("VEHICLES HAVE BEEN BLOCKED AND BRACED, CONTAINER LOADED ")%></b></span>
                                        <span><b><%=stringText("IN ACCORDANCE TO GENERAL INTO IMDG CODE PARAGRAPH 12.3.7 & 17.7.7")%></b></span><br>
@@ -328,7 +328,7 @@ th, td {
                                      <br>
                                     <span><%=Cargos.personal_effect_weight !== undefined ? Cargos.personal_effect_weight+"kg" : "" %></span>
                                    </div>
-                                    <div style="font-size:16px;">
+                                    <div style="font-size:16px;"><br>
                                        <span ><b> <%= parseFloat(Cargos.total_weight).toFixed(2)%>kg</b></span>
                                    </div>
                                    

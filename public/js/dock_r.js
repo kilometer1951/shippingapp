@@ -330,6 +330,10 @@ $(document).ready(function() {
         data.clientdropdown = $("#clientdropdown").val();
         data.consigneedropdown = $("#consigneedropdown").val();
         data.fowarding_agent_ref = $("#fowarding_agent_ref").val();
+
+        data.for_transhipment_to = $("#for_transhipment_to").val();
+        data.point_and_contry_of_origin = $("#point_and_contry_of_origin").val();
+
         data.cargo_id_ = $(".cargo_id").attr("id");
 
         $.ajax({
@@ -420,7 +424,13 @@ $(document).ready(function() {
     });
 
 
+    //INVOICE
 
+    $(document).on('click', '.new_invoiceBTN', function() {
+        var id = $(this).attr("id");
+
+        $(".dock_r_id").val(id)
+    });
 
 
 });

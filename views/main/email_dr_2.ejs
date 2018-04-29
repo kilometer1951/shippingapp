@@ -32,8 +32,9 @@ th, td {
         text-align:left;
         
 }
+
    </style>
-    <style media="print">
+   <style media="print">
  
         #d {
           display:none;
@@ -60,10 +61,10 @@ th, td {
                 <div class="col-md-6" style="border-right:1px solid #000;">
                     <!--Shipper -->
                      <div>
-                         <b style="font-size:11px;"><%=stringText("SHIPPER EXPORTER")%></b><br>
+                        <b style="font-size:11px;"><%=stringText("SHIPPER EXPORTER")%></b><br>
                         <span style="font-size:15px;"><%=stringText("OLDSAILORS OCEAN SHIPPING LLC")%>,</span><br>
                         <span style="font-size:15px;"><%=stringText("13903 CHADSWORTH TERRACE")%></span><br>
-                        <span style="font-size:15px;"><%=stringText("LAUREL, MD,")%></span>
+                        <span style="font-size:15px;">LAUREL, MD, 20707,</span>
                         <span style="font-size:15px;">&nbsp;USA,</span>&nbsp;
                         <span style="font-size:15px;">Tel:301-213-6961</span>
                      </div>
@@ -194,19 +195,19 @@ th, td {
                                 <div style="border-right:1px solid #000;">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <span style="font-size:10px;"><b>POINT&nbsp;AND&nbsp;COUNTRY<br>OF&nbsp;ORIGIN</b></span><br>
-                                            <span style="font-size:12px;">USA</span>
+                                            <span style="font-size:10px;"><b>FOR TRANSHIPMENT TO</b></span><br>
+                                            <span style="font-size:12px;"><%=Dock_R.for_transhipment_to%></span>
                                         </div>
                                          <div class="col-md-6" style="border-left:1px solid #000;">
                                             <span style="font-size:10px;"><b><%=stringText("PLACE OF RECEIPT")%></b></span><br>
-                                            <span style="font-size:12px;"><%=stringText(BookingConfirmation.place_of_recript )%></span>
+                                            <span style="font-size:11px;"><%=stringText(BookingConfirmation.place_of_recript )%></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4" style="padding:0">
                                 <span style="font-size:10px;"><b><%=stringText("TYPE OF MOVE")%></b></span><br>
-                                <span style="font-size:10px;"><%=stringText(BookingConfirmation.return_depot )%></span>
+                                <span style="font-size:12px;"><%=stringText(BookingConfirmation.return_depot )%></span>
                             </div>
                         </div>
                      </div>
@@ -218,8 +219,8 @@ th, td {
                         <span><%=Dock_R.n_pnum !== "" ? "Tel: "+Dock_R.n_pnum : "" %></span>
                      </div>
                      <div style="border-top:1px solid #000;font-size:12px;">
-                          <b ><%=stringText("DEMURRAGE")%></b><br> 
-                        <span><%=stringText(Dock_R.demurrage)%></span><br>
+                          <b>POINT AND COUNTRY OF ORIGIN</b><br> 
+                        <span><%=Dock_R.point_and_contry_of_origin%></span><br>
                      </div>
                 </div>
             </div>
@@ -284,8 +285,9 @@ th, td {
                                        </div>
                                      </div>
                                      
-                                     
+                                   <span><%=Dock_R.demurrage%></span><br>
                                    <div style="font-size:16px;margin-left:350px;">
+                                       
                                        <span ><b> <%=stringText("Total Weight")%></b></span>
                                    </div>
                                    <div style="float:left;font-size:10px;">
@@ -310,7 +312,7 @@ th, td {
                                      <br>
                                     <span><%=Cargos.personal_effect_weight !== undefined ? Cargos.personal_effect_weight+"kg" : "" %></span>
                                    </div>
-                                    <div style="font-size:16px;">
+                                    <div style="font-size:16px;"><br>
                                        <span ><b> <%= parseFloat(Cargos.total_weight).toFixed(2)%>kg</b></span>
                                    </div>
                                    
@@ -373,7 +375,7 @@ th, td {
 </div>
 </div>
 
- 
+
 <div class="container" id="d"><br><br>
 <input type="button" id="create_pdf" value="Generate Document" class="btn btn-info" style="float:left;margin-right:10px;">  
 
@@ -392,7 +394,6 @@ th, td {
 
 </div>
 
-  
 
 <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
         <!-- jQuery library -->
@@ -415,7 +416,7 @@ $('#create_pdf').on('click', function () {
 //             html2canvas:  { dpi: 202, letterRendering: true },
 //             jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
 //           });
-            window.print();
+           window.print();
            $("#send_emailForm").css("display", "block");
 });     
 // (function () {  
