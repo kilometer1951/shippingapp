@@ -62,7 +62,7 @@ th, td {
                     <!--Shipper -->
                      <div>
                          <b style="font-size:11px;"><%=stringText("SHIPPER EXPORTER")%></b><br>
-                         <% if(Dock_R.cleint_is_agent === undefined ) { %>
+                         <% if(Dock_R.cleint_is_agent !== null ) { %>
                            <span style="font-size:14px;"><%=stringText(Dock_R.cleint_is_agent === "Yes" ? ClientData.full_name +"\nAS AGENT FOR OLDSAILORS OCEAN SHIPPING \n" : "OLDSAILORS OCEAN SHIPPING AS AGENT FOR \n"+ClientData.full_name)%></span><br>
                          <% } else { %>
                            <span style="font-size:15px;"><%=stringText(ClientData.full_name)%>,</span><br>
