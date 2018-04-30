@@ -289,15 +289,15 @@ th, td {
                               <div style="padding:7px;">
                                    <span style="font-size:14px;"><%=stringText(BookingConfirmation.equipment_size)%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AES#:&nbsp;<%=Dock_R.aes_num%></span><br>
                                     
-                                     <div  style="height:540px;font-size:17px;margin-top:5px;">
+                                     <div  style="height:540px;font-size:20px;margin-top:5px;">
                                          <% Cargos.Cars.forEach(function(carsdata){ %>
                                            <span>
                                               <span><%=stringText(carsdata.cardetails)%></span><br>
-                                              <span>VIN:<%=carsdata.vin%></span><br><br>
+                                              <span>VIN:<%=carsdata.vin.toUpperCase()%></span><br><br>
                                            </span>
                                         <% }) %>
-                                        <div style="width:400px;">
-                                         <span style="font-size:14px;"><b><%=Cargos.personal_effect%></b></span>
+                                       <div style="width:400px;">
+                                         <span style="font-size:14px;"><b><%=Cargos.personal_effect.toUpperCase()%></b></span>
                                        </div>
                                      </div>
                                      
@@ -319,15 +319,15 @@ th, td {
                            <div class="row">
                                <div style="padding:7px;">
                                     
-                                   <div style="margin-top:5px;height:564px;">
+                                   <div style="margin-top:5px;height:564px;font-size:20px;">
                                         <% Cargos.Cars.forEach(function(carsdata){ %>
                                            <span style="text-align:left;">
                                              <br><span><%=carsdata.weight !== undefined ? carsdata.weight+"kg" : "" %></span>
                                            </span><br><br>
                                      <% }) %>
-                                     <br>
-                                    <span><%=Cargos.personal_effect_weight !== undefined ? Cargos.personal_effect_weight+"kg" : "" %></span>
-                                   </div>
+                                   <div style="margin-top:16px;">
+                                        <span><%=Cargos.personal_effect_weight !== undefined ? Cargos.personal_effect_weight+"kg" : "" %></span>
+                                   </div>                                   </div>
                                     <div style="font-size:16px;"><br>
                                        <span ><b> <%= parseFloat(Cargos.total_weight).toFixed(2)%>kg</b></span>
                                    </div>
