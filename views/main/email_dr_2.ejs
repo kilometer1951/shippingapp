@@ -61,7 +61,7 @@ th, td {
                 <div class="col-md-6" style="border-right:1px solid #000;">
                     <!--Shipper -->
                      <div>
-                        <b style="font-size:11px;"><%=stringText("SHIPPER EXPORTER")%></b><br>
+                        <b style="font-size:16px;"><%=stringText("SHIPPER EXPORTER")%></b><br>
                         <span style="font-size:15px;"><%=stringText("OLDSAILORS OCEAN SHIPPING LLC")%>,</span><br>
                         <span style="font-size:15px;"><%=stringText("13903 CHADSWORTH TERRACE")%></span><br>
                         <span style="font-size:15px;">LAUREL, MD, 20707,</span>
@@ -70,11 +70,11 @@ th, td {
                      </div>
                      <!-- CONSIGNEE  -->
                      <div  style="border-top:1px solid #000;">
-                        <b style="font-size:11px;"><%=stringText("CONSIGNEE")%></b><br>
-                        <span style="font-size:15px;"><%=stringText(Consignee.full_name)%></span><br>
-                        <span style="font-size:15px;"><%=stringText(Consignee.address)%>,</span><br>
-                        <span style="font-size:15px;"><%=stringText(Consignee.city)%>,&nbsp;<%=stringText(Consignee.state)%>,</span><br>
-                        <span style="font-size:15px;"><%=stringText(Consignee.Country.countryname)%>,&nbsp;Tel: <%=stringText(Consignee.pnum)%></span>
+                        <b style="font-size:16px;"><%=stringText("CONSIGNEE")%></b><br>
+                        <span style="font-size:18px;"><%=stringText(Consignee.full_name)%></span><br>
+                        <span style="font-size:18px;"><%=stringText(Consignee.address)%>,</span><br>
+                        <span style="font-size:18px;"><%=stringText(Consignee.city)%>,&nbsp;<%=stringText(Consignee.state)%>,</span><br>
+                        <span style="font-size:18px;"><%=stringText(Consignee.Country.countryname)%>,&nbsp;Tel: <%=stringText(Consignee.pnum)%></span>
 
                      </div>
                      <div  style="border-top:1px solid #000;">
@@ -83,19 +83,19 @@ th, td {
                                 <div style="border-right:1px solid #000;">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <span style="font-size:10px;"><b>VESSEL</b></span><br>
-                                            <span style="font-size:14px;"><%=stringText(BookingConfirmation.vessel_name !== "" ? BookingConfirmation.vessel_name : "" )%></span>
+                                            <span style="font-size:13px;"><b>VESSEL</b></span><br>
+                                            <span style="font-size:17px;"><%=stringText(BookingConfirmation.vessel_name !== "" ? BookingConfirmation.vessel_name : "" )%></span>
                                         </div>
                                          <div class="col-md-6">
-                                            <span style="font-size:10px;"><b>VOYAGE</b></span><br>
-                                            <span style="font-size:14px;"><%=stringText(BookingConfirmation.voyage_number !== "" ? BookingConfirmation.voyage_number : "" )%></span>
+                                            <span style="font-size:13px;"><b>VOYAGE</b></span><br>
+                                            <span style="font-size:17px;"><%=stringText(BookingConfirmation.voyage_number !== "" ? BookingConfirmation.voyage_number : "" )%></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <span style="font-size:10px;"><b><%=stringText("PORT OF LOADING")%></b></span><br>
-                                <span style="font-size:14px;"><%=stringText(BookingConfirmation.port_of_loading !== "" ? BookingConfirmation.port_of_loading : "" )%></span>
+                                <span style="font-size:13px;"><b><%=stringText("PORT OF LOADING")%></b></span><br>
+                                <span style="font-size:17px;"><%=stringText(BookingConfirmation.port_of_loading !== "" ? BookingConfirmation.port_of_loading : "" )%></span>
                             </div>
                         </div>
                      </div>
@@ -104,12 +104,12 @@ th, td {
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-7" style="border-right:1px solid #000;">
-                                            <span style="font-size:10px;"><b><%=stringText("PORT OF DISCHARGE")%></b></span><br>
-                                            <span style="font-size:14px;"><%=stringText(BookingConfirmation.port_of_discharge !== "" ? BookingConfirmation.port_of_discharge : "" )%></span>
+                                            <span style="font-size:13px;"><b><%=stringText("PORT OF DISCHARGE")%></b></span><br>
+                                            <span style="font-size:17px;"><%=stringText(BookingConfirmation.port_of_discharge !== "" ? BookingConfirmation.port_of_discharge : "" )%></span>
                                      </div>
                                       <div class="col-md-5">
-                                        <span style="font-size:10px;"><b><%=stringText("PRE-CARRIAGE BY")%></b></span><br>
-                                        <span style="font-size:14px;"><%=BookingConfirmation.carrier%></span>
+                                        <span style="font-size:13px;"><b><%=stringText("PRE-CARRIAGE BY")%></b></span><br>
+                                        <span style="font-size:17px;"><%=BookingConfirmation.carrier%></span>
                                     </div>
                                 </div>
                             </div>
@@ -121,12 +121,12 @@ th, td {
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-6" style="border-right:1px solid #000;">
-                                            <span style="font-size:10px;"><b><%=stringText("LOADING TERMINAL")%></b></span><br>
-                                            <span style="font-size:14px;"><%=stringText(BookingConfirmation.loading_terminal !== "" ? BookingConfirmation.loading_terminal : "" )%></span>
+                                            <span style="font-size:13px;"><b><%=stringText("LOADING TERMINAL")%></b></span><br>
+                                            <span style="font-size:17px;"><%=stringText(BookingConfirmation.loading_terminal !== "" ? BookingConfirmation.loading_terminal : "" )%></span>
                                      </div>
                                       <div class="col-md-6">
-                                        <span style="font-size:10px;"><b><%=stringText("ORIGINAL (S) TO BE RELEASED")%></b></span><br>
-                                        <span style="font-size:12px;"><%=stringText(Dock_R.originals_tobe_released)%></span>
+                                        <span style="font-size:13px;"><b><%=stringText("ORIGINAL (S) TO BE RELEASED")%></b></span><br>
+                                        <span style="font-size:17px;"><%=stringText(Dock_R.originals_tobe_released)%></span>
                                     </div>
                                 </div>
                             </div>
@@ -141,12 +141,12 @@ th, td {
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-6" style="border-right:1px solid #000;">
-                                            <span style="font-size:11px;"><b><%=stringText("BOOKING #")%></b></span><br>
-                                            <span style="font-size:12px;"><%=stringText(BookingConfirmation.booking_number !== "" ? BookingConfirmation.booking_number : "" )%></span>
+                                            <span style="font-size:13px;"><b><%=stringText("BOOKING #")%></b></span><br>
+                                            <span style="font-size:17px;"><%=stringText(BookingConfirmation.booking_number !== "" ? BookingConfirmation.booking_number : "" )%></span>
                                      </div>
                                       <div class="col-md-6">
-                                        <span style="font-size:10px;"><b><%=stringText("FILE NUMBER")%></b></span><br>
-                                        <span style="font-size:12px;"><%=string_ID(Dock_R._id)%></span>
+                                        <span style="font-size:13px;"><b><%=stringText("FILE NUMBER")%></b></span><br>
+                                        <span style="font-size:17px;"><%=string_ID(Dock_R._id)%></span>
                                     </div>
                                 </div>
                             </div>
@@ -160,8 +160,8 @@ th, td {
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-12">
-                                            <span style="font-size:11px;"><b><%=stringText("EXPORTER REFERENCES")%></b></span><br>
-                                            <span style="font-size:13px;"><%=string_ID(Dock_R._id)%></span>
+                                            <span style="font-size:13px;"><b><%=stringText("EXPORTER REFERENCES")%></b></span><br>
+                                            <span style="font-size:17px;"><%=string_ID(Dock_R._id)%></span>
                                      </div>
                                 </div>
                             </div>
@@ -176,12 +176,12 @@ th, td {
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-8" style="border-right:1px solid #000;">
-                                            <span style="font-size:11px;"><b><%=stringText("FORWARDING AGENT REFERENCES")%></b></span><br>
-                                            <span style="font-size:12px;"><%=stringText(Dock_R.fowarding_agent_ref)%></span>
+                                            <span style="font-size:13px;"><b><%=stringText("FORWARDING AGENT REFERENCES")%></b></span><br>
+                                            <span style="font-size:17px;"><%=stringText(Dock_R.fowarding_agent_ref)%></span>
                                      </div>
                                       <div class="col-md-4">
-                                        <span style="font-size:10px;"><b><%=stringText("PICK UP TERMINAL")%></b></span><br>
-                                        <span style="font-size:12px;"><%=stringText(BookingConfirmation.pickup_terminal)%></span>
+                                        <span style="font-size:13px;"><b><%=stringText("PICK UP TERMINAL")%></b></span><br>
+                                        <span style="font-size:17px;"><%=stringText(BookingConfirmation.pickup_terminal)%></span>
                                     </div>
                                 </div>
                             </div>
@@ -195,30 +195,30 @@ th, td {
                                 <div style="border-right:1px solid #000;">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <span style="font-size:10px;"><b>FOR TRANSHIPMENT TO</b></span><br>
-                                            <span style="font-size:12px;"><%=Dock_R.for_transhipment_to%></span>
+                                            <span style="font-size:13px;"><b>FOR TRANSHIPMENT TO</b></span><br>
+                                            <span style="font-size:17px;"><%=Dock_R.for_transhipment_to%></span>
                                         </div>
                                          <div class="col-md-6" style="border-left:1px solid #000;">
-                                            <span style="font-size:10px;"><b><%=stringText("PLACE OF RECEIPT")%></b></span><br>
-                                            <span style="font-size:11px;"><%=stringText(BookingConfirmation.place_of_recript )%></span>
+                                            <span style="font-size:13px;"><b><%=stringText("PLACE OF RECEIPT")%></b></span><br>
+                                            <span style="font-size:17px;"><%=stringText(BookingConfirmation.place_of_recript )%></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4" style="padding:0">
-                                <span style="font-size:10px;"><b><%=stringText("TYPE OF MOVE")%></b></span><br>
-                                <span style="font-size:12px;"><%=stringText(BookingConfirmation.return_depot )%></span>
+                                <span style="font-size:13px;"><b><%=stringText("TYPE OF MOVE")%></b></span><br>
+                                <span style="font-size:17px;"><%=stringText(BookingConfirmation.return_depot )%></span>
                             </div>
                         </div>
                      </div>
-                     <div style="font-size:12px;">
+                     <div style="font-size:14px;">
                           <b ><%=stringText("NOTIFY PARTY / INTERMEDIATE CONSIGNEE ")%></b><br> 
                         <span><%=Dock_R.n_name%></span><br>
                         <span><%=stringText(Dock_R.n_address)%><br>
                         <%=Dock_R.n_country%></span><br>
                         <span><%=Dock_R.n_pnum !== "" ? "Tel: "+Dock_R.n_pnum : "" %></span>
                      </div>
-                     <div style="border-top:1px solid #000;font-size:12px;">
+                     <div style="border-top:1px solid #000;font-size:13px;">
                           <b>POINT AND COUNTRY OF ORIGIN</b><br> 
                         <span><%=Dock_R.point_and_contry_of_origin%></span><br>
                      </div>
@@ -231,32 +231,32 @@ th, td {
                      <div class="row">
                        <div class="col-md-2" style="border:1px solid #000;">
                            
-                       <span style="font-size:10px;font-weight:bold;">MARKS&nbsp;AND&nbsp;NUMBERS</span>
+                       <span style="font-size:13px;font-weight:bold;">MARKS&nbsp;AND&nbsp;NUMBERS</span>
 
                      </div>
                      <div class="col-md-6" style="border:1px solid #000;">
                            
-                               <span style="font-size:10px;font-weight:bold;padding:7px;">DESCRIPTION&nbsp;OF&nbsp;PACKAGES&nbsp;AND&nbsp;GOODS&nbsp;IN&nbsp;SCHEDULE</span>
+                               <span style="font-size:13px;font-weight:bold;padding:7px;">DESCRIPTION&nbsp;OF&nbsp;PACKAGES&nbsp;AND&nbsp;GOODS&nbsp;IN&nbsp;SCHEDULE</span>
 
                      </div>
                      <div class="col-md-2" style="border:1px solid #000;">
                            
-                               <span style="font-size:10px;font-weight:bold;padding:7px;">WEIGHT</span>
+                               <span style="font-size:13px;font-weight:bold;padding:7px;">WEIGHT</span>
 
                      </div>
                      <div class="col-md-2" style="border:1px solid #000;">
                            
-                               <span style="font-size:10px;font-weight:bold;">MEASUREMENT</span>
+                               <span style="font-size:13px;font-weight:bold;">MEASUREMENT</span>
 
                      </div>
                      </div>
                  </div>
-                  <div class="row" style="font-size:13px;">
+                  <div class="row" style="font-size:18px;">
                        <div class="col-md-2" style="border:1px solid #000;">
                            <div class="row">
                                <div style="padding:7px;">
                                 <b> CONTAINER&nbsp;#</b><br>
-                               <span style="font-size:14px;"><%=Dock_R.container_num%></span><br><br>
+                               <span style="font-size:18px;"><%=Dock_R.container_num%></span><br><br>
                                 <b>SEAL&nbsp;#:</b>
                                <%=Dock_R.seal_num%><br><br>
                                <b>CUT&nbsp;OFF&nbsp;DATE</b><br>
@@ -285,12 +285,12 @@ th, td {
                                        </div>
                                      </div>
                                      
-                                   <span><%=Dock_R.demurrage%></span><br>
+                                   <span style="font-size:19px;"><%=Dock_R.demurrage%></span><br>
                                    <div style="font-size:16px;margin-left:350px;">
                                        
                                        <span ><b> <%=stringText("Total Weight")%></b></span>
                                    </div>
-                                   <div style="float:left;font-size:10px;">
+                                   <div style="float:left;font-size:13px;">
                                        <span><b><%=stringText("SHIPPER ON THIS DOCK RECEIPT CONFIRMS THAT, GAS TANK")%></b></span><br>
                                        <span><b><%=stringText(" HAS BEEN DRAINED OFF FUEL, BATTERIES DISCONNECTED,")%></b></span><br>
                                        <span><b><%=stringText("VEHICLES HAVE BEEN BLOCKED AND BRACED, CONTAINER LOADED ")%></b></span>
@@ -303,15 +303,16 @@ th, td {
                            <div class="row">
                                <div style="padding:7px;">
                                     
-                                   <div style="margin-top:5px;height:564px;font-size:20px;">
+                                   <div style="margin-top:5px;height:564px; font-size:20px;">
                                         <% Cargos.Cars.forEach(function(carsdata){ %>
                                            <span style="text-align:left;">
                                              <br><span><%=carsdata.weight !== undefined ? carsdata.weight+"kg" : "" %></span>
                                            </span><br><br>
                                      <% }) %>
-                                    <div style="margin-top:16px;">
+                                    
+                                   <div style="margin-top:16px;">
                                         <span><%=Cargos.personal_effect_weight !== undefined ? Cargos.personal_effect_weight+"kg" : "" %></span>
-                                   </div>                                  
+                                   </div>
                                    </div>
                                     <div style="font-size:16px;"><br>
                                        <span ><b> <%= parseFloat(Cargos.total_weight).toFixed(2)%>kg</b></span>
@@ -338,7 +339,7 @@ th, td {
                   </div>
                   
   <div class="row" >
-     <div class="col-md-5" style="font-size:12px;">
+     <div class="col-md-5" style="font-size:15px;">
           <span>
              <%=stringText("LIGHTER TRUCK")%> _________________
           </span><br><br>
@@ -352,7 +353,7 @@ th, td {
              <%=stringText("CHECKED BY:")%>&nbsp;___________
           </span>
      </div>
-     <div class="col-md-7" style="font-size:10px;border-left:1px solid #000;">
+     <div class="col-md-7" style="font-size:13px;border-left:1px solid #000;">
           <span ><b>
              <%=stringText(" RECEIVED THE ABOVE DESCRIBED GOODS OR PACKAGES SUBJECTED TO ALL ")%>
              <%=stringText(" THE TERMS OF THE UNDERSIGNED'S  REGULAR FORMS OF DOCK RECEIPT ")%>
@@ -394,7 +395,7 @@ th, td {
 <br>
 
 </div>
-
+ 
 
 <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
         <!-- jQuery library -->
