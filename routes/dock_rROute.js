@@ -627,7 +627,97 @@ router.get("/bill_of_lading__/:id/email/:client_id/cargo/:cargo_id/consignee/:co
 
 });
 
+//edit form data
+router.post("/invoice/new/:id", function(req, res) {
+    //check if cargo exist 
 
 
+    var ocean_freight = req.body.ocean_freight;
+    var truck = req.body.truck;
+    var ectn_becs = req.body.ectn_becs;
+    var extra_charges = req.body.extra_charges;
+    var invoice_total = req.body.invoice_total;
+    var balance_due = req.body.balance_due;
+    var more_invoice_fields = req.body.more_invoice_fields;
+
+
+
+    var editData = {
+        ocean_freight: ocean_freight,
+        truck: truck,
+        ectn_becs: ectn_becs,
+        extra_charges: extra_charges,
+        invoice_total: invoice_total,
+        balance_due: balance_due,
+        more_invoice_fields: more_invoice_fields,
+        invoice_exist: true,
+        invoice_date: moment.parseZone(new Date()).format('l')
+
+
+    };
+
+    Dock_R.findByIdAndUpdate(req.params.id, editData, function(err, upatedData) {
+        //   console.log(upatedData);
+        res.redirect("/invoice");
+    });
+
+});
+
+
+router.get("/invoice/:id/editRoute", function(req, res) {
+
+    if (req.user) {
+
+        Dock_R
+            .findOne({ _id: req.params.id })
+            .populate("Client")
+            .exec(function(err, foundData) {
+                //  console.log(foundData);
+                return res.render("main/edit_invoice", { title: 'Oldsailor Ocean Shipping LLC || Edit Invoice', foundData: foundData, layout: false });
+            });
+
+
+    }
+    else {
+        return res.redirect('/login');
+    }
+
+
+});
+
+
+
+router.post("/invoice/:id/edit", function(req, res) {
+    //check if cargo exist 
+
+
+    var ocean_freight = req.body.ocean_freight;
+    var truck = req.body.truck;
+    var ectn_becs = req.body.ectn_becs;
+    var extra_charges = req.body.extra_charges;
+    var invoice_total = req.body.invoice_total;
+    var balance_due = req.body.balance_due;
+    var more_invoice_fields = req.body.more_invoice_fields;
+
+
+
+    var editData = {
+        ocean_freight: ocean_freight,
+        truck: truck,
+        ectn_becs: ectn_becs,
+        extra_charges: extra_charges,
+        invoice_total: invoice_total,
+        balance_due: balance_due,
+        more_invoice_fields: more_invoice_fields,
+
+
+    };
+
+    Dock_R.findByIdAndUpdate(req.params.id, editData, function(err, upatedData) {
+        //   console.log(upatedData);
+        res.redirect("/invoice");
+    });
+
+});
 
 module.exports = router

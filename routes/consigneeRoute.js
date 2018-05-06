@@ -11,9 +11,11 @@ const async = require('async');
 router.get('/consignee', function(req, res) {
     if (req.user) {
         //get clients
-        Consignees.find({}, function(err, foundData) {
-            return res.render("main/consignee", { title: 'Oldsailor Ocean Shipping LLC || Consignee', data: foundData });
-        });
+        Consignees.find({})
+            .sort('-createdAt')
+            .exec(function(err, foundData) {
+                return res.render("main/consignee", { title: 'Oldsailor Ocean Shipping LLC || Consignee', data: foundData });
+            });
     }
     else {
         return res.redirect('/login');

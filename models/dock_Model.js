@@ -40,7 +40,7 @@ var dock_rSchema = new mongoose.Schema({
   bill_of_lading_status: String,
   bill_of_lading_date: Date,
   invoice_date: Date,
-  invoice_exist: Boolean,
+  invoice_exist: { type: Boolean, default: false },
   ocean_freight: String,
   truck: String,
   ectn_becs: String,

@@ -424,13 +424,10 @@ $(document).ready(function() {
     });
 
 
-    //INVOICE
 
-    $(document).on('click', '.new_invoiceBTN', function() {
-        var id = $(this).attr("id");
 
-        $(".dock_r_id").val(id)
-    });
+
+
 
 
 });

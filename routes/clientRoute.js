@@ -13,9 +13,11 @@ router.get('/clients', function(req, res) {
         // t.req.cookies['connect.sid'].split('.')[1]
         //   console.log(t['connect.sid'])
         //get clients
-        Clients.find({}, function(err, foundData) {
-            return res.render("main/clients", { title: 'Oldsailor Ocean Shipping LLC || Clients', data: foundData });
-        });
+        Clients.find({})
+            .sort('-createdAt')
+            .exec(function(err, foundData) {
+                return res.render("main/clients", { title: 'Oldsailor Ocean Shipping LLC || Clients', data: foundData });
+            });
     }
     else {
         return res.redirect('/login');

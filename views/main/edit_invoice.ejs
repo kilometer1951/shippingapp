@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Edit Dock Receipt</title>
+    <title>Edit Invoice</title>
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
      <!--<link rel="stylesheet" href="/css/newcargo.css">-->
     
@@ -36,110 +36,61 @@
 <body>
    <div class="container-fluid"><br>
       <div class="cargoSection">
-          <h3 class="text-center" style="padding:20px;color:#3F729B;">Editing Dock Receipt For <%=foundData.Client[0].full_name%> </h3>
-          <button class="btn btn-warning next_1"  id="<%=foundData.Cargo[0]%>" data-toggle="modal" data-target="#FormModal"><i class="fas fa-pencil-alt"></i> Edit Cargo Weight</button>
+          <h3 class="text-center" style="padding:20px;color:#3F729B;">Editing Invoice For <%=foundData.Client[0].full_name%> </h3>
           <br><br>
-          <form action="/d_r/<%=foundData._id%>/edit" method="POST">
+          <form action="/invoice/<%=foundData._id%>/edit" method="POST">
               <div class="section4" style="display:block;">
                 <div style="border:1px solid #eeeeee  ;padding:10px;">
-                    <h5 style="text-align:center;">Notify Party</h5>
                     <div class="row">
-                        <div class="col-md-12">
-                         
-                          <div class="form-group">
-                               <label>Name</label>
-                               <input class="form-control" name="n_name" value="<%=foundData.n_name%>">
-                          </div>
-                       </div>
                        <div class="col-md-4">
                           <div class="form-group">
-                               <label>Address</label>
-                               <input class="form-control" name="n_address" value="<%=foundData.n_address%>">
+                              <label>Ocean Freight</label>
+                              <input type="text" class="form-control" id="ocean_freight" name="ocean_freight" value="<%=foundData.ocean_freight%>">
                           </div>
-                       </div>
-                       <div class="col-md-4">
-                          <div class="form-group">
-                               <label>Country</label>
-                               <input class="form-control" name="n_country" value="<%=foundData.n_country%>">
-                          </div>
-                       </div>
-                       <div class="col-md-4">
-                          <div class="form-group">
-                               <label>Phone Number</label>
-                               <input class="form-control" name="n_pnum" value="<%=foundData.n_pnum%>">
-                          </div>
-                       </div>
-                    </div>
-                </div>
-                <br>
-                <div style="border:1px solid #eeeeee;padding:10px;">
-                    <h5 style="text-align:center;">Marsk</h5>
-                    <div class="row">
-                        <div class="col-md-4">
-                          <div class="form-group">
-                               <label>Seal Number</label>
-                               <input class="form-control" name="seal_num" value="<%=foundData.seal_num%>">
-                          </div>
-                       </div>
-                       <div class="col-md-4">
-                          <div class="form-group">
-                               <label>Demurrage</label>
-                               <input class="form-control" name="demurrage" value="<%=foundData.demurrage%>">
-                          </div>
-                       </div>
-                       <div class="col-md-4">
-                          <div class="form-group">
-                               <label>Container Number</label>
-                               <input class="form-control" name="container_num" value="<%=foundData.container_num%>">
-                          </div>
-                       </div>
-                       <div class="col-md-4">
-                          <div class="form-group">
-                               <label>AES Number</label>
-                               <input class="form-control" name="aes_num" value="<%=foundData.aes_num%>">
-                          </div>
-                       </div>
-                       <div class="col-md-4">
-                          <div class="form-group">
-                               <label>Originals to be released</label>
-                               <input class="form-control" name="originals_tobe_released" value="<%=foundData.originals_tobe_released%>">
-                          </div>
-                       </div>
-                       <div class="col-md-4" style="font-size:20px;">
-                         <div class="form-group">
-                             <label>Client as Agent</label><br>
-                             <label class="radio-inline " style="margin-right:30px;">
-                               <input type="radio" name="cleint_is_agent" id="yes" Value="Yes" <%= foundData.cleint_is_agent === "Yes" ? "checked" : "" %>> Yes
-                             </label>
-                             <label class="radio-inline">
-                                <input type="radio" name="cleint_is_agent" id="no" value="No" <%= foundData.cleint_is_agent === "No" ? "checked" : "" %>> No
-                             </label>
                          </div>
+                         <div class="col-md-4">
+                              <div class="form-group">
+                                  <label>Truck</label>
+                                  <input type="text" class="form-control" id="truck" name="truck" value="<%=foundData.truck%>">
+                              </div>
+                         </div>
+                         <div class="col-md-4">
+                              <div class="form-group">
+                                  <label>ECTN/BESC</label>
+                                  <input type="text" class="form-control" id="ectn_becs" name="ectn_becs" value="<%=foundData.ectn_becs%>">
+                              </div>
+                         </div>
+                         <div class="col-md-4">
+                              <div class="form-group">
+                                  <label>Other Charges</label>
+                                  <input type="text" class="form-control" id="extra_charges" name="extra_charges" value="<%=foundData.extra_charges%>">
+                              </div>
+                         </div>
+                         <div class="col-md-4">
+                              <div class="form-group">
+                                  <label>Invoice Total</label>
+                                  <input type="text" class="form-control" id="invoice_total" name="invoice_total" value="<%=foundData.invoice_total%>">
+                              </div>
+                         </div>
+                         <div class="col-md-4">
+                              <div class="form-group">
+                                  <label>Balance Due</label>
+                                  <input type="text" class="form-control" id="balance_due" name="balance_due" value="<%=foundData.balance_due%>">
+                              </div>
+                         </div>
+                         <div class="col-md-12">
+                              <div class="form-group">
+                                  <label>More Charges</label>
+                                  <textarea type="text" class="form-control" id="more_invoice_fields" name="more_invoice_fields" style="resize:none;" rows="7"><%=foundData.more_invoice_fields%></textarea>
+                          </div>
                      </div>
-                     <div class="col-md-4">
-                          <div class="form-group">
-                               <label>Fowarding Agent References</label>
-                               <textarea class="form-control" id="fowarding_agent_ref" style="resize:none;" name="fowarding_agent_ref"><%=foundData.fowarding_agent_ref%></textarea>
-                          </div>
-                       </div>
-                       <div class="col-md-4">
-                          <div class="form-group">
-                               <label>For Transhipment to</label>
-                               <input class="form-control" id="for_transhipment_to" name="for_transhipment_to" value="<%=foundData.for_transhipment_to%>">
-                          </div>
-                       </div>
-                       <div class="col-md-4">
-                          <div class="form-group">
-                               <label>Point and country of origin</label>
-                               <input class="form-control" id="point_and_contry_of_origin"  name="point_and_contry_of_origin" value="<%=foundData.point_and_contry_of_origin%>">
-                          </div>
-                       </div>
                     </div>
                 </div>
+              
          </div>
              
             <button type="submit" class="btn btn-primary">Update and Return</button>
-            <a class="btn btn-danger" href="/dock_r" style="float:right;">Return back</a>
+            <a class="btn btn-danger" href="/invoice" style="float:right;">Return back</a>
           </form>
       </div>
     </div>
