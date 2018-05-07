@@ -116,7 +116,7 @@
                         <button class="btn btn-primary btn-sm new_invoiceBTN"  id="<%=content._id%>" data-target="#new_invoice" data-toggle="modal" ><i class="far fa-file"></i> New Invoice</button>
                       <% } %>
                        <% if( content.invoice_exist ){ %>
-                            <a class="btn btn-warning btn-sm " href="/bill_of_lading__/<%=content._id%>/email/<%=content.Client[0]._id%>/cargo/<%=content.Cargo%>/consignee/<%=content.Consignee%>/booking_c/<%=content.BookingConfirmation%>"><i class="fas fa-envelope-open"></i> Email Invoice</a>
+                            <a class="btn btn-warning btn-sm " href="/invoice/<%=content._id%>/email/<%=content.Client[0]._id%>/cargo/<%=content.Cargo%>/consignee/<%=content.Consignee%>/booking_c/<%=content.BookingConfirmation%>"><i class="fas fa-envelope-open"></i> Email Invoice</a>
                             <a class="btn btn-info btn-sm" href="/invoice/<%=content._id%>/editRoute"><i class="far fa-edit"></i> Edit</a>
                          <% } %>
                     </td>

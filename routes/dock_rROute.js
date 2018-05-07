@@ -720,4 +720,73 @@ router.post("/invoice/:id/edit", function(req, res) {
 
 });
 
+
+//email invoice
+
+
+//email bill of lading
+router.get("/invoice/:id/email/:client_id/cargo/:cargo_id/consignee/:consignee_id/booking_c/:bc_id", function(req, res) {
+
+    async.parallel([
+        function(callback) {
+            Dock_R
+                .findOne({ _id: req.params.id })
+                .exec(function(err, foundAllData) {
+                    callback(err, foundAllData)
+                });
+        },
+
+        function(callback) {
+            Clients
+                .findOne({ _id: req.params.client_id })
+                .populate("City")
+                .populate("State")
+                .exec(function(err, foundAllData) {
+                    callback(err, foundAllData)
+                });
+        },
+        function(callback) {
+            BookingConfirmation
+                .findOne({ _id: req.params.bc_id })
+                .sort('-createdAt')
+                .exec(function(err, foundAllData) {
+                    callback(err, foundAllData);
+                });
+        },
+        function(callback) {
+            Cargos
+                .findOne({ _id: req.params.cargo_id })
+                .sort('-createdAt')
+                .exec(function(err, foundAllData) {
+                    callback(err, foundAllData);
+                });
+        },
+        function(callback) {
+            Consignee
+                .findOne({ _id: req.params.consignee_id })
+                .populate("Country")
+                .exec(function(err, foundAllData) {
+                    callback(err, foundAllData)
+                });
+        }
+
+
+    ], (err, results) => {
+        var Dock_R = results[0];
+        var ClientData = results[1];
+        var BookingConfirmation = results[2];
+        var Cargos = results[3];
+        var Consignee = results[4];
+        //    console.log(BookingConfirmation)
+        res.render("main/email_invoice", { layout: false, Dock_R: Dock_R, ClientData: ClientData, BookingConfirmation: BookingConfirmation, Cargos: Cargos, Consignee: Consignee });
+
+
+
+    });
+
+
+
+});
+
+
 module.exports = router

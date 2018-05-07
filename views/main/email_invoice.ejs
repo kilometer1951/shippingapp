@@ -1,0 +1,192 @@
+<html>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <head>
+      
+          <style media="print">
+ body{
+     font-size:20px;
+ }
+        #d {
+          display:none;
+        }
+</style>
+    </head>
+    <body>
+        <div class="container" id="d"><br><br>
+<input type="button" id="create_pdf" value="Generate Document" class="btn btn-info" style="float:left;margin-right:10px;">  
+
+
+<form  id="send_emailForm" style="display:none;">
+    <input value='<%=ClientData.full_name%>' type="hidden" id="filename">
+
+  <a href="mailto:<%=ClientData.email%>" class="btn btn-success"><i class="fas fa-envelope-open"></i> Send Email</a>
+</form>
+
+  <a href="/dock_r" class="btn btn-warning"> Cancel</a>
+
+<br>
+<br>
+<br>
+
+</div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6" >
+                    <div class="h_2">
+                       <span>OLDSAILORS OCEAN SHIPPING LLC </span><br>
+                       <span>13903 CHADSWORTH TERRACE,Laurel, MD 20707, USA</span><br>
+                       <span><b>Tel:</b> 301-213-6961</span><br>
+                       <span><b>Fax:</b> 301-281-4034</span><br>
+                       <span><b>FMC-OTI NO:</b> 026435N</span><br>
+                    </div>
+                </div>
+                <div class="col-md-6" >
+                    <span style="font-size:39px;float:right;">INVOICE</span><br><br><br>
+                    <span style="float:right;"><%=moment(new Date()).format("l")%></span>
+                </div>
+                <div class="col-md-12" style="border:1px solid #000;"></div>
+                <div class="col-md-6" style="border-right:1px solid #000;">
+                    <div>
+                         <b>CLIENT</b><br>
+                        <span><%=stringText(ClientData.full_name)%>,</span><br>
+                        <span><%=stringText(ClientData.address)%>,</span><br>
+                        <span><%=stringText(ClientData.City.cityname)%>,&nbsp;&nbsp;</span>
+                        <span><%=stringText(ClientData.State.statename)%>,</span><br>
+                        <span><%=stringText(ClientData.zipcode)%>, USA,</span>&nbsp;
+                        <span>Tel:<%=ClientData.pnum%></span>
+                     </div>
+                     <div  style="border-top:1px solid #000;">
+                         <span><b>BILL OF LADING:</b> <%=BookingConfirmation.booking_number%></span><br>
+                         <span><b>BOOKING NUMBER:</b> <%=BookingConfirmation.booking_number%></span><br>
+                         <span><b>CONTAINER #:</b> <%=Dock_R.container_num%></span>
+                         
+                     </div>
+                     <div  style="border-top:1px solid #000;">
+                       <div class="row">
+                           <div class="col-md-6" style="border-right:1px solid #000;">
+                               <span><b>PORT OF DISCHARGE</b></span><br>
+                               <span><%=BookingConfirmation.port_of_discharge%></span>
+                           </div>
+                           <div class="col-md-6">
+                               <span><b>PORT OF LOADING</b></span><br>
+                               <span><%=BookingConfirmation.port_of_loading%></span>
+                           </div>
+                       </div>
+                         
+                     </div>
+                      <div  style="border-top:1px solid #000;">
+                         <span><b>OCEAN FREIGHT:</b> <%=Dock_R.ocean_freight%></span><br>
+                         <span><b>TRUCKING:</b> <%=Dock_R.truck%></span><br>
+                         <span><b>ECTN/BESC:</b> <%=Dock_R.ectn_becs%></span><br>
+                         <span><b>OTHER CHARGES:</b> <%=Dock_R.extra_charges%></span><br>
+                         <span><%=Dock_R.more_invoice_fields%></span><br>
+                         <span><b>INVOICE TOTAL:</b> <%=Dock_R.invoice_total%></span><br>
+                         <span><b>BALANCE DUE:</b> <%=Dock_R.balance_due%></span>
+                     </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                       <div class="row">
+                           <div class="col-md-6" style="border-right:1px solid #000;">
+                               <span><b>FILE NUMBER</b></span><br>
+                               <span><%=string_ID(Dock_R._id)%></span>
+                           </div>
+                           <div class="col-md-6">
+                               <span><b>INVOICE NUMBER</b></span><br>
+                               <span><%=string_ID(Dock_R._id)%></span>
+                           </div>
+                       </div>
+                     </div>
+                     <div style="border-top:1px solid #000;">
+                          <b>POINT AND COUNTRY OF ORIGIN</b><br> 
+                        <span><%=Dock_R.point_and_contry_of_origin%></span><br>
+                     </div>
+                     <div style="border-top:1px solid #000;">
+                          <b>ACCOUNT INFO</b><br> 
+                        <div style="text-align:center;">
+                            <span>
+                            <b>
+                                WELLS FARGO BANK<br>
+                                Routing# 055003201<br>
+                                Account#: 8374959289<br>
+                                Thanks,and have a nice day,<br>
+                                Oldsailors Ocean shipping  LLC<br>
+                                7607 Colony Avenue Laurel, MD 20707
+                            </b>
+                        </span>
+                        </div>
+                     </div>
+                     <div style="border-top:1px solid #000;">
+                        <span><b>
+                            “UPON REQUEST, WE SHALL PROVIDE A DETAILED BREAKOUT OF THE COMPONENTS FOR 
+                            ALL CHARGES ASSESSED AND A TRUE COPY OF EACH PERTINENT DOCUMENT
+                            RELATING TO THE CHARGES"
+                        </b></span><br>
+                     </div>
+                </div>
+                <div class="col-md-12">
+                    <div  style="border:1px solid #000;text-align:center;">
+                         <span>NOTE</span>
+                     </div>
+                </div>
+                <div class="col-md-12">
+                    <div style="text-align:center;">
+                        <span>
+                        An Original Version Of This Image,wich Can Always Be Generated Upon Request, Sets Forth Terms And Conditions Of Service On The Reverse Side Of This Page.
+All Services Provided Are Subject To These Terms And Conditions.
+                    </span>
+                    </div><br>
+                    
+                </div>
+                 <div class="col-md-12" style="border:1px solid #000;margin-bottom:20px;"></div>
+                  <div class="col-md-12" style="border:1px solid #000;"></div>
+                  <div class="row">
+                      <div class="col-md-4" style="border-right:1px solid #000;">
+                          <span>
+                              MERCHANDISE RELEASED BY CUSTOMS IS DONE UNDER BOND AND SUBJECT TO
+                              REDELIVERY TO CUSTOMS
+                              ON DEMAND FAILURE TO RETURN MERCHANDISE MAKES THE IMPORTEE 
+                              SUBJECT TO PENALTY FOR FULL AMOUNT OF BOND
+                          </span>
+                      </div>
+                      <div class="col-md-4" style="border-right:1px solid #000;">
+                         <div style="text-align:center;">
+                              <span><b>TERMS</b></span>
+                         </div>
+                          <span>
+                              MERCHANDISE RELEASED BY CUSTOMS IS DONE UNDER BOND AND SUBJECT TO
+                              REDELIVERY TO CUSTOMS
+                              ON DEMAND FAILURE TO RETURN MERCHANDISE MAKES THE IMPORTEE 
+                              SUBJECT TO PENALTY FOR FULL AMOUNT OF BOND
+                          </span>
+                      </div>
+                      <div class="col-md-4">
+                          <span>
+                           FULL PAYMENT IS EXPECTED 5 DAYS AFTER VESSEL HAS
+                           SAILED.ONLY THEN DOCUMENTS WILL BE RELEASED. FORM OF PAYMENTS:CASH MONEY 
+                           ORDER & BANK CERTIFIED CHECKS,WIRE TRANSFERS
+                          </span>
+                      </div>
+                  </div>
+            </div>
+        </div>
+        
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   
+   <script>
+$('#create_pdf').on('click', function () {  
+  window.print();
+          
+           $("#send_emailForm").css("display", "block")
+});      
+ 
+</script>
+    </body>
+</html>
