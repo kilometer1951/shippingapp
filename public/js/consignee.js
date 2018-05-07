@@ -210,7 +210,7 @@ $(document).ready(function() {
             editModalData += '</div>';
             editModalData += '<div class="col-md-8">';
             editModalData += '<div class="form-group">';
-            editModalData += '<label for="cfirst_name">First Name</label>';
+            editModalData += '<label for="cfirst_name">Full Name</label>';
             editModalData += '<input class="form-control" name="cfirst_name1" id="cfirst_name1" value="' + result.foundData.first_name + '">';
             editModalData += '</div>';
             editModalData += '</div>';

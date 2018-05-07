@@ -73,14 +73,14 @@ router.get("/displayDropdowndataForConsignee", function(req, res) {
 
         function(callback) {
             //states
-            Clients.find({}, function(err, foundData) {
+            Clients.find({}).sort('-createdAt').exec(function(err, foundData) {
                 callback(err, foundData);
             });
         }
     ], (err, results) => {
         var countries = results[0];
         var clients = results[1];
-        console.log(countries);
+        //console.log(countries);
         return res.send({
             countries: countries,
             clients: clients
@@ -159,7 +159,7 @@ router.put("/consignees/:id/edit", function(req, res) {
         Client: client
     };
 
-    console.log(req.body)
+    // console.log(req.body)
     // res.send(editedData);
     Consignees.findByIdAndUpdate(req.params.id, editedData, function(err, updateRecord) {
         if (err) {

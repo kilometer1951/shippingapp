@@ -11,7 +11,6 @@ function getClients(value) {
 
                     client_table += '<tr>';
                     client_table += '<td>' + result.first_name + '</td>';
-                    client_table += '<td>' + result.last_name + '</td>';
                     client_table += '<td>' + result.pnum + '</td>';
                     client_table += '<td>' + result.email + '</td>';
                     client_table += '<td>' + result.address + '</td>';
@@ -53,7 +52,6 @@ function getClients(value) {
 
                 client_table += '<tr>';
                 client_table += '<td>' + result.first_name + '</td>';
-                client_table += '<td>' + result.last_name + '</td>';
                 client_table += '<td>' + result.pnum + '</td>';
                 client_table += '<td>' + result.email + '</td>';
                 client_table += '<td>' + result.address + '</td>';
@@ -148,7 +146,7 @@ $(document).ready(function() {
 
     $('#cfirst_name, #clast_name').on('keyup', function() {
 
-        $("#cfull_name").val($("#cfirst_name").val() + ', ' + $("#clast_name").val());
+        $("#cfull_name").val($("#cfirst_name").val());
 
     });
 
@@ -248,19 +246,19 @@ $(document).ready(function() {
 
             editModalData += '<form>';
             editModalData += '<div class="row " style=" background-color:#e0f2f1; padding:10px;">';
-            editModalData += '<div class="col-md-4">';
+            editModalData += '<div class="col-md-12">';
             editModalData += '<div class="form-group">';
-            editModalData += '<label for="cfirst_name">First Name</label>';
-            editModalData += '<input class="form-control" name="cfirst_name1" id="cfirst_name1" value="' + result.foundData.first_name + '">';
+            editModalData += '<label for="cfirst_name">Full Name</label>';
+            editModalData += '<input class="form-control" name="cfirst_name1" id="cfirst_name1" value="' + result.foundData.full_name + '">';
             editModalData += '</div>';
             editModalData += '</div>';
-            editModalData += '<div class="col-md-4">';
+            editModalData += '<div class="col-md-4" style="display:none;">';
             editModalData += '<div class="form-group">';
             editModalData += '<label for="clast_name">Last Name</label>';
             editModalData += '<input class="form-control " name="clast_name1" id="clast_name1" value="' + result.foundData.last_name + '">';
             editModalData += '</div>';
             editModalData += '</div>';
-            editModalData += '<div class="col-md-4">';
+            editModalData += '<div class="col-md-4" style="display:none;">';
             editModalData += '<div class="form-group">';
             editModalData += '<label for="cfull_name">Full Name</label>';
             editModalData += '<input class="form-control" name="cfull_name1" id="cfull_name1" disabled value="' + result.foundData.full_name + '">';
@@ -397,7 +395,7 @@ $(document).ready(function() {
         var data = {};
         data.cfirst_name = $("#cfirst_name1").val();
         data.clast_name = $("#clast_name1").val();
-        data.cfull_name = $("#cfull_name1").val();
+        //   data.cfull_name = $("#cfull_name1").val();
         data.cpnum = $("#cpnum1").val();
         data.cemail = $("#cemail1").val();
         data.address = $("#address1").val();

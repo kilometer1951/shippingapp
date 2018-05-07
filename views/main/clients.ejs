@@ -45,8 +45,7 @@
             <table class="table table-striped">
                 <thead class="table-success">
                   <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
+                    <th>Full name</th>
                     <th>Tel</th>
                     <th>Email</th>
                     <th>Address</th>
@@ -57,7 +56,6 @@
                   <%  data.forEach(function(content){ %>
                   <tr >
                     <td><%= content.first_name%></td>
-                    <td><%= content.last_name%></td>
                     <td><%= content.pnum%></td>
                     <td><%= content.email%></td>
                     <td><%= content.address%></td>
@@ -84,19 +82,19 @@
       <div class="modal-body">
         <form action="javascript:void(0)">
              <div class="row " style=" background-color:#e0f2f1; padding:10px;">
-               <div class="col-md-4">
+               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="cfirst_name">First Name</label>
+                  <label for="cfirst_name">Full Name</label>
                   <input class="form-control" name="cfirst_name" id="cfirst_name" autocomplete="on">
                 </div>
               </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="clast_name">Last Name</label>
-                  <input class="form-control " name="clast_name" id="clast_name" >
-                </div>
-              </div>
-              <div class="col-md-4">
+              <!--<div class="col-md-4">-->
+              <!--  <div class="form-group">-->
+              <!--    <label for="clast_name">Last Name</label>-->
+              <!--    <input class="form-control " name="clast_name" id="clast_name" >-->
+              <!--  </div>-->
+              <!--</div>-->
+              <div class="col-md-4" style="display:none;">
                 <div class="form-group">
                   <label for="cfull_name">Full Name</label>
                   <input class="form-control" name="cfull_name" id="cfull_name" disabled>

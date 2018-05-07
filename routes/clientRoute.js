@@ -58,11 +58,10 @@ router.post("/clients/searchQ", function(req, res) {
             { pnum: { $regex: new RegExp(req.body.data, "i") } },
             { email: { $regex: new RegExp(req.body.data, "i") } },
             { full_name: { $regex: new RegExp(req.body.data, "i") } },
-            { first_name: { $regex: new RegExp(req.body.data, "i") } },
-            { last_name: { $regex: new RegExp(req.body.data, "i") } }
+            { first_name: { $regex: new RegExp(req.body.data, "i") } }
         ]
 
-    }, function(err, foundData) {
+    }).sort('-createdAt').exec(function(err, foundData) {
 
         return res.send(foundData);
     });
@@ -177,7 +176,7 @@ router.put("/client/:id/edit", function(req, res) {
     var editedData = {
         first_name: cfirst_name,
         last_name: clast_name,
-        full_name: cfull_name,
+        full_name: cfirst_name,
         pnum: cpnum,
         email: cemail,
         address: address,
