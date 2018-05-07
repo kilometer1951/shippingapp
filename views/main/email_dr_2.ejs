@@ -260,11 +260,12 @@ th, td {
                                 <b>SEAL&nbsp;#:</b>
                                <%=Dock_R.seal_num%><br><br>
                                <b>CUT&nbsp;OFF&nbsp;DATE</b><br>
-                               <%=moment(BookingConfirmation.cut_off_date).format("l")%><br><br>
+                               <%=BookingConfirmation.cut_off_date !== null ? moment(BookingConfirmation.cut_off_date).format("l") : ""%><br><br>
                                <b>SAILING&nbsp;DATE</b><br>
-                                <%=moment(BookingConfirmation.sail_date).format("l")%><br><br>
+                                <%=BookingConfirmation.sail_date !== null ? moment(BookingConfirmation.sail_date).format("l") : ""%><br><br>
                                <b>ARRIVAL&nbsp;DATE</b><br>
-                               <%=moment(BookingConfirmation.arrival_date).format("l")%><br>
+                             
+                               <%=BookingConfirmation.arrival_date !== null ? moment(BookingConfirmation.arrival_date).format("l") : ""%><br>
                                </div>
                            </div>
                        </div> 

@@ -276,13 +276,16 @@ th, td {
                                <span style="font-size:18px;"><%=Dock_R.container_num%></span><br><br>
                                 <b>SEAL&nbsp;#:</b>
                                <%=Dock_R.seal_num%><br><br>
-                              
+                               <b>CUT&nbsp;OFF&nbsp;DATE</b><br>
+                               <%=BookingConfirmation.cut_off_date !== null ? moment(BookingConfirmation.cut_off_date).format("l") : ""%><br><br>
                                <b>SAILING&nbsp;DATE</b><br>
-                                <%=moment(BookingConfirmation.sail_date).format("l")%><br><br>
-                             
+                                <%=BookingConfirmation.sail_date !== null ? moment(BookingConfirmation.sail_date).format("l") : ""%><br><br>
+                               <b>ARRIVAL&nbsp;DATE</b><br>
+                              
+                               <%=BookingConfirmation.arrival_date !== null ? moment(BookingConfirmation.arrival_date).format("l") : ""%><br>
                                </div>
                            </div>
-                       </div> 
+                       </div>  
                         <div class="col-md-6" style="border:1px solid #000;">
                            <div class="row" >
                               <div style="padding:7px;">
