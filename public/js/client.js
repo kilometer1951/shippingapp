@@ -120,25 +120,7 @@ $(document).ready(function() {
         });
     });
 
-    //get cities data edit modal
-    $(document).on('change', '#state1', function() {
-        var state_id = $(this).val();
 
-        $.get("/cities/" + state_id, function(data) {
-            if (data.length === 0) {
-                $("#city1").html("<option>Select a city</option>");
-            }
-            else {
-                data.forEach(function(content) {
-                    var city = '';
-                    city += '<option id="' + content._id + '" value="' + content._id + '">' + content.cityname + '</option>';
-                    $("#city1").append(city);
-                    // console.log(content);
-                });
-            }
-        });
-        //alert(state_id);
-    });
 
 
 
@@ -337,46 +319,76 @@ $(document).ready(function() {
 
             $('#cfirst_name1, #clast_name1').on('keyup', function() {
 
-                $("#cfull_name1").val($("#cfirst_name1").val() + ', ' + $("#clast_name1").val());
+                $("#cfull_name1").val($("#cfirst_name1").val());
 
             });
 
             //apend states
             result.states.forEach(function(data) {
-                var stateHtml = '';
-                stateHtml += '<option value="' + data._id + '" ' + ((data.statename === result.foundData.State.statename) ? 'selected' : '') + '>' + data.statename + '</option>';
-                $("#state1").append(stateHtml);
-
-                //get selected value
-                if (data.statename === result.foundData.State.statename) {
-                    // get the cities
-                    $.get("/cities/" + data._id, function(citiesData) {
-                        if (citiesData.length === 0) {
-                            $("#city").html("<option>Select a city</option>");
-                        }
-                        else {
-                            citiesData.forEach(function(content) {
-                                if (result.foundData.City === undefined) {
-                                    var city = '';
-                                    city += '<option>Select a city</option>';
-                                    city += '<option id="' + content._id + '" value="' + content._id + '">' + content.cityname + '</option>';
-                                    $("#city1").append(city);
-                                    console.log(result.foundData.City === undefined);
-                                }
-                                else {
-                                    var city = '';
-                                    city += '<option id="' + content._id + '" value="' + content._id + '" ' + ((content._id === result.foundData.City._id) ? 'selected' : '') + '>' + content.cityname + '</option>';
-                                    $("#city1").append(city);
-                                }
-
-                            });
-                        }
-                    });
+                if (result.foundData.State === undefined) {
+                    var stateHtml = '';
+                    stateHtml += '<option value="' + data._id + '" >' + data.statename + '</option>';
+                    $("#state1").append(stateHtml);
+                    $("#city1").html("<option>Select a city</option>");
                 }
                 else {
-                    //console.log("here")
+                    var stateHtml = '';
+                    stateHtml += '<option value="' + data._id + '" ' + ((data.statename === result.foundData.State.statename) ? 'selected' : '') + '>' + data.statename + '</option>';
+                    $("#state1").append(stateHtml);
+                    //get selected value
+                    if (data.statename === result.foundData.State.statename) {
+                        // get the cities
+                        $.get("/cities/" + data._id, function(citiesData) {
+                            if (citiesData.length === 0) {
+                                $("#city1").html("<option>Select a city</option>");
+                            }
+                            else {
+                                citiesData.forEach(function(content) {
+                                    if (result.foundData.City === undefined) {
+                                        var city = '';
+                                        city += '<option>Select a city</option>';
+                                        city += '<option id="' + content._id + '" value="' + content._id + '">' + content.cityname + '</option>';
+                                        $("#city1").append(city);
+                                        //    console.log(result.foundData.City === undefined);
+                                    }
+                                    else {
+                                        var city = '';
+                                        city += '<option id="' + content._id + '" value="' + content._id + '" ' + ((content._id === result.foundData.City._id) ? 'selected' : '') + '>' + content.cityname + '</option>';
+                                        $("#city1").append(city);
+                                    }
+
+                                });
+                            }
+                        });
+                    }
+                    else {
+                        //console.log("here")
+                    }
+                    // console.log(stateHtml);
                 }
-                // console.log(stateHtml);
+
+
+
+            });
+            //get cities data edit modal
+            $(document).on('change', '#state1', function() {
+                var state_id = $(this).val();
+
+                $.get("/cities/" + state_id, function(data) {
+                    if (data.length === 0) {
+                        $("#city1").html("<option>Select a city</option>");
+                    }
+                    else {
+                        $("#city1").html("");
+                        data.forEach(function(content) {
+                            var city = '';
+                            city += '<option id="' + content._id + '" value="' + content._id + '">' + content.cityname + '</option>';
+                            $("#city1").append(city);
+                            // console.log(content);
+                        });
+                    }
+                });
+                //alert(state_id);
             });
         });
         //alert(state_id);
