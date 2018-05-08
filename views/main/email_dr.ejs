@@ -68,8 +68,8 @@ th, td {
                            <span style="font-size:18px;"><%=stringText(ClientData.full_name)%>,</span><br>
                          <% } %>
                         <span style="font-size:18px;"><%=stringText(ClientData.address)%></span><br>
-                        <span style="font-size:18px;"><%=stringText(ClientData.City.cityname)%>,&nbsp;&nbsp;</span>
-                        <span style="font-size:18px;"><%=stringText(ClientData.State.statename)%>,</span><br>
+                        <span style="font-size:18px;"><%=stringText(ClientData.City !== undefined ? ClientData.City.cityname + "," : "")%>&nbsp;&nbsp;</span>
+                        <span style="font-size:18px;"><%=stringText(ClientData.State !== undefined ? ClientData.State.statename + "," : "")%></span><br>
                         <span style="font-size:18px;"><%=stringText(ClientData.zipcode)%>, USA,</span>&nbsp;
                         <span style="font-size:18px;">Tel:<%=ClientData.pnum%></span>
                      </div>
