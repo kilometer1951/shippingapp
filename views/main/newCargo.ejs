@@ -32,8 +32,7 @@
                <table class="table table-striped">
                     <thead class="table-success">
                       <tr>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
+                        <th>Full Name</th>
                         <th>Email</th>
                         <th></th>
                       </tr>
@@ -42,7 +41,6 @@
                       <%  clientsData.forEach(function(content){ %>
                       <tr >
                         <td><%= content.first_name%></td>
-                        <td><%= content.last_name%></td>
                         <td><%= content.email%></td>
                         <td>
                             <button class="btn btn-outline-info btn-sm newCargoBtn" id="<%= content._id%>"><i class="fas fa-plus"></i> New Cargo</button>

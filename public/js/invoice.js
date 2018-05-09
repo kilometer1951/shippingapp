@@ -25,7 +25,15 @@ $(document).ready(function() {
         data.extra_charges = $("#extra_charges").val();
         data.invoice_total = $("#invoice_total").val();
         data.balance_due = $("#balance_due").val();
+
         data.more_invoice_fields = $("#more_invoice_fields").val();
+        data.more_invoice_fields_2 = $("#more_invoice_fields_2").val();
+        data.more_invoice_fields_3 = $("#more_invoice_fields_3").val();
+
+        data.label_charge1 = $("#label_charge1").val();
+        data.label_charge2 = $("#label_charge2").val();
+        data.label_charge3 = $("#label_charge3").val();
+        data.label_charge4 = $("#label_charge4").val();
 
         console.log(data)
 

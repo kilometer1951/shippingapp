@@ -103,9 +103,10 @@ th, td {
                           </tr>
                           <tr>
                             <td><b>CITY</b></td>
-                            <td><%=ClientData.City.cityname%></td>
+                            <% console.log(ClientData.City) %>
+                            <td><%=ClientData.City !== null ? ClientData.City.cityname : ""%></td>
                             <td style="text-align:center;"><b>STATE</b></td>
-                            <td><%=ClientData.State.statename%></td>
+                            <td><%=ClientData.State !== null ? ClientData.State.statename : ""%></td>
                             <td style="text-align:center;"><b>ZIP CODE</b></td>
                             <td><%=ClientData.zipcode%></td>
                           </tr>

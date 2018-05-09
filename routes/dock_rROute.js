@@ -25,7 +25,7 @@ router.get("/dock_r", function(req, res) {
                 Dock_R
                     .find({})
                     .populate("Client")
-                    .sort('-createdAt')
+                    .sort('-Client')
                     .exec(function(err, foundAllData) {
                         callback(err, foundAllData);
                     });
@@ -60,7 +60,7 @@ router.get("/invoice", function(req, res) {
                 Dock_R
                     .find({})
                     .populate("Client")
-                    .sort('-createdAt')
+                    .sort('-Client')
                     .exec(function(err, foundAllData) {
                         callback(err, foundAllData);
                     });
@@ -264,6 +264,9 @@ router.post("/dock_r/new", function(req, res) {
         consigneedropdown = req.body.consigneedropdown;
     }
 
+
+
+
     var bookingc_id = req.body.bookingc_id;
     var n_name = req.body.n_name;
     var n_address = req.body.n_address;
@@ -281,7 +284,9 @@ router.post("/dock_r/new", function(req, res) {
 
     var for_transhipment_to = req.body.for_transhipment_to;
     var point_and_contry_of_origin = req.body.point_and_contry_of_origin;
-
+    if (cleint_is_agent === undefined) {
+        cleint_is_agent = "";
+    }
 
     var newData = {
         createdAt: moment.parseZone(new Date()).format('l'),
@@ -402,8 +407,11 @@ router.post("/d_r/:id/edit", function(req, res) {
     var fowarding_agent_ref = req.body.fowarding_agent_ref;
     var point_and_contry_of_origin = req.body.point_and_contry_of_origin;
     var for_transhipment_to = req.body.for_transhipment_to;
+    if (cleint_is_agent === undefined) {
+        cleint_is_agent = "";
+    }
 
-
+    console.log(cleint_is_agent === undefined)
     var editData = {
         n_name: n_name,
         n_address: n_address,
@@ -640,8 +648,6 @@ router.post("/invoice/new/:id", function(req, res) {
     var balance_due = req.body.balance_due;
     var more_invoice_fields = req.body.more_invoice_fields;
 
-
-
     var editData = {
         ocean_freight: ocean_freight,
         truck: truck,
@@ -650,6 +656,17 @@ router.post("/invoice/new/:id", function(req, res) {
         invoice_total: invoice_total,
         balance_due: balance_due,
         more_invoice_fields: more_invoice_fields,
+        more_invoice_fields_2: req.body.more_invoice_fields_2,
+        more_invoice_fields_3: req.body.more_invoice_fields_3,
+
+        label_charge1: req.body.label_charge1,
+        label_charge2: req.body.label_charge2,
+        label_charge3: req.body.label_charge3,
+        label_charge4: req.body.label_charge4,
+
+
+
+
         invoice_exist: true,
         invoice_date: moment.parseZone(new Date()).format('l')
 
@@ -709,6 +726,13 @@ router.post("/invoice/:id/edit", function(req, res) {
         invoice_total: invoice_total,
         balance_due: balance_due,
         more_invoice_fields: more_invoice_fields,
+        more_invoice_fields_2: req.body.more_invoice_fields_2,
+        more_invoice_fields_3: req.body.more_invoice_fields_3,
+
+        label_charge1: req.body.label_charge1,
+        label_charge2: req.body.label_charge2,
+        label_charge3: req.body.label_charge3,
+        label_charge4: req.body.label_charge4,
 
 
     };

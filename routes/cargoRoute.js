@@ -24,7 +24,7 @@ router.get('/cargo', function(req, res) {
             function(callback) {
                 Cargos.find({})
                     .populate("Client")
-                    .sort('-createdAt')
+                    .sort('-Client')
                     .exec(function(err, foundData) {
                         callback(err, foundData);
                     });
@@ -52,7 +52,7 @@ router.get('/cargo/displaynewcargo', function(req, res) {
         async.parallel([
 
             function(callback) {
-                Clients.find({}, function(err, foundData) {
+                Clients.find({}).sort('-_id').exec(function(err, foundData) {
                     callback(err, foundData);
                 });
             }

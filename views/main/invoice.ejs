@@ -177,8 +177,26 @@
              </div>
              <div class="col-md-4">
                   <div class="form-group">
-                      <label>Other Charges</label>
-                      <input type="text" class="form-control" id="extra_charges" name="extra_charges">
+                      <input type="text" class="form-control" id="label_charge3" name="label_charge3" placeholder="Label">
+                      <input type="text" class="form-control" id="extra_charges" name="extra_charges" placeholder="Charge Amount">
+                  </div>
+             </div>
+             <div class="col-md-4">
+                  <div class="form-group">
+                     <input type="text" class="form-control" id="label_charge1" name="label_charge1" placeholder="Label">
+                      <input type="text" class="form-control" id="more_invoice_fields" name="more_invoice_fields" placeholder="Charge Amount">
+                  </div>
+             </div>
+             <div class="col-md-4">
+                  <div class="form-group">
+                      <input type="text" class="form-control" id="label_charge2" name="label_charge2" placeholder="Label">
+                      <input type="text" class="form-control" id="more_invoice_fields_2" name="more_invoice_fields_2" placeholder="Charge Amount">
+                  </div>
+             </div>
+             <div class="col-md-4">
+                  <div class="form-group">
+                      <input type="text" class="form-control" id="label_charge4" name="label_charge4" placeholder="Label">
+                      <input type="text" class="form-control" id="more_invoice_fields_3" name="more_invoice_fields_3" placeholder="Charge Amount">
                   </div>
              </div>
              <div class="col-md-4">
@@ -194,10 +212,7 @@
                   </div>
              </div>
              <div class="col-md-12">
-                  <div class="form-group">
-                      <label>More Charges</label>
-                      <textarea type="text" class="form-control" id="more_invoice_fields" name="more_invoice_fields" style="resize:none;" rows="7"></textarea>
-                  </div>
+                <button class="btn btn-success" id="calulate_invoice">Calculate</button>
              </div>
          </div>
       </div>
@@ -220,3 +235,22 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
 <script src="/js/invoice.js"></script>
+<script>
+   $(document).on("click", "#calulate_invoice", function(e) {
+         e.preventDefault();
+          var ocean_freight = parseFloat($("#ocean_freight").val()) || 0;
+        var truck = parseFloat($("#truck").val()) || 0;
+        var ectn_becs = parseFloat($("#ectn_becs").val()) || 0;
+        var extra_charges = parseFloat($("#extra_charges").val()) || 0;
+        var invoice_total = parseFloat($("#invoice_total").val()) || 0;
+
+        var more_invoice_fields = parseFloat($("#more_invoice_fields").val()) || 0;
+        var more_invoice_fields_2 = parseFloat($("#more_invoice_fields_2").val()) || 0;
+        var more_invoice_fields_3 = parseFloat($("#more_invoice_fields_3").val()) || 0;
+
+       var total_invoice = 0;
+       total_invoice = ocean_freight + truck + ectn_becs + extra_charges + invoice_total + more_invoice_fields + more_invoice_fields_2 + more_invoice_fields_3;
+     
+         $("#invoice_total").val(total_invoice.toFixed(2));
+     });
+</script>

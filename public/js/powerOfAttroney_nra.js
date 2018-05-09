@@ -1,5 +1,16 @@
 $(document).ready(function() {
 
+    $('#bill_of_lading_oring').on('keyup', function() {
+
+        $("#ocean_port_of_loading").val($("#bill_of_lading_oring").val());
+
+    });
+
+    $('#bill_of_lading_destination').on('keyup', function() {
+
+        $("#port_of_discharge").val($("#bill_of_lading_destination").val());
+
+    });
 
 
     //get client data
@@ -25,6 +36,7 @@ $(document).ready(function() {
         $(".table").fadeIn();
         // alert(client_id);
         //get cosignee data
+        $("#consigneedropdown").html("<option>Select a Consignee</option>");
         $.get("/cosigneeDropdownData/" + client_id, function(data) {
             if (data.length === 0) {
                 $("#consigneedropdown").html("<option>Select a Consignee</option>");

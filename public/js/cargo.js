@@ -23,9 +23,6 @@ function getClients(value) {
                     // console.log(result);
                 });
 
-
-
-
             }
             else {
                 //if no result
@@ -71,6 +68,14 @@ $(document).ready(function() {
 
 
     $("#vinsearchBtn").click(function() {
+        if ($("#vinsearch").val().length > 17) {
+            $("#error").fadeIn();
+            $(".newCargoSection").css({ "height": "600px", "margin-bottom": "20px" });
+            return $("#error").text("Max number of characters exceeded");
+        }
+
+
+
         $.get("https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/" + $("#vinsearch").val() + "/getallmakes?format=json", function(data) {
 
             if (data.Results[8].Value !== null) {

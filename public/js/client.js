@@ -126,7 +126,7 @@ $(document).ready(function() {
 
 
 
-    $('#cfirst_name, #clast_name').on('keyup', function() {
+    $('#cfirst_name').on('keyup', function() {
 
         $("#cfull_name").val($("#cfirst_name").val());
 
@@ -156,7 +156,7 @@ $(document).ready(function() {
         var data = {};
         data.cfirst_name = $("#cfirst_name").val();
         data.clast_name = $("#clast_name").val();
-        data.cfull_name = $("#cfull_name").val();
+        data.cfull_name = $("#cfirst_name").val();
         data.cpnum = $("#cpnum").val();
         data.cemail = $("#cemail").val();
         data.address = $("#address").val();
@@ -175,7 +175,6 @@ $(document).ready(function() {
 
             client_table += '<tr>';
             client_table += '<td>' + result.first_name + '</td>';
-            client_table += '<td>' + result.last_name + '</td>';
             client_table += '<td>' + result.pnum + '</td>';
             client_table += '<td>' + result.email + '</td>';
             client_table += '<td>' + result.address + '</td>';
@@ -324,8 +323,11 @@ $(document).ready(function() {
             });
 
             //apend states
+            if (result.foundData.State === null || result.foundData.State === undefined) {
+                $("#state1").append('<option value="Select a state">Select a state</option>');
+            }
             result.states.forEach(function(data) {
-                if (result.foundData.State === undefined) {
+                if (result.foundData.State === null || result.foundData.State === undefined) {
                     var stateHtml = '';
                     stateHtml += '<option value="' + data._id + '" >' + data.statename + '</option>';
                     $("#state1").append(stateHtml);

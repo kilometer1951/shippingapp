@@ -30,6 +30,11 @@
 .s1 {
     padding:10px;
 }
+
+input[type="text"] {
+    color:#000;
+    font-size:20px;
+}
        
     </style>
 </head>
@@ -45,45 +50,60 @@
                        <div class="col-md-4">
                           <div class="form-group">
                               <label>Ocean Freight</label>
-                              <input type="text" class="form-control" id="ocean_freight" name="ocean_freight" value="<%=foundData.ocean_freight%>">
+                              <input type="number" class="form-control" id="ocean_freight" name="ocean_freight" value="<%=foundData.ocean_freight%>">
                           </div>
                          </div>
                          <div class="col-md-4">
                               <div class="form-group">
                                   <label>Truck</label>
-                                  <input type="text" class="form-control" id="truck" name="truck" value="<%=foundData.truck%>">
+                                  <input type="number" class="form-control" id="truck" name="truck" value="<%=foundData.truck%>">
                               </div>
                          </div>
                          <div class="col-md-4">
                               <div class="form-group">
                                   <label>ECTN/BESC</label>
-                                  <input type="text" class="form-control" id="ectn_becs" name="ectn_becs" value="<%=foundData.ectn_becs%>">
+                                  <input type="number" class="form-control" id="ectn_becs" name="ectn_becs" value="<%=foundData.ectn_becs%>">
                               </div>
                          </div>
                          <div class="col-md-4">
                               <div class="form-group">
-                                  <label>Other Charges</label>
-                                  <input type="text" class="form-control" id="extra_charges" name="extra_charges" value="<%=foundData.extra_charges%>">
+                                  <input type="text" class="form-control" id="label_charge3" name="label_charge3" placeholder="Label"  value="<%=foundData.label_charge3%>">
+                                  <input type="number" class="form-control" id="extra_charges" name="extra_charges" value="<%=foundData.extra_charges%>">
+                              </div>
+                         </div>
+                          <div class="col-md-4">
+                              <div class="form-group">
+                                 <input type="text" class="form-control" id="label_charge1" name="label_charge1" placeholder="Label" value="<%=foundData.label_charge1%>">
+                                  <input type="number" class="form-control" id="more_invoice_fields" name="more_invoice_fields" placeholder="Charge Amount" value="<%=foundData.more_invoice_fields%>">
+                              </div>
+                         </div>
+                         <div class="col-md-4">
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="label_charge2" name="label_charge2" placeholder="Label" value="<%=foundData.label_charge2%>">
+                                  <input type="number" class="form-control" id="more_invoice_fields_2" name="more_invoice_fields_2" placeholder="Charge Amount" value="<%=foundData.more_invoice_fields_2%>">
+                              </div>
+                         </div>
+                         <div class="col-md-4">
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="label_charge4" name="label_charge4" placeholder="Label" value="<%=foundData.label_charge4%>">
+                                  <input type="number" class="form-control" id="more_invoice_fields_3" name="more_invoice_fields_3" placeholder="Charge Amount" value="<%=foundData.more_invoice_fields_3%>">
                               </div>
                          </div>
                          <div class="col-md-4">
                               <div class="form-group">
                                   <label>Invoice Total</label>
-                                  <input type="text" class="form-control" id="invoice_total" name="invoice_total" value="<%=foundData.invoice_total%>">
+                                  <input type="number" class="form-control" id="invoice_total" name="invoice_total" value="<%=foundData.invoice_total%>">
                               </div>
                          </div>
                          <div class="col-md-4">
                               <div class="form-group">
                                   <label>Balance Due</label>
-                                  <input type="text" class="form-control" id="balance_due" name="balance_due" value="<%=foundData.balance_due%>">
+                                  <input type="number" class="form-control" id="balance_due" name="balance_due" value="<%=foundData.balance_due%>">
                               </div>
                          </div>
-                         <div class="col-md-12">
-                              <div class="form-group">
-                                  <label>More Charges</label>
-                                  <textarea type="text" class="form-control" id="more_invoice_fields" name="more_invoice_fields" style="resize:none;" rows="7"><%=foundData.more_invoice_fields%></textarea>
-                          </div>
-                     </div>
+                       <div class="col-md-12">
+                            <button class="btn btn-success" id="calulate_invoice">Calculate</button>
+                         </div>
                     </div>
                 </div>
               
@@ -129,6 +149,24 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function() {
+    
+     $(document).on("click", "#calulate_invoice", function(e) {
+         e.preventDefault();
+          var ocean_freight = parseFloat($("#ocean_freight").val()) || 0;
+        var truck = parseFloat($("#truck").val()) || 0;
+        var ectn_becs = parseFloat($("#ectn_becs").val()) || 0;
+        var extra_charges = parseFloat($("#extra_charges").val()) || 0;
+        var invoice_total = parseFloat($("#invoice_total").val()) || 0;
+
+        var more_invoice_fields = parseFloat($("#more_invoice_fields").val()) || 0;
+        var more_invoice_fields_2 = parseFloat($("#more_invoice_fields_2").val()) || 0;
+        var more_invoice_fields_3 = parseFloat($("#more_invoice_fields_3").val()) || 0;
+
+       var total_invoice = 0;
+       total_invoice = ocean_freight + truck + ectn_becs + extra_charges + invoice_total + more_invoice_fields + more_invoice_fields_2 + more_invoice_fields_3;
+     
+         $("#invoice_total").val(total_invoice.toFixed(2));
+     });
         
 
     $(document).on("click", ".next_1", function() {

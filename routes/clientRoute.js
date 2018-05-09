@@ -14,7 +14,7 @@ router.get('/clients', function(req, res) {
         //   console.log(t['connect.sid'])
         //get clients
         Clients.find({})
-            .sort('-createdAt')
+            .sort('-_id')
             .exec(function(err, foundData) {
                 return res.render("main/clients", { title: 'Oldsailor Ocean Shipping LLC || Clients', data: foundData });
             });
@@ -97,7 +97,7 @@ router.post("/client/new", function(req, res) {
 
     }
     else {
-        state = undefined;
+        state = null;
     }
 
 
@@ -106,7 +106,7 @@ router.post("/client/new", function(req, res) {
         //console.log(city);
     }
     else {
-        city = undefined;
+        city = null;
     }
 
 
@@ -114,7 +114,7 @@ router.post("/client/new", function(req, res) {
     //console.log(req.body);
     var cfirst_name = req.body.data.cfirst_name;
     var clast_name = req.body.data.clast_name;
-    var cfull_name = req.body.data.clast_name + ', ' + req.body.data.cfirst_name;
+    var cfull_name = req.body.data.cfirst_name;
     var cpnum = req.body.data.cpnum;
     var cemail = req.body.data.cemail;
     var address = req.body.data.address;
@@ -159,14 +159,34 @@ router.post("/client/new", function(req, res) {
 //Edit client
 router.put("/client/:id/edit", function(req, res) {
     //console.log(req.body);
+    var state = '';
+    var city = '';
+    if (req.body.data.state !== "Select a state") {
+        state = req.body.data.state;
+
+
+    }
+    else {
+        state = null;
+    }
+
+
+    if (req.body.data.city !== "Select a city") {
+        city = req.body.data.city;
+        //console.log(city);
+    }
+    else {
+        city = null;
+    }
+
     var cfirst_name = req.body.data.cfirst_name;
     var clast_name = req.body.data.clast_name;
     var cfull_name = req.body.data.clast_name + ', ' + req.body.data.cfirst_name;
     var cpnum = req.body.data.cpnum;
     var cemail = req.body.data.cemail;
     var address = req.body.data.address;
-    var state = req.body.data.state;
-    var city = req.body.data.city;
+    var state = state;
+    var city = city;
     var zipcode = req.body.data.zipcode;
     var tax = req.body.data.tax;
     var passport = req.body.data.passport;

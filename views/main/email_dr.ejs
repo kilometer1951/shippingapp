@@ -62,14 +62,15 @@ th, td {
                     <!--Shipper -->
                      <div>
                          <b style="font-size:16px;"><%=stringText("SHIPPER EXPORTER")%></b><br>
-                         <% if(Dock_R.cleint_is_agent !== null ) { %>
+                         <% if(Dock_R.cleint_is_agent !== "" ) { %>
+                         <% console.log(Dock_R.cleint_is_agent + "m") %>
                            <span style="font-size:16px;"><%=stringText(Dock_R.cleint_is_agent === "Yes" ? ClientData.full_name +"\nAS AGENT FOR OLDSAILORS OCEAN SHIPPING \n" : "OLDSAILORS OCEAN SHIPPING AS AGENT FOR \n"+ClientData.full_name)%></span><br>
                          <% } else { %>
                            <span style="font-size:18px;"><%=stringText(ClientData.full_name)%>,</span><br>
                          <% } %>
                         <span style="font-size:18px;"><%=stringText(ClientData.address)%></span><br>
-                        <span style="font-size:18px;"><%=stringText(ClientData.City !== undefined ? ClientData.City.cityname + "," : "")%>&nbsp;&nbsp;</span>
-                        <span style="font-size:18px;"><%=stringText(ClientData.State !== undefined ? ClientData.State.statename + "," : "")%></span><br>
+                        <span style="font-size:18px;"><%=stringText(ClientData.City !== null ? ClientData.City.cityname + "," : "")%>&nbsp;&nbsp;</span>
+                        <span style="font-size:18px;"><%=stringText(ClientData.State !== null ? ClientData.State.statename + "," : "")%></span><br>
                         <span style="font-size:18px;"><%=stringText(ClientData.zipcode)%>, USA,</span>&nbsp;
                         <span style="font-size:18px;">Tel:<%=ClientData.pnum%></span>
                      </div>

@@ -50,6 +50,19 @@ var dock_rSchema = new mongoose.Schema({
   more_invoice_fields: String,
   point_and_contry_of_origin: String,
   for_transhipment_to: String,
+  label_charge3: String,
+
+  more_invoice_fields_3: String,
+  label_charge4: String,
+
+  more_invoice_fields_2: String,
+  label_charge2: String,
+
+
+  label_charge1: String,
+
+
+
 
 });
 

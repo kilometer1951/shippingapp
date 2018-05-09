@@ -195,8 +195,8 @@ published in Carrier's governing tariff rules. The surcharges and assessorials t
                                 <h5><b>SHIPPER</b></h5>
                                 <span><%=ClientData.full_name%></span><br>
                                 <span><%=ClientData.address%>,</span>
-                                <span><%=ClientData.City.cityname%>,</span>
-                                <span><%=ClientData.State.statename%>,</span>
+                                <span><%=ClientData.City !== null ? ClientData.City.cityname : ""%>,</span>
+                                <span><%=ClientData.State !== null ? ClientData.State.statename : ""%>,</span>
                                 <span><%=ClientData.zipcode%>,</span>
                                 <span>United States</span><br>
                                 <span><%=ClientData.pnum%></span><br>
@@ -216,13 +216,13 @@ published in Carrier's governing tariff rules. The surcharges and assessorials t
                      
    <table style="width:100%;">
                         
-                         <tr>
+                          <tr>
                             <td><b>Cut Off Date</b></td>
                             <td><%=moment(foundAllData_1.cut_off_date).format("l")%></td>
                             <td><b>Sailing/ETD</b></td>
-                            <td><%=moment(foundAllData_1.sail_date).format("l")%></td>
+                            <td><%=foundAllData_1.sail_date !== null ? moment(foundAllData_1.sail_date).format("l") : ""%></td>
                             <td><b>Arrival/ETA</b></td>
-                            <td><%=moment(foundAllData_1.arrival_date).format("l")%></td>
+                            <td><%=foundAllData_1.arrival_date !== null ? moment(foundAllData_1.arrival_date).format("l") : ""%></td>
                           </tr>
                         <tr>
                             <td><b>Pickup Terminal</b></td>
