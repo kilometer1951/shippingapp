@@ -235,9 +235,9 @@ th, td {
                         <%=Dock_R.n_country%></span><br>
                         <span><%=Dock_R.n_pnum !== "" ? "Tel: "+Dock_R.n_pnum : "" %></span>
                      </div>
-                     <div style="border-top:1px solid #000;font-size:13px;">
-                          <b>POINT AND COUNTRY OF ORIGIN</b><br> 
-                        <span><%=Dock_R.point_and_contry_of_origin%></span><br>
+                   <div style="border-top:1px solid #000;">
+                          <b style="font-size:14px;">POINT AND COUNTRY OF ORIGIN</b><br> 
+                        <span style="font-size:25px;"><%=Dock_R.point_and_contry_of_origin === "" ? "USA" : Dock_R.point_and_contry_of_origin %></span><br>
                      </div>
                 </div>
             </div>
@@ -289,7 +289,7 @@ th, td {
                         <div class="col-md-6" style="border:1px solid #000;">
                            <div class="row" >
                               <div style="padding:7px;">
-                                   <span style="font-size:14px;"><%=stringText(BookingConfirmation.equipment_size)%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AES#:&nbsp;<%=Dock_R.aes_num%></span><br>
+                                   <span style="font-size:20px;"><%=stringText(BookingConfirmation.equipment_size)%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AES#:&nbsp;<%=Dock_R.aes_num%></span><br>
                                     
                                      <div  style="height:540px;font-size:20px;margin-top:5px;">
                                          <% Cargos.Cars.forEach(function(carsdata){ %>
@@ -395,9 +395,9 @@ th, td {
   
     <div class="html2pdf__page-break"></div>
     <h5 style="text-align:center;">Combined Transport Bill of Lading</h5>
-    <div class="row">
+    <div class="row" style="font-size:19px;">
         <div class="col-md-4">
-            <div style="font-size:10px;">
+            <div >
                 <span>
                     1.&nbsp;&nbsp;(Definitions) When used in this Bill of Lading
 (A) "Ocean Carrier" means the company stated
@@ -761,7 +761,7 @@ to
         </div>
         
          <div class="col-md-4">
-            <div style="font-size:10px;">
+            <div >
                 <span>
                     navigation or the carriage or handling of the Goods
 or the Vessel howsoever given, by any actual or
@@ -1098,7 +1098,7 @@ to have been discharged, and the
         
         
         <div class="col-md-4">
-            <div style="font-size:10px;">
+            <div >
                 <span>
                     Ocean Carrier shall not be responsible for
 any loss or damage to the contents of the

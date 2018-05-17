@@ -224,9 +224,9 @@ th, td {
                         <%=Dock_R.n_country%></span><br>
                         <span><%=Dock_R.n_pnum !== "" ? "Tel: "+Dock_R.n_pnum : "" %></span>
                      </div>
-                     <div style="border-top:1px solid #000;font-size:13px;">
-                          <b>POINT AND COUNTRY OF ORIGIN</b><br> 
-                        <span><%=Dock_R.point_and_contry_of_origin%></span><br>
+                     <div style="border-top:1px solid #000;">
+                          <b style="font-size:14px;">POINT AND COUNTRY OF ORIGIN</b><br> 
+                        <span style="font-size:25px;"><%=Dock_R.point_and_contry_of_origin === "" ? "USA" : Dock_R.point_and_contry_of_origin %></span><br>
                      </div>
                 </div>
             </div>
@@ -278,7 +278,7 @@ th, td {
                         <div class="col-md-6" style="border:1px solid #000;">
                            <div class="row" >
                               <div style="padding:7px;">
-                                   <span style="font-size:14px;"><%=stringText(BookingConfirmation.equipment_size)%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AES#:&nbsp;<%=Dock_R.aes_num%></span><br>
+                                   <span style="font-size:20px;"><%=stringText(BookingConfirmation.equipment_size)%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AES#:&nbsp;<%=Dock_R.aes_num%></span><br>
                                     
                                      <div  style="height:540px;font-size:20px;margin-top:5px;">
                                          <% Cargos.Cars.forEach(function(carsdata){ %>

@@ -25,6 +25,7 @@ var
     nextpageRoute = require("./routes/nextpageRoute"),
     dock_rROute = require("./routes/dock_rROute"),
     authRoute = require("./routes/authRoute"),
+    ectnRoute = require("./routes/ectnRoute"),
     adminRoute = require("./routes/adminRoute");
 
 
@@ -123,6 +124,7 @@ app.use(merge_nra_bc);
 app.use(nextpageRoute);
 app.use(dock_rROute);
 app.use(authRoute);
+app.use(ectnRoute);
 app.use(adminRoute);
 
 
