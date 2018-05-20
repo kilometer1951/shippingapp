@@ -92,6 +92,16 @@ router.get("/displayDropdowndataForConsignee", function(req, res) {
 //save client
 router.post("/consignee/new", function(req, res) {
     //console.log(req.body);
+    var country = '';
+    if (req.body.data.country !== "Select a Country") {
+        country = req.body.data.country;
+
+
+    }
+    else {
+        country = null;
+    }
+
     var cfirst_name = req.body.data.cfirst_name;
     var clast_name = req.body.data.clast_name;
     var cfull_name = req.body.data.cfirst_name;
@@ -102,7 +112,7 @@ router.post("/consignee/new", function(req, res) {
     var city = req.body.data.city;
     var postalcode = req.body.data.postalcode;
     var careof = req.body.data.careof;
-    var country = req.body.data.country;
+    //  var country = req.body.data.country;
     var client = req.body.data.client;
 
     var newData = {

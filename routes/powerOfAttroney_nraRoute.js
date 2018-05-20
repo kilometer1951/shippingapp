@@ -202,9 +202,14 @@ router.get("/poa_nra/:id/email_1/:client_id", function(req, res) {
         // console.log();
         var ConsigneeCountryname = "";
         //get consignee country name
+        //  console.log(foundAllData.Consignee[0].Country !== undefined)
         if (foundAllData.Consignee.length !== 0) {
             Country.findOne({ _id: foundAllData.Consignee[0].Country }, function(err, countrydata) {
-                ConsigneeCountryname = countrydata.countryname
+
+                if (countrydata !== null) {
+                    ConsigneeCountryname = countrydata.countryname
+                }
+
 
                 //check for data
                 // console.log(foundAllData.Cargo.length);
@@ -215,6 +220,9 @@ router.get("/poa_nra/:id/email_1/:client_id", function(req, res) {
         else {
             res.render("main/poa_nra_email_1", { layout: false, foundAllData: foundAllData, ClientData: ClientData, ConsigneeCountryname: ConsigneeCountryname });
         }
+
+
+
 
 
         //console.log(countryname);

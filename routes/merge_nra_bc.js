@@ -96,8 +96,9 @@ router.get("/merge_nra_booking_3/nra_num/:nra_id/bc_num/:bc_id/email/:client_id"
         //get consignee country name
         if (foundAllData.Consignee.length !== 0) {
             Country.findOne({ _id: foundAllData.Consignee[0].Country }, function(err, countrydata) {
-                ConsigneeCountryname = countrydata.countryname
-
+                if (countrydata !== null) {
+                    ConsigneeCountryname = countrydata.countryname
+                }
                 //check for data
                 // console.log(foundAllData.Cargo.length);
 
@@ -150,8 +151,9 @@ router.get("/poa_nra_2/:nra_id/email_1/:client_id", function(req, res) {
         //get consignee country name
         if (foundAllData.Consignee.length !== 0) {
             Country.findOne({ _id: foundAllData.Consignee[0].Country }, function(err, countrydata) {
-                ConsigneeCountryname = countrydata.countryname
-
+                if (countrydata !== null) {
+                    ConsigneeCountryname = countrydata.countryname
+                }
                 //check for data
                 // console.log(foundAllData.Cargo.length);
 

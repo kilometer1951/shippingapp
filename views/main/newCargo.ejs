@@ -60,7 +60,7 @@
                       
                       <div class="col-md-6">
                           <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Enter vin to search" id="vinsearch">
+                            <input type="text" class="form-control" placeholder="Enter vin to search" id="vinsearch"  onInput="checkLength(17,this)" >
                             <p id="error" style="color:red;display:none;">VIN ERROR BAD REQUEST VIN DOES NOT EXIST</p>
                           </div>
                         </div>

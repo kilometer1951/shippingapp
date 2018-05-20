@@ -80,8 +80,7 @@ th, td {
                         <span style="font-size:18px;"><%=stringText(Consignee.full_name)%></span><br>
                         <span style="font-size:18px;"><%=stringText(Consignee.address)%>,</span><br>
                         <span style="font-size:18px;"><%=stringText(Consignee.city)%>,&nbsp;<%=stringText(Consignee.state)%>,</span><br>
-                        <span style="font-size:18px;"><%=stringText(Consignee.Country.countryname)%>,&nbsp;Tel: <%=stringText(Consignee.pnum)%></span>
-
+                        <span style="font-size:18px;"><%=stringText(Consignee.Country !== null ? Consignee.Country.countryname : "")%>,&nbsp;Tel: <%=stringText(Consignee.pnum)%></span>
                      </div>
                      <div  style="border-top:1px solid #000;">
                         <div class="row">

@@ -279,16 +279,29 @@ $(document).ready(function() {
                 var clientdropdown = '';
                 clientdropdown += '<option value="' + data._id + '" ' + ((data._id === result.foundData.Client._id) ? 'selected' : '') + '>' + data.full_name + '</option>';
                 $("#clientdropdown1").append(clientdropdown);
-                console.log(clientdropdown);
+                //console.log(clientdropdown);
 
             });
-            result.country.forEach(function(data) {
-                var country = '';
-                country += '<option value="' + data._id + '" ' + ((data._id === result.foundData.Country._id) ? 'selected' : '') + '>' + data.countryname + '</option>';
-                $("#country1").append(country);
-                console.log(country);
+            console.log(result.foundData.Country)
+            if (result.foundData.Country !== null) {
+                result.country.forEach(function(data) {
+                    var country = '';
+                    country += '<option value="' + data._id + '" ' + ((data._id === result.foundData.Country._id) ? 'selected' : '') + '>' + data.countryname + '</option>';
+                    $("#country1").append(country);
+                    console.log(data._id);
 
-            });
+                });
+            }
+            else {
+                result.country.forEach(function(data) {
+                    var country = '';
+                    country += '<option value="' + data._id + '" >' + data.countryname + '</option>';
+                    $("#country1").append(country);
+                    console.log(data._id);
+
+                });
+            }
+
         });
         //alert(state_id);
     });
