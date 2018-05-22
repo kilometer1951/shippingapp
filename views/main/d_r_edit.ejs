@@ -290,6 +290,7 @@ $(document).ready(function() {
                 data.personal_effect_weight = personal_effect_weight;
                 data.personal_effect_m = personal_effect_m;
                 data.total_weight = $(".total_weight").val();
+                 data.cargo_id_11 = $(".cargo_id").attr("id");
                 $.post("/_update_cargo_dock_2_", { data: data }, function(result) {
                     //  console.log(result);
                 });

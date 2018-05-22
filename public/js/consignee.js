@@ -158,7 +158,7 @@ $(document).ready(function() {
             client_table += '</td>';
             client_table += '</tr>';
 
-            $('.client_table_body').append(client_table);
+            $('.client_table_body').prepend(client_table);
             console.log(result);
 
 
