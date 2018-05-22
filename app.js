@@ -95,6 +95,8 @@ app.use(function(req, res, next) {
         // console.log(r)
         return r;
     };
+
+
     res.locals.stringText1 = function(str) {
         // var str = "COMPANY ADDRESS";
         var r = str.split('').join('\xa0');

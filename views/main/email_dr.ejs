@@ -11,6 +11,13 @@
        line-height:1em;
        font-size:24px;
    }
+   textarea {
+       border: none;
+       outline:none;
+       resize: none;
+       width:550px;
+       
+   }
        .h_1 {
            width:100%;
            float:left;
@@ -286,8 +293,8 @@ th, td {
                                               <span>VIN:<%=carsdata.vin.toUpperCase()%></span><br><br>
                                            </span>
                                         <% }) %>
-                                        <div style="width:400px;">
-                                         <span style="font-size:14px;"><b><%=Cargos.personal_effect.toUpperCase()%></b></span>
+                                        <div style="">
+                                       <textarea id="text_field"><%-Cargos.personal_effect.toUpperCase()%></textarea>
                                        </div>
                                      </div>
                                      
@@ -316,7 +323,7 @@ th, td {
                                            </span><br><br>
                                      <% }) %>
                                     
-                                   <div style="margin-top:16px;">
+                                   <div style="margin-top:26px;">
                                         <span><%=Cargos.personal_effect_weight !== undefined ? Cargos.personal_effect_weight+"kg" : "" %></span>
                                    </div>
                                    </div>
@@ -426,7 +433,15 @@ $('#create_pdf').on('click', function () {
 //           });
            window.print();
            $("#send_emailForm").css("display", "block");
-});     
+}); 
+
+  window.setTimeout( function() {
+    $("textarea").height( $("textarea")[0].scrollHeight );
+}, 1);
+
+
+  //increase hieght of textarea as you type
+
 // (function () {  
   
     
