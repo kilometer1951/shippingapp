@@ -74,7 +74,7 @@
 </style>
 <div class="container-fluid">
     <div style="margin-top:70px;"></div>
-    <h3 class="text-center">Invoice</h3>
+    <h3 class="text-center">Independent Invoice</h3>
     <div class="client-body" id="clientBody">
         <form>
             <div class="row">
@@ -86,10 +86,13 @@
                            <option value="<%=clients._id%>"><%=clients.full_name%></option>
                         <% }) %>
                     </select>
-                  </div>
+                  </div> 
+              </div>
+              <div class=col-md-4>
+                <button type="button" class="btn btn-primary new_invoiceBTN"  data-target="#new_invoice" data-toggle="modal" ><i class="far fa-file"></i> New Invoice</button>
               </div>
              
-              <div class="col-md-8">
+              <div class="col-md-4">
                   <div class="form-group" style="float:right;">
                     <button type="button" class="btn btn-warning newCargo" id="newCargo" onclick="location.reload()"><i class="fas fa-sync-alt"></i> Reload Page Data</button>
                   </div>
@@ -112,13 +115,9 @@
                     <td><%=content.Client[0].full_name%></td>
                     <td><%=content.container_num%></td>
                     <td>
-                      <% if( !content.invoice_exist ){ %>
-                        <button class="btn btn-primary btn-sm new_invoiceBTN"  id="<%=content._id%>" data-target="#new_invoice" data-toggle="modal" ><i class="far fa-file"></i> New Invoice</button>
-                      <% } %>
-                       <% if( content.invoice_exist ){ %>
-                            <a class="btn btn-warning btn-sm " href="/invoice/<%=content._id%>/email/<%=content.Client[0]._id%>/cargo/<%=content.Cargo%>/consignee/<%=content.Consignee%>/booking_c/<%=content.BookingConfirmation%>"><i class="fas fa-envelope-open"></i> Email Invoice</a>
-                            <a class="btn btn-info btn-sm" href="/invoice/<%=content._id%>/editRoute"><i class="far fa-edit"></i> Edit</a>
-                         <% } %>
+                        <a class="btn btn-warning btn-sm " href="/invoice_in/<%=content._id%>/email/<%=content.Client[0]._id%>"><i class="fas fa-envelope-open"></i> Email Invoice</a>
+                        <a class="btn btn-info btn-sm" href="/invoice_in/<%=content._id%>/editRoute"><i class="far fa-edit"></i> Edit</a>
+                        <button class="btn btn-danger btn-sm deleteMessage1" id="<%=content._id%>" data-toggle="modal" data-target=".deleteMessageModal1"><i class="far fa-trash-alt"></i> Delete</button>
                     </td>
                   </tr>
                  <% }) %>
@@ -148,8 +147,6 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">New Invoice</h5>
-        <p class="cargo_id" id=""></p>
-        <p class="bookingc_id" id=""></p>
         <button type="button" class="close" onclick="location.reload()">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -157,58 +154,96 @@
       <div class="modal-body">
          <input class="dock_r_id" value="" type="hidden">
          <div class="row">
+           <div class="col-md-4">
+                     <div class="form-group">
+                         <label>Client</label>
+                         <select class="form-control" id="clientdropdown" name="clientdropdown">
+                             <option>Select a Client</option>
+                         </select>
+                     </div>
+                 </div>
+             <div class="col-md-4">
+                  <div class="form-group">
+                      <label>Booking Number</label>
+                      <input type="text" class="form-control" id="booking_num" name="booking_num">
+                  </div>
+             </div>
+             <div class="col-md-4">
+                  <div class="form-group">
+                      <label>Container Number</label>
+                      <input type="text" class="form-control" id="container_num" name="container_num">
+                  </div>
+             </div>
+             <div class="col-md-4">
+                  <div class="form-group">
+                      <label>Port of Discharge</label>
+                      <input type="text" class="form-control" id="port_of_dis" name="port_of_dis">
+                  </div>
+             </div>
+             <div class="col-md-4">
+                  <div class="form-group">
+                      <label>Port of Loading</label>
+                      <input type="text" class="form-control" id="port_of_loading" name="port_of_loading">
+                  </div>
+             </div>
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label>Point of origin</label>
+                      <input type="text" class="form-control" id="point_and_contry_of_origin" name="point_and_contry_of_origin">
+                  </div>
+             </div>
              <div class="col-md-4">
                   <div class="form-group">
                       <label>Ocean Freight</label>
-                      <input type="text" class="form-control" id="ocean_freight" name="ocean_freight">
+                      <input type="number" class="form-control" id="ocean_freight" name="ocean_freight">
                   </div>
              </div>
              <div class="col-md-4">
                   <div class="form-group">
                       <label>Truck</label>
-                      <input type="text" class="form-control" id="truck" name="truck">
+                      <input type="number" class="form-control" id="truck" name="truck">
                   </div>
              </div>
              <div class="col-md-4">
                   <div class="form-group">
                       <label>ECTN/BESC</label>
-                      <input type="text" class="form-control" id="ectn_becs" name="ectn_becs">
+                      <input type="number" class="form-control" id="ectn_becs" name="ectn_becs">
                   </div>
              </div>
              <div class="col-md-4">
                   <div class="form-group">
                       <input type="text" class="form-control" id="label_charge3" name="label_charge3" placeholder="Label">
-                      <input type="text" class="form-control" id="extra_charges" name="extra_charges" placeholder="Charge Amount">
+                      <input type="number" class="form-control" id="extra_charges" name="extra_charges" placeholder="Charge Amount">
                   </div>
              </div>
              <div class="col-md-4">
                   <div class="form-group">
                      <input type="text" class="form-control" id="label_charge1" name="label_charge1" placeholder="Label">
-                      <input type="text" class="form-control" id="more_invoice_fields" name="more_invoice_fields" placeholder="Charge Amount">
+                      <input type="number" class="form-control" id="more_invoice_fields" name="more_invoice_fields" placeholder="Charge Amount">
                   </div>
              </div>
              <div class="col-md-4">
                   <div class="form-group">
                       <input type="text" class="form-control" id="label_charge2" name="label_charge2" placeholder="Label">
-                      <input type="text" class="form-control" id="more_invoice_fields_2" name="more_invoice_fields_2" placeholder="Charge Amount">
+                      <input type="number" class="form-control" id="more_invoice_fields_2" name="more_invoice_fields_2" placeholder="Charge Amount">
                   </div>
              </div>
              <div class="col-md-4">
                   <div class="form-group">
                       <input type="text" class="form-control" id="label_charge4" name="label_charge4" placeholder="Label">
-                      <input type="text" class="form-control" id="more_invoice_fields_3" name="more_invoice_fields_3" placeholder="Charge Amount">
+                      <input type="number" class="form-control" id="more_invoice_fields_3" name="more_invoice_fields_3" placeholder="Charge Amount">
                   </div>
              </div>
              <div class="col-md-4">
                   <div class="form-group">
                       <label>Invoice Total</label>
-                      <input type="text" class="form-control" id="invoice_total" name="invoice_total">
+                      <input type="number" class="form-control" id="invoice_total" name="invoice_total">
                   </div>
              </div>
              <div class="col-md-4">
                   <div class="form-group">
                       <label>Balance Due</label>
-                      <input type="text" class="form-control" id="balance_due" name="balance_due">
+                      <input type="number" class="form-control" id="balance_due" name="balance_due">
                   </div>
              </div>
              <div class="col-md-12">
@@ -234,7 +269,7 @@
   </p>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
-<script src="/js/invoice.js"></script>
+<script src="/js/invoice_in.js"></script>
 <script>
    $(document).on("click", "#calulate_invoice", function(e) {
          e.preventDefault();

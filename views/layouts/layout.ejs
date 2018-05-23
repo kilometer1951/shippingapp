@@ -79,12 +79,12 @@
           Others
         </a>
         <div class="dropdown-menu1" id="dropdown_menu_3">
-               <div class="dropdown-menu-header" id="dropdown-menu-header">
-                   <span><i class="far fa-credit-card"></i> Expense</span>
+               <div class="dropdown-menu-header" id="dropdown-menu-header" onclick="window.location.href='/invoice_in'">
+                   <span><i class="far fa-credit-card"></i> Independent Invoice</span>
                </div>
                <div class="dropdown-menu-body" id="dropdown-menu-body">
                     <div class="menu-body-segment">
-                       <span><i class="far fa-file-alt"></i> Independent Invoice</span>
+                       <span><i class="far fa-file-alt"></i> Expense</span>
                    </div>
                </div>
               <% if(user.role === "admin"){ %>

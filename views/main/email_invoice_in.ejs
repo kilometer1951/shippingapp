@@ -25,7 +25,7 @@
   <a href="mailto:<%=ClientData.email%>" class="btn btn-success"><i class="fas fa-envelope-open"></i> Send Email</a>
 </form>
 
-  <a href="/invoice" class="btn btn-warning"> Cancel</a>
+  <a href="/invoice_in" class="btn btn-warning"> Cancel</a>
 
 <br>
 <br>
@@ -69,9 +69,9 @@
                          </div>
                          <div class="col-md-6" >
                              <div>
-                                 <span><%=BookingConfirmation.booking_number%></span><br>
-                                 <span><%=BookingConfirmation.booking_number%></span><br>
-                                 <span><%=Dock_R.container_num%></span>
+                                 <span><%=Invoice_In.booking_num%></span><br>
+                                 <span><%=Invoice_In.booking_num%></span><br>
+                                 <span><%=Invoice_In.container_num%></span>
                                  
                              </div>
                          </div>
@@ -80,11 +80,11 @@
                        <div class="row">
                            <div class="col-md-6" style="border-right:1px solid #000;">
                                <span><b>PORT OF DISCHARGE</b></span><br>
-                               <span><%=BookingConfirmation.port_of_discharge%></span>
+                               <span><%=Invoice_In.port_of_dis%></span>
                            </div>
                            <div class="col-md-6">
                                <span><b>PORT OF LOADING</b></span><br>
-                               <span><%=BookingConfirmation.port_of_loading%></span>
+                               <span><%=Invoice_In.port_of_loading%></span>
                            </div>
                        </div>
                          
@@ -95,25 +95,25 @@
                                  <span><b>OCEAN FREIGHT</b></span><br>
                                  <span><b>TRUCKING</b> </span><br>
                                  <span><b>ECTN/BESC</b> </span><br>
-                                 <span><b><%=Dock_R.label_charge3%></b></span><br>
-                                 <span><b><%=Dock_R.label_charge1%></b></span><br>
-                                 <span><b><%=Dock_R.label_charge2%></b></span><br>
-                                 <span><b><%=Dock_R.label_charge4%></b></span><br>
+                                 <span><b><%=Invoice_In.label_charge3%></b></span><br>
+                                 <span><b><%=Invoice_In.label_charge1%></b></span><br>
+                                 <span><b><%=Invoice_In.label_charge2%></b></span><br>
+                                 <span><b><%=Invoice_In.label_charge4%></b></span><br>
                                  <span><b>INVOICE TOTAL</b></span><br>
                                  <span><b>BALANCE DUE</b></span>
                              </div>
                           </div>
                            <div class="col-md-6">
                               <div>
-                                 <span><%=Dock_R.ocean_freight !== "" ? "$"+ Dock_R.ocean_freight  : "" %></span><br>
-                                 <span><%=Dock_R.truck !== "" ? "$"+Dock_R.truck : "" %></span><br>
-                                 <span><%=Dock_R.ectn_becs !== "" ? "$"+ Dock_R.ectn_becs : "" %></span><br>
-                                 <span><%=Dock_R.extra_charges !== "" ? "$"+Dock_R.extra_charges : "" %></span><br>
-                                 <span><%=Dock_R.more_invoice_fields !== "" ? "$"+Dock_R.more_invoice_fields : "" %></span><br>
-                                 <span><%=Dock_R.more_invoice_fields_2 !== "" ? "$"+Dock_R.more_invoice_fields_2 : "" %></span><br>
-                                 <span><%=Dock_R.more_invoice_fields_3 !== "" ? "$"+Dock_R.more_invoice_fields_3: "" %></span><br>
-                                 <span><%=Dock_R.invoice_total !== "" ? "$"+Dock_R.invoice_total : "" %></span><br>
-                                 <span><%=Dock_R.balance_due !== "" ? "$"+Dock_R.balance_due : "" %></span>
+                                 <span><%=Invoice_In.ocean_freight !== "" ? "$"+ Invoice_In.ocean_freight  : "" %></span><br>
+                                 <span><%=Invoice_In.truck !== "" ? "$"+Invoice_In.truck : "" %></span><br>
+                                 <span><%=Invoice_In.ectn_becs !== "" ? "$"+ Invoice_In.ectn_becs : "" %></span><br>
+                                 <span><%=Invoice_In.extra_charges !== "" ? "$"+Invoice_In.extra_charges : "" %></span><br>
+                                 <span><%=Invoice_In.more_invoice_fields !== "" ? "$"+Invoice_In.more_invoice_fields : "" %></span><br>
+                                 <span><%=Invoice_In.more_invoice_fields_2 !== "" ? "$"+Invoice_In.more_invoice_fields_2 : "" %></span><br>
+                                 <span><%=Invoice_In.more_invoice_fields_3 !== "" ? "$"+Invoice_In.more_invoice_fields_3: "" %></span><br>
+                                 <span><%=Invoice_In.invoice_total !== "" ? "$"+Invoice_In.invoice_total : "" %></span><br>
+                                 <span><%=Invoice_In.balance_due !== "" ? "$"+Invoice_In.balance_due : "" %></span>
                              </div>
                           </div>
                       </div>
@@ -123,17 +123,17 @@
                        <div class="row">
                            <div class="col-md-6" style="border-right:1px solid #000;">
                                <span><b>FILE NUMBER</b></span><br>
-                               <span><%=string_ID(Dock_R._id)%></span>
+                               <span><%=string_ID(Invoice_In._id)%></span>
                            </div>
                            <div class="col-md-6">
                                <span><b>INVOICE NUMBER</b></span><br>
-                               <span><%=string_ID(Dock_R._id)%></span>
+                               <span><%=string_ID(Invoice_In._id)%></span>
                            </div>
                        </div>
                      </div>
                     <div style="border-top:1px solid #000;">
                           <b style="font-size:14px;">POINT AND COUNTRY OF ORIGIN</b><br> 
-                        <span style="font-size:25px;"><%=Dock_R.point_and_contry_of_origin === "" ? "USA" : Dock_R.point_and_contry_of_origin %></span><br>
+                        <span style="font-size:25px;"><%=Invoice_In.point_and_contry_of_origin === "" ? "USA" : Invoice_In.point_and_contry_of_origin %></span><br>
                      </div>
                      <div style="border-top:1px solid #000;">
                           <b>ACCOUNT INFO</b><br> 

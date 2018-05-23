@@ -5,19 +5,36 @@ $(document).ready(function() {
 
 
     $(document).on("click", ".new_invoiceBTN", function() {
-        var id = $(this).attr("id")
-        $(".createForm").attr("id", id);
-        $(".createFormAndEmail").attr("id", id);
+        //get clients
+        $.get("/clientsAjax", function(data) {
+            data.forEach(function(content) {
+                var clientdropdown = '';
+                clientdropdown += '<option id="' + content._id + '" value="' + content._id + '">' + content.full_name + '</option>';
+                $("#clientdropdown").append(clientdropdown);
+                //  console.log(clientdropdown);
+            });
+        });
 
-    })
+
+
+
+    });
 
 
     // //submit data
     $(document).on("click", ".createForm", function() {
-        var id = $(this).attr("id");
+
 
         //get inputs
         var data = {};
+
+        data.client = $("#clientdropdown").val();
+        data.booking_num = $("#booking_num").val();
+        data.container_num = $("#container_num").val();
+
+        data.port_of_dis = $("#port_of_dis").val();
+        data.port_of_loading = $("#port_of_loading").val();
+        data.point_and_contry_of_origin = $("#point_and_contry_of_origin").val();
 
         data.ocean_freight = $("#ocean_freight").val();
         data.truck = $("#truck").val();
@@ -39,7 +56,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: '/invoice/new/' + id,
+            url: '/invoice_in/new/',
             data: data,
             success: function(data) {
                 // console.log(data);
@@ -54,6 +71,28 @@ $(document).ready(function() {
     });
 
 
+    //delete
+    //get  id
+    $(document).on('click', '.deleteMessage1', function() {
+        var id = $(this).attr("id");
+        $(".delete1").attr("id", id);
+
+        //alert(state_id);
+    });
+
+    //delete Client
+    $(document).on('click', '.delete1', function() {
+        var id = $(this).attr("id");
+
+        $.post("/invoice_in/" + id + "/delete?_method=DELETE", function(result) {
+
+            location.reload();
+
+        });
+        //alert(state_id);
+    });
+
+
 
 
     //display dr per clients
@@ -64,7 +103,7 @@ $(document).ready(function() {
         //clear table data and wait for new data from server
         $(".table_body").html("");
         //ajax call to display data
-        $.get('/d_r/' + id + '/fetch_perclient', function(result) {
+        $.get('/invoice_in/' + id + '/fetch_perclient', function(result) {
             $(".table_body").html('');
             console.log(result.length);
             if (result.length !== 0) {
@@ -76,13 +115,9 @@ $(document).ready(function() {
                     html += '<td>' + content.Client[0].full_name + '</td>';
                     html += '<td>' + content.container_num + '</td>';
                     html += '<td>';
-                    if (!content.invoice_exist) {
-                        html += '<button class="btn btn-primary btn-sm new_invoiceBTN"  id="' + content._id + '" data-target="#new_invoice" data-toggle="modal" ><i class="far fa-file"></i> New Invoice</button>';
-                    }
-                    if (content.invoice_exist) {
-                        html += '<a class="btn btn-warning btn-sm " href="/invoice/' + content._id + '/email/' + content.Client[0]._id + '/cargo/' + content.Cargo + '/consignee/' + content.Consignee + '/booking_c/' + content.BookingConfirmation + '"><i class="fas fa-envelope-open"></i> Email Invoice</a>';
-                        html += '<a class="btn btn-info btn-sm" href="/invoice/' + content._id + '/editRoute"><i class="far fa-edit"></i> Edit</a>';
-                    }
+                    html += '<a class="btn btn-warning btn-sm " href="/invoice_in/' + content._id + '/email/' + content.Client[0]._id + '"><i class="fas fa-envelope-open"></i> Email Invoice</a>';
+                    html += '<a class="btn btn-info btn-sm" href="/invoice_in/' + content._id + '/editRoute"><i class="far fa-edit"></i> Edit</a>';
+                    html += '<button class="btn btn-danger btn-sm deleteMessage1" id="' + content._id + '" data-toggle="modal" data-target=".deleteMessageModal1"><i class="far fa-trash-alt"></i> Delete</button>';
                     html += '</td>';
                     html += '</tr>';
                     $(".table_body").append(html);
@@ -102,5 +137,6 @@ $(document).ready(function() {
 
         });
     });
+
 
 });

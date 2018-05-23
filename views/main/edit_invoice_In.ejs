@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Invoice</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+     <!--<link rel="stylesheet" href="/css/newcargo.css">-->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        body {
+            background-color:#fafafa ;
+        }
+        .cargoSection {
+            width:70%;
+            margin:0 auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            background-color: #fff;
+            border-radius:5px;
+            margin-bottom:20px;
+            padding:20px;
+        }
+           .cargoDataFields:nth-of-type(odd){
+              background-color: #e8f5e9 ;
+            }
+            
+            .cargoDataFields:nth-of-type(even){
+              background-color: #bbdefb ;
+            }
+       
+.s1 {
+    padding:10px;
+}
+
+input[type="text"] {
+    color:#000;
+    font-size:20px;
+}
+       
+    </style>
+</head>
+<body>
+   <div class="container-fluid"><br>
+      <div class="cargoSection">
+          <h3 class="text-center" style="padding:20px;color:#3F729B;">Invoice For <%=foundData.Client[0].full_name%> </h3>
+          <br>
+          <form action="/invoice_in/<%=foundData._id%>/edit" method="POST">
+              <div class="section4" style="display:block;">
+                <div style="border:1px solid #eeeeee  ;padding:10px;">
+                    <div class="row">
+                         <div class="col-md-6">
+                              <div class="form-group">
+                                  <label>Booking Number</label>
+                                  <input type="text" class="form-control" id="booking_num" name="booking_num" value="<%=foundData.booking_num%>">
+                              </div>
+                         </div>
+                         <div class="col-md-6">
+                              <div class="form-group">
+                                  <label>Container Number</label>
+                                  <input type="text" class="form-control" id="container_num" name="container_num" value="<%=foundData.container_num%>">
+                              </div>
+                         </div>
+                          <div class="col-md-4">
+                              <div class="form-group">
+                                  <label>Port of Discharge</label>
+                                  <input type="text" class="form-control" id="port_of_dis" name="port_of_dis" value="<%=foundData.port_of_dis%>">
+                              </div>
+                         </div>
+                         <div class="col-md-4">
+                              <div class="form-group">
+                                  <label>Port of Loading</label>
+                                  <input type="text" class="form-control" id="port_of_loading" name="port_of_loading" value="<%=foundData.port_of_loading%>">
+                              </div>
+                         </div>
+                          <div class="col-md-4">
+                              <div class="form-group">
+                                  <label>Point of origin</label>
+                                  <input type="text" class="form-control" id="point_and_contry_of_origin" name="point_and_contry_of_origin" value="<%=foundData.point_and_contry_of_origin%>">
+                              </div>
+                         </div>
+                       <div class="col-md-4">
+                          <div class="form-group">
+                              <label>Ocean Freight</label>
+                              <input type="number" class="form-control" id="ocean_freight" name="ocean_freight" value="<%=foundData.ocean_freight%>">
+                          </div>
+                         </div>
+                         <div class="col-md-4">
+                              <div class="form-group">
+                                  <label>Truck</label>
+                                  <input type="number" class="form-control" id="truck" name="truck" value="<%=foundData.truck%>">
+                              </div>
+                         </div>
+                         <div class="col-md-4">
+                              <div class="form-group">
+                                  <label>ECTN/BESC</label>
+                                  <input type="number" class="form-control" id="ectn_becs" name="ectn_becs" value="<%=foundData.ectn_becs%>">
+                              </div>
+                         </div>
+                         <div class="col-md-4">
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="label_charge3" name="label_charge3" placeholder="Label"  value="<%=foundData.label_charge3%>">
+                                  <input type="number" class="form-control" id="extra_charges" name="extra_charges" value="<%=foundData.extra_charges%>">
+                              </div>
+                         </div>
+                          <div class="col-md-4">
+                              <div class="form-group">
+                                 <input type="text" class="form-control" id="label_charge1" name="label_charge1" placeholder="Label" value="<%=foundData.label_charge1%>">
+                                  <input type="number" class="form-control" id="more_invoice_fields" name="more_invoice_fields" placeholder="Charge Amount" value="<%=foundData.more_invoice_fields%>">
+                              </div>
+                         </div>
+                         <div class="col-md-4">
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="label_charge2" name="label_charge2" placeholder="Label" value="<%=foundData.label_charge2%>">
+                                  <input type="number" class="form-control" id="more_invoice_fields_2" name="more_invoice_fields_2" placeholder="Charge Amount" value="<%=foundData.more_invoice_fields_2%>">
+                              </div>
+                         </div>
+                         <div class="col-md-4">
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="label_charge4" name="label_charge4" placeholder="Label" value="<%=foundData.label_charge4%>">
+                                  <input type="number" class="form-control" id="more_invoice_fields_3" name="more_invoice_fields_3" placeholder="Charge Amount" value="<%=foundData.more_invoice_fields_3%>">
+                              </div>
+                         </div>
+                         <div class="col-md-4">
+                              <div class="form-group">
+                                  <label>Invoice Total</label>
+                                  <input type="number" class="form-control" id="invoice_total" name="invoice_total" value="<%=foundData.invoice_total%>">
+                              </div>
+                         </div>
+                         <div class="col-md-4">
+                              <div class="form-group">
+                                  <label>Balance Due</label>
+                                  <input type="number" class="form-control" id="balance_due" name="balance_due" value="<%=foundData.balance_due%>">
+                              </div>
+                         </div>
+                       <div class="col-md-12">
+                            <button class="btn btn-success" id="calulate_invoice">Calculate</button>
+                         </div>
+                    </div>
+                </div>
+              
+         </div>
+             
+            <button type="submit" class="btn btn-primary">Update and Return</button>
+            <a class="btn btn-danger" href="/invoice_in" style="float:right;">Return back</a>
+          </form>
+      </div>
+    </div>
+    
+<!-- Modal -->
+<div class="modal fade" id="FormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Update Cargo Weight</h5>
+        <p class="cargo_id" id=""></p>
+        <button type="button" class="close" onclick="location.reload()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <div class="section2" style="display:block;">
+               <div class="row section2_row"></div>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+        
+        
+<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+<!-- jQuery library -->
+        
+        
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function() {
+    
+     $(document).on("click", "#calulate_invoice", function(e) {
+         e.preventDefault();
+          var ocean_freight = parseFloat($("#ocean_freight").val()) || 0;
+        var truck = parseFloat($("#truck").val()) || 0;
+        var ectn_becs = parseFloat($("#ectn_becs").val()) || 0;
+        var extra_charges = parseFloat($("#extra_charges").val()) || 0;
+        var invoice_total = parseFloat($("#invoice_total").val()) || 0;
+
+        var more_invoice_fields = parseFloat($("#more_invoice_fields").val()) || 0;
+        var more_invoice_fields_2 = parseFloat($("#more_invoice_fields_2").val()) || 0;
+        var more_invoice_fields_3 = parseFloat($("#more_invoice_fields_3").val()) || 0;
+
+       var total_invoice = 0;
+       total_invoice = ocean_freight + truck + ectn_becs + extra_charges + invoice_total + more_invoice_fields + more_invoice_fields_2 + more_invoice_fields_3;
+     
+         $("#invoice_total").val(total_invoice.toFixed(2));
+     });
+        
+
+    $(document).on("click", ".next_1", function() {
+   
+        var cargo_id = $(this).attr("id");
+
+
+        $(".cargo_id").attr("id", cargo_id);
+
+        //display cargo weight data
+        //ajax call for one cargo
+        $.get("/cargo/" + cargo_id + "/oneCargo", function(data) {
+            //console.log(data.Cars.length)
+            //console.log(data)
+            if (data.Cars.length !== 0) {
+                data.Cars.forEach(function(content, index) {
+                    var car_number = parseInt(index, 10) + 1
+                    var html = '';
+
+                    html += '<div class="col-md-6"><div class="form-group">';
+                    html += '<label>Car ' + car_number + '</label><input class="form-control" id="cardetails" value="' + content.cardetails + '" disabled>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '<div class="col-md-3">';
+                    html += '<div class="form-group">';
+                    html += '<label>Weight</label><input class="form-control weight" id="' + content._id + '" value="' + content.weight + '" type="number" step="any">';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '<div class="col-md-3">';
+                    html += '<div class="form-group">';
+                    html += '<label>Measurement</label><input class="form-control measurement" id="' + content._id + '" value="' + content.measurement + '" type="number" step="any">';
+                    html += '</div>';
+                    html += '</div>';
+                    //  alert()
+                    $(".section2_row").append(html);
+
+                });
+            }
+
+            var personal_effect = '';
+
+            personal_effect += '<div class="col-md-8">';
+            personal_effect += '<div class="form-group">';
+            personal_effect += '<label>Personal Effects</label>';
+            personal_effect += '<textarea class="form-control" name="personal_effect" rows="6" style="resize:none;" id="personal_effect" disabled>' + data.personal_effect + '</textarea>';
+            personal_effect += '</div>';
+            personal_effect += '</div>';
+            personal_effect += '<div class="col-md-4">';
+            personal_effect += '<div class="form-group">';
+            personal_effect += '<label>Weight</label>';
+            personal_effect += '<input class="form-control personal_effect_weight" id="' + data._id + '" value = "' + data.personal_effect_weight + '" type="number" step="any">';
+            personal_effect += '<label>Measurement</label>';
+            personal_effect += '<input class="form-control personal_effect_m" id="' + data._id + '" value = "' + data.personal_effect_m + '" type="number" step="any"><br>';
+            personal_effect += '<button class="btn btn-info next_2" > Update and Close</button>'
+            personal_effect += '</div>';
+            personal_effect += '</div>';
+            personal_effect += '<div class="col-md-12"><div class="form-group">';
+            personal_effect += '<label style="color:#3F729B;">Total Weight</label>';
+            personal_effect += '<input class="form-control total_weight" id="total_weight"  disabled value="' + data.total_weight + '"> ';
+            personal_effect += '</div>';
+            personal_effect += '</div>';
+
+
+            $(".section2_row").append(personal_effect);
+
+            var g = document.getElementsByClassName("weight");
+            var m = document.getElementsByClassName("measurement");
+            //weight calculation
+            $(".next_2").click(function() {
+
+                var total_weight = 0;
+
+                var data = {};
+                var personal_effect_weight = parseFloat($(".personal_effect_weight").val()) || 0;
+                var personal_effect_m = parseFloat($(".personal_effect_m").val()) || 0;
+
+                for (var i = 0; i < g.length; i++) {
+                    if (g[i].value !== "") {
+                        total_weight += parseFloat(g[i].value);
+                    }
+                    //update cargo db
+                    data.cargo_id_11 = $(".cargo_id").attr("id");
+                    data.car_id = g[i].id;
+                    data.weight = g[i].value;
+                    console.log(total_weight);
+                    $.post("/_update_cargo_dock_1_", { data: data }, function(result) {
+                        //console.log(result);
+                    });
+                    //    }
+
+                }
+                $(".total_weight").val(total_weight + personal_effect_weight);
+                //alert(personal_effect_weight)
+
+                for (var i = 0; i < m.length; i++) {
+                    //update cargo db
+                    data.cargo_id_11 = $(".cargo_id").attr("id");
+                    data.car_id = m[i].id;
+                    data.measurement = m[i].value;
+                    //  console.log(data);
+                    $.post("/_update_cargo_dock_3_", { data: data }, function(result) {
+                        //console.log(result);
+                    });
+
+                }
+
+
+
+                //update total weight and personal effect
+                data.personal_effect_weight = personal_effect_weight;
+                data.personal_effect_m = personal_effect_m;
+                data.total_weight = $(".total_weight").val();
+                $.post("/_update_cargo_dock_2_", { data: data }, function(result) {
+                    //  console.log(result);
+                });
+                     location.reload();
+
+            });
+
+
+
+        });
+
+    });
+
+    });
+</script>
+
+</body>
+</html>
