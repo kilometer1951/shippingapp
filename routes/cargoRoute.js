@@ -24,7 +24,7 @@ router.get('/cargo', function(req, res) {
             function(callback) {
                 Cargos.find({})
                     .populate("Client")
-                    .sort('-Client')
+                    .sort('-createdAt')
                     .exec(function(err, foundData) {
                         callback(err, foundData);
                     });

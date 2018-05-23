@@ -26,6 +26,7 @@ var
     dock_rROute = require("./routes/dock_rROute"),
     authRoute = require("./routes/authRoute"),
     ectnRoute = require("./routes/ectnRoute"),
+    invoiceRoute = require("./routes/invoiceRoute"),
     adminRoute = require("./routes/adminRoute");
 
 
@@ -127,6 +128,7 @@ app.use(nextpageRoute);
 app.use(dock_rROute);
 app.use(authRoute);
 app.use(ectnRoute);
+app.use(invoiceRoute);
 app.use(adminRoute);
 
 

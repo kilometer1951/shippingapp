@@ -23,7 +23,7 @@ router.get("/bookingconfirmation", function(req, res) {
                 BookingConfirmation
                     .find({})
                     .populate("Client")
-                    .sort('-Client')
+                    .sort('-createdAt')
                     .exec(function(err, foundAllData) {
                         callback(err, foundAllData);
                     });
