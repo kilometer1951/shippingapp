@@ -12,7 +12,7 @@ router.get('/consignee', function(req, res) {
     if (req.user) {
         //get clients
         Consignees.find({})
-            .sort('-createdAt')
+            .sort('-_id')
             .exec(function(err, foundData) {
                 return res.render("main/consignee", { title: 'Oldsailor Ocean Shipping LLC || Consignee', data: foundData });
             });

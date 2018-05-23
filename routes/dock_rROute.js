@@ -25,7 +25,7 @@ router.get("/dock_r", function(req, res) {
                 Dock_R
                     .find({})
                     .populate("Client")
-                    .sort('-createdAt')
+                    .sort('-_id')
                     .exec(function(err, foundAllData) {
                         callback(err, foundAllData);
                     });
@@ -60,7 +60,7 @@ router.get("/invoice", function(req, res) {
                 Dock_R
                     .find({})
                     .populate("Client")
-                    .sort('-createdAt')
+                    .sort('-_id')
                     .exec(function(err, foundAllData) {
                         callback(err, foundAllData);
                     });
@@ -95,7 +95,7 @@ router.get("/bill_lading", function(req, res) {
                 Dock_R
                     .find({})
                     .populate("Client")
-                    .sort('-createdAt')
+                    .sort('-_id')
                     .exec(function(err, foundAllData) {
                         callback(err, foundAllData);
                     });

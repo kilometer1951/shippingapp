@@ -23,7 +23,7 @@ router.get('/powerOfAttroney_nra', function(req, res) {
                 PowerOfAttroney_nra
                     .find({})
                     .populate("Client")
-                    .sort('-createdAt')
+                    .sort('-_id')
                     .exec(function(err, foundAllData) {
                         callback(err, foundAllData);
                     });
