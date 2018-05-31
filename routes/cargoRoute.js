@@ -143,9 +143,12 @@ router.post("/cargo/new", function(req, res) {
                 //push new cars into the array
                 Cargos.findOne({ _id: req.body.data.cargo_id },
                     function(err, cargos) {
-                        cargos.Cars.push(car);
-                        cargos.save();
-                        callback(err, cargos);
+                        if (req.body.data.vin !== "") {
+                            cargos.Cars.push(car);
+                            cargos.save();
+                            callback(err, cargos);
+                        }
+
                     });
             }
         ], function(err, results) {
