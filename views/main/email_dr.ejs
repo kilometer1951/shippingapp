@@ -15,7 +15,7 @@
        border: none;
        outline:none;
        resize: none;
-       width:550px;
+       width:500px;
        
    }
        .h_1 {
@@ -294,7 +294,7 @@ th, td {
                                            </span>
                                         <% }) %>
                                         <div style="">
-                                       <textarea id="text_field"><%-Cargos.personal_effect.toUpperCase()%></textarea>
+                                       <textarea id="text_field"><%=Cargos.personal_effect.toUpperCase()%></textarea>
                                        </div>
                                      </div>
                                      
@@ -324,11 +324,11 @@ th, td {
                                      <% }) %>
                                     
                                    <div style="margin-top:26px;">
-                                        <span><%=Cargos.personal_effect_weight !== undefined ? Cargos.personal_effect_weight+"kg" : "" %></span>
+                                        <span><%=Cargos.personal_effect !== "" ? Cargos.personal_effect_weight+"kg" : "" %></span>
                                    </div>
                                    </div>
                                     <div style="font-size:16px;"><br>
-                                       <span ><b> <%= parseFloat(Cargos.total_weight).toFixed(2)%>kg</b></span>
+                                       <span ><b> <%=parseFloat(Cargos.total_weight).toFixed(2)%>kg</b></span>
                                    </div>
                                    
                                </div>

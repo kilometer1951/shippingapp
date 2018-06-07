@@ -25,7 +25,7 @@ router.get("/dock_r", function(req, res) {
                 Dock_R
                     .find({})
                     .populate("Client")
-                    .sort('-_id')
+                    .sort('-createdAt')
                     .exec(function(err, foundAllData) {
                         callback(err, foundAllData);
                     });
