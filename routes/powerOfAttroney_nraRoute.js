@@ -23,7 +23,7 @@ router.get('/powerOfAttroney_nra', function(req, res) {
                 PowerOfAttroney_nra
                     .find({})
                     .populate("Client")
-                    .sort('-_id')
+                    .sort('-createdAt')
                     .exec(function(err, foundAllData) {
                         callback(err, foundAllData);
                     });
@@ -370,4 +370,121 @@ router.post("/poa_nra/:id/editFormData", function(req, res) {
 
 
 
+//auto fill form
+
+router.get('/autofill', function(req, res) {
+    if (req.user) {
+        var t = req.cookies;
+        // t.req.cookies['connect.sid'].split('.')[1]
+        //   console.log(t['connect.sid'])
+        //get clients
+        Clients.find({})
+            .sort('-createdAt')
+            .exec(function(err, foundData) {
+                return res.render("main/autofill", { data: foundData, layout: false });
+            });
+    }
+    else {
+        return res.redirect('/login');
+    }
+});
+
+
+router.get('/poa_autofill/:id', function(req, res) {
+    if (req.user) {
+        async.parallel([
+
+            function(callback) {
+                Clients.findOne({ _id: req.params.id }, function(err, foundData) {
+                    callback(err, foundData);
+                });
+            },
+            function(callback) {
+                PowerOfAttroney_nra
+                    .find({ Client: req.params.id })
+                    .populate("Client")
+                    .sort('-createdAt')
+                    .exec(function(err, foundAllData) {
+                        callback(err, foundAllData);
+                    });
+            }
+
+        ], (err, results) => {
+            var clientName = results[0];
+            var foundAllData = results[1];
+            return res.render("main/poa_autofill", { clientName: clientName, foundAllData: foundAllData, layout: false });
+        });
+    }
+    else {
+        return res.redirect('/login');
+    }
+});
+
+
+
+router.get("/autofill_new/:id", function(req, res) {
+
+    if (req.user) {
+
+        PowerOfAttroney_nra
+            .findOne({ _id: req.params.id })
+            .populate("Client")
+            .exec(function(err, foundData) {
+                console.log(foundData);
+                return res.render("main/autofill_new", { title: 'Oldsailor Ocean Shipping LLC || New POA / NRA', foundData: foundData, layout: false });
+
+            });
+
+    }
+    else {
+        return res.redirect('/login');
+    }
+
+
+});
+
+router.post("/autofill_new/:id/new", function(req, res) {
+    //check if cargo exist 
+
+
+
+
+
+    var newData = new PowerOfAttroney_nra();
+
+    newData.createdAt = moment.parseZone(new Date()).format('l'),
+        newData.Client = req.body.clientname,
+        newData.Consignee = req.body.cosigneename,
+        newData.attachment_status = false,
+        newData.insurance = req.body.insurance,
+        newData.portdestination = req.body.portdestination,
+        newData.carrier = req.body.carrier,
+        newData.carrier = req.body.carrier,
+        newData.typeofshipment = req.body.typeofshipment,
+        newData.typeofpayment = req.body.typeofpayment,
+        newData.effective_date = req.body.effective_date,
+        newData.expiration = req.body.expiration,
+        newData.carrier_rep = req.body.carrier_rep,
+        newData.bill_of_lading_oring = req.body.bill_of_lading_oring,
+        newData.ocean_port_of_loading = req.body.ocean_port_of_loading,
+        newData.bill_of_lading_destination = req.body.bill_of_lading_destination,
+        newData.port_of_discharge = req.body.port_of_discharge,
+        newData.rate = req.body.rate,
+        newData.rate_basis = req.body.rate_basis,
+        newData.cargo_qantity = req.body.cargo_qantity,
+        newData.minimum = req.body.minimum,
+        newData.maximum = req.body.maximum,
+        newData.origin_service = req.body.origin_service,
+        newData.destination_service = req.body.destination_service,
+        newData.special_conditions = req.body.special_conditions,
+        newData.commodity = req.body.commodity,
+
+
+        //add
+        newData.save(function(err, newlyCreated) {
+            console.log(newlyCreated);
+            res.redirect("/powerOfAttroney_nra")
+        });
+
+});
 module.exports = router

@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <title>Auto Fill Form</title>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+<style>
+    .client-body {
+        margin-top:20px;
+        z-index:-1;
+    }
+    
+    .clientDataSection {
+        height:70vh;
+        overflow-y:auto;
+        overflow-x:hidden;
+    }
+/*    tbody {*/
+/*    display:block;*/
+/*    height:65vh;*/
+/*    overflow:auto;*/
+/*}*/
+/*  thead, tbody tr {*/
+/*    display:table;*/
+/*    width:100%;*/
+/*    table-layout:fixed;*/
+/*}*/
+
+
+</style>
+</head>
+<body>
+<div class="container-fluid">
+    <div style="margin-top:30px;"></div>
+    <h3 class="text-center">Search OR Select a Client Below</h3>
+    <div class="client-body" id="clientBody">
+        <form>
+            <div class="row">
+              <div class="col-md-4">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search Clients" class="searchClients" onkeyup="getClients(this.value)">
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="form-group">
+                    <a href="/powerOfAttroney_nra" class="btn btn-danger">Cancel</a>
+                  </div>
+              </div>
+              <div class="col-md-4" >
+                  <div class="form-group" style="float:right;">
+                    <button type="button" class="btn btn-warning newCargo" id="newCargo" onclick="location.reload()"><i class="fas fa-sync-alt"></i> Reload Page Data</button>
+                  </div>
+              </div>
+            </div>
+        </form>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="table-success">
+                  <tr>
+                    <th>Full name</th>
+                    <th>Tel</th>
+                    <th>Email</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody class="client_table_body">
+                  <%  data.forEach(function(content){ %>
+                  <tr >
+                    <td><%= content.full_name%></td>
+                    <td><%= content.pnum%></td>
+                    <td><%= content.email%></td>
+                    <td>
+                        <a href="poa_autofill/<%=content._id%>" class="btn btn-dark btn-sm" >Select</a> 
+                    </td>
+                  </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="nodata" style="text-align:center;font-size:40px;display:none;">
+  <p>
+    <i class="fas fa-users"></i><br>
+    <span class="nodata_text">No Client Found...</span>
+  </p>
+</div>
+<script src="/js/autofill.js"></script>
+</body>
+</html>

@@ -14,7 +14,7 @@ router.get('/clients', function(req, res) {
         //   console.log(t['connect.sid'])
         //get clients
         Clients.find({})
-            .sort('-_id')
+            .sort('-createdAt')
             .exec(function(err, foundData) {
                 return res.render("main/clients", { title: 'Oldsailor Ocean Shipping LLC || Clients', data: foundData });
             });
