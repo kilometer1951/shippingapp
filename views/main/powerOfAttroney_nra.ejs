@@ -138,7 +138,8 @@
 <div class="modal fade" id="newFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" data-keyboard="false" data-backdrop="static">
   <div class="modal-dialog modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <form method="POST" action="/poa_nra_form/new">
+          <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">New Form (POA / NRA)</h5>
         <p class="cargo_id_" id=""></p>
         <button type="button" class="close" onclick="location.reload()">
@@ -190,7 +191,7 @@
                      <div class="col-md-12">
                          <div class="form-group">
                              <label>Port of Destination</label>
-                             <input class="form-control" placeholder="Port of Destination" name="portdestination" id="portdestination">
+                             <input  class="form-control" placeholder="Port of Destination" name="portdestination" id="portdestination">
                          </div>
                      </div>
                      <div class="col-md-6">
@@ -366,10 +367,11 @@
       </div>
       <div class="modal-footer" style="display:none;">
         <button class="btn btn-warning back_3" id="" style="float:right;"><i class="fas fa-arrow-left"></i> Back</button>
-        <button type="button" class="btn btn-primary createForm">Create Form</button>
-        <button type="button" class="btn btn-primary createFormAndEmail">Create Form and Email</button>
+        <button type="submit" class="btn btn-primary">Create Form</button>
+        <!--<button type="button" class="btn btn-primary createFormAndEmail">Create Form and Email</button>-->
         <button type="button" class="btn btn-secondary" onclick="location.reload()">Close</button>
       </div>
+      </form>
     </div>
   </div>
 </div>

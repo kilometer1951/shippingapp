@@ -4,6 +4,7 @@ const Clients = require("../models/client");
 const States = require("../models/state");
 const Cities = require("../models/city");
 const Cargos = require("../models/cargo");
+const Users = require("../models/users");
 const async = require('async');
 const moment = require('moment');
 
@@ -35,12 +36,20 @@ router.get('/admin/index', function(req, res) {
                     callback(err, data);
                 })
 
-            }
+            },
+            function(callback) {
+                //display countries
+                Users.find({}, function(err, data) {
+                    callback(err, data);
+                })
+
+            },
         ], (err, results) => {
             var Country = results[0];
             var States = results[1];
             var Cities = results[2];
-            return res.render("admin/index", { title: 'Oldsailor Ocean Shipping LLC || Home', Country: Country, States: States, Cities: Cities, layout: 'admin_layout' });
+            var Users = results[3];
+            return res.render("admin/index", { title: 'Oldsailor Ocean Shipping LLC || Home', Country: Country, States: States, Cities: Cities, layout: 'admin_layout', Users: Users });
 
         })
 

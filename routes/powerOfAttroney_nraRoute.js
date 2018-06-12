@@ -117,8 +117,9 @@ router.post("/poa_nra_form/new", function(req, res) {
 
         //add
         newData.save(function(err, newlyCreated) {
-            console.log(newlyCreated);
-            return res.send(newlyCreated);
+            // console.log(newlyCreated);
+            res.redirect("/powerOfAttroney_nra");
+            //return res.send(newlyCreated);
         });
 
 });

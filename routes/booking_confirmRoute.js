@@ -92,7 +92,8 @@ router.post("/b_c/new", function(req, res) {
     //add
     newData.save(function(err, newlyCreated) {
         //  console.log(newlyCreated);
-        return res.send(newlyCreated);
+        //  return res.send(newlyCreated);
+        res.redirect("/bookingconfirmation");
     });
 
 });

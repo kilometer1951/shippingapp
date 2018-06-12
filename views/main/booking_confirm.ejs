@@ -134,7 +134,8 @@
 <div class="modal fade" id="newFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" data-keyboard="false" data-backdrop="static">
   <div class="modal-dialog modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <form action="/b_c/new" method="POST">
+          <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">New Booking Confirmation</h5>
         <p class="poa_nra_id_" id=""></p>
         <button type="button" class="close" onclick="location.reload()">
@@ -182,7 +183,7 @@
                      <div class="col-md-4">
                          <div class="form-group">
                              <label>Booking Number</label>
-                             <input class="form-control" placeholder="Booking Number" name="booking_number" id="booking_number">
+                             <input class="form-control" placeholder="Booking Number" name="booking_number" id="booking_number" autocomplete="off">
                          </div>
                      </div>
                      <div class="col-md-4">
@@ -295,10 +296,11 @@
       </div>
       <div class="modal-footer" style="display:none;">
         <button class="btn btn-warning back_3" id="" style="float:right;"><i class="fas fa-arrow-left"></i> Back</button>
-        <button type="button" class="btn btn-primary createForm">Create Form</button>
-        <button type="button" class="btn btn-primary createFormAndEmail">Create Form and Email</button>
+        <button type="submit" class="btn btn-primary">Create Form</button>
+        <!--<button type="button" class="btn btn-primary createFormAndEmail">Create Form and Email</button>-->
         <button type="button" class="btn btn-secondary" onclick="location.reload()">Close</button>
       </div>
+      </form>
     </div>
   </div>
 </div>

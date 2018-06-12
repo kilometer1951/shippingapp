@@ -44,35 +44,40 @@ $(document).ready(function() {
 
 
 
-    $(document).on("click", ".next_22", function() {
+    $(document).on("click", ".next_22", function(e) {
+        e.preventDefault();
         $(".section1").fadeOut();
         $(".section2").fadeIn();
 
 
     });
 
-    $(document).on("click", ".next_1", function() {
+    $(document).on("click", ".next_1", function(e) {
+        e.preventDefault();
         $(".section1").fadeOut();
         $(".section2").fadeIn();
 
     });
 
 
-    $(document).on("click", ".next_2", function() {
+    $(document).on("click", ".next_2", function(e) {
+        e.preventDefault();
         $(".section2").fadeOut();
         $(".section3").fadeIn();
         $(".modal-footer").fadeIn();
     });
 
 
-    $(document).on("click", ".back_2", function() {
+    $(document).on("click", ".back_2", function(e) {
+        e.preventDefault();
         $(".section2").fadeOut();
         $(".section1").fadeIn();
     });
 
 
 
-    $(document).on("click", ".back_3", function() {
+    $(document).on("click", ".back_3", function(e) {
+        e.preventDefault();
         $(".section3").fadeOut();
         $(".modal-footer").fadeOut();
         $(".section2").fadeIn();
