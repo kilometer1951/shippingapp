@@ -137,20 +137,56 @@ $(document).ready(function() {
     //save Client and new
     $("#saveandnew").on("click", function(e) {
         e.preventDefault();
-        saveClients();
+        return check()
+        //    saveClients();
 
     });
 
     //save Client and close
     $("#saveandclose").on("click", function(e) {
         e.preventDefault();
-        saveClients();
+        return check2()
 
-        $("#state").html("<option>Select a state</option>");
-        $("#city").html("<option>Select a city</option>");
-        clearInputs();
-        $('#newclientsModal').modal('toggle');
     });
+
+
+    function check() {
+        var data = {};
+        data.cfull_name = $("#cfirst_name").val();
+        $.post("/check/new", { data: data }, function(result) {
+            console.log(result.error)
+            if (result.error === "error") {
+                console.log("error");
+                $(".error").css("display", "block")
+            }
+            else {
+                saveClients()
+                $(".error").css("display", "none")
+            }
+
+        });
+    }
+
+    function check2() {
+        var data = {};
+        data.cfull_name = $("#cfirst_name").val();
+        $.post("/check/new", { data: data }, function(result) {
+            console.log(result.error)
+            if (result.error === "error") {
+                console.log("error");
+                $(".error").css("display", "block")
+            }
+            else {
+                saveClients();
+
+                $("#state").html("<option>Select a state</option>");
+                $("#city").html("<option>Select a city</option>");
+                clearInputs();
+                $('#newclientsModal').modal('toggle');
+            }
+
+        });
+    }
 
     function saveClients() {
         var data = {};
@@ -451,6 +487,7 @@ $(document).ready(function() {
         $("#passport").val('');
         $("#fax").val('');
         $("#ssn").val('');
+        $(".error").css("display", "none")
     }
 
 

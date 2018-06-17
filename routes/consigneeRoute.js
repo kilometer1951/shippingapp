@@ -89,6 +89,26 @@ router.get("/displayDropdowndataForConsignee", function(req, res) {
 
 });
 
+
+//save client
+router.post("/check_cosignee/new", function(req, res) {
+
+
+
+    //console.log(req.body.data.cfirst_name)
+    Consignees.find({ full_name: req.body.data.cfirst_name }, function(err, found) {
+        if (found.length !== 0) {
+            return res.send({ error: "error" });
+        }
+        else {
+            return res.send({ error: "ok" });
+        }
+    });
+
+
+});
+
+
 //save client
 router.post("/consignee/new", function(req, res) {
     //console.log(req.body);

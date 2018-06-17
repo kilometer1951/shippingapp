@@ -69,7 +69,16 @@
               }
             }
             
-            
+    /*     .error {*/
+    /*padding:5px;*/
+    /*margin-bottom:10px;*/
+    /*background-color:#ff4444;*/
+    /*border-radius:5px;*/
+    /*color:#fff;*/
+    /*display:none;*/
+    /*}*/
+
+   
 
 </style>
 <div class="container-fluid">
@@ -77,6 +86,7 @@
     <h3 class="text-center">Dock Receipt</h3>
     <div class="client-body" id="clientBody">
         <form>
+            
             <div class="row">
               <div class="col-md-4">
                   <div class="form-group">
@@ -157,6 +167,9 @@
         </button>
       </div>
       <div class="modal-body">
+          <!--<div class="error" id="error">-->
+          <!--   <p class="text-center" style="padding-top:10px;">Select a Consignee</p>-->
+          <!-- </div>-->
          <div class="section1" style="display:block;">
              <div class="row">
                  <div class="col-md-6">
@@ -171,7 +184,7 @@
                      <div class="form-group">
                          <label>Consignee</label>
                          <select class="form-control" id="consigneedropdown" name="consigneedropdown">
-                             <option>Select a Consignee</option>
+                             <option value='selectconsignee'>Select a Consignee</option>
                          </select>
                      </div>
                  </div>

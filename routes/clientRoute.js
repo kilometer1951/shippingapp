@@ -145,14 +145,30 @@ router.post("/client/new", function(req, res) {
     }; //
     //console.log(req.body.data.cfirst_name)
     Clients.create(newData, function(err, newlyCreated) {
-        Clients.find({ createdAt: moment.parseZone(newlyCreated.createdAt).format('l') }, function(err, i) {
 
-        })
-        //  console.log(moment.parseZone(newlyCreated.createdAt).format('l'));
         return res.send(newlyCreated);
     });
 
 });
+
+//save client
+router.post("/check/new", function(req, res) {
+
+
+
+    //console.log(req.body.data.cfirst_name)
+    Clients.find({ full_name: req.body.data.cfull_name }, function(err, found) {
+        if (found.length !== 0) {
+            return res.send({ error: "error" });
+        }
+        else {
+            return res.send({ error: "ok" });
+        }
+    });
+
+
+});
+
 
 
 

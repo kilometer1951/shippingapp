@@ -112,20 +112,58 @@ $(document).ready(function() {
     //save Client and new
     $("#saveandnew").on("click", function(e) {
         e.preventDefault();
-        saveClients();
+        return check();
 
     });
 
     //save Client and close
     $("#saveandclose").on("click", function(e) {
         e.preventDefault();
-        saveClients();
+        return check2();
 
-        $("#state").html("<option>Select a state</option>");
-        $("#city").html("<option>Select a city</option>");
-        clearInputs();
-        $('#newclientsModal').modal('toggle');
+
     });
+
+
+    function check() {
+        var data = {};
+        data.cfirst_name = $("#cfirst_name").val();
+        $.post("/check_cosignee/new", { data: data }, function(result) {
+            console.log(result.error)
+            if (result.error === "error") {
+                console.log("error");
+                $(".error").css("display", "block")
+            }
+            else {
+                saveClients()
+                $(".error").css("display", "none")
+            }
+
+        });
+    }
+
+    function check2() {
+        var data = {};
+        data.cfirst_name = $("#cfirst_name").val();
+        $.post("/check_cosignee/new", { data: data }, function(result) {
+            console.log(result.error)
+            if (result.error === "error") {
+                console.log("error");
+                $(".error").css("display", "block")
+            }
+            else {
+                saveClients()
+                $("#state").html("<option>Select a state</option>");
+                $("#city").html("<option>Select a city</option>");
+                clearInputs();
+                $('#newclientsModal').modal('toggle');
+            }
+
+        });
+    }
+
+
+
 
     function saveClients() {
         var data = {};
@@ -358,6 +396,7 @@ $(document).ready(function() {
         $("#state").val('');
         $("#city").val('');
         $("#postalcode").val('');
+        $(".error").css("display", "none")
     }
 
 

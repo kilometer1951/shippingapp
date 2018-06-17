@@ -21,7 +21,7 @@ $(document).ready(function() {
     $(document).on('change', '#clientdropdown', function() {
         var client_id = $(this).val();
         $(".table_1").fadeIn();
-        $("#consigneedropdown").html("<option>Select a Consignee</option>");
+        $("#consigneedropdown").html("<option value='selectconsignee'>Select a Consignee</option>");
         // alert(client_id);
         //get cosignee data
         $.get("/cosigneeDropdownData/" + client_id, function(data) {
@@ -96,6 +96,13 @@ $(document).ready(function() {
 
 
     $(document).on("click", ".next_1", function() {
+
+        var ddl = document.getElementById("consigneedropdown");
+        var selectedValue = ddl.options[ddl.selectedIndex].value;
+        if (selectedValue == "selectconsignee") {
+            return alert("Select a Consignee");
+        }
+
         $(".section1").fadeOut();
         $(".nodata1").fadeOut();
         $(".loader1").fadeIn();
