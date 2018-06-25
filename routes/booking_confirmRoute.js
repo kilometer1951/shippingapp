@@ -15,15 +15,18 @@ router.get("/bookingconfirmation", function(req, res) {
         async.parallel([
 
             function(callback) {
-                Clients.find({}, function(err, foundData) {
-                    callback(err, foundData);
-                });
+                Clients.find({})
+                    .sort('-createdAt')
+                    .exec(function(err, foundData) {
+                        callback(err, foundData);
+                    });
             },
             function(callback) {
                 BookingConfirmation
                     .find({})
-                    .populate("Client")
+
                     .sort('-createdAt')
+                    // .populate("Client")
                     .exec(function(err, foundAllData) {
                         callback(err, foundAllData);
                     });

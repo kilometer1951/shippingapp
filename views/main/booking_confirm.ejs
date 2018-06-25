@@ -88,7 +88,7 @@
                 <thead class="table-success">
                   <tr>
                     <th>Date Added</th>
-                    <th>Clients Name</th>
+                    <th style="display:none;" id="client_header">Clients Name</th>
                     <th style="background-color:#00897b  ;color:#fff;">Vessel Name</th>
                     <th>Booking Number</th>
                     <th>Voyage Number</th>
@@ -97,14 +97,14 @@
                 </thead>
                 <tbody class="table_body">
                 <% foundAllData.forEach(function(content){ %>
+
                   <tr id="rowID">
                     <td><%=(moment.parseZone(content.createdAt).format('l') === moment.parseZone(new Date()).format('l') ? 'Today': moment(content.createdAt).format("ll"))%></td>
-                    <td><%=content.Client[0].full_name%></td>
                     <td><%=content.vessel_name%></td>
                     <td><%=content.booking_number%></td>
                     <td><%=content.voyage_number%></td>
                     <td>
-                        <a class="btn btn-outline-success btn-sm " href="/bc/<%=content._id%>/email/<%=content.Client[0]._id%>"><i class="fas fa-envelope-open"></i> Email</a>
+                        <a class="btn btn-outline-success btn-sm " href="/bc/<%=content._id%>/email/<%=content.Client%>"><i class="fas fa-envelope-open"></i> Email</a>
                         <a class="btn btn-outline-info btn-sm openEditModal" href="/bc/<%=content._id%>/editRoute"><i class="far fa-edit"></i> Edit</a>
                         <button class="btn btn-outline-danger btn-sm deleteMessage1" id="<%=content._id%>" data-toggle="modal" data-target=".deleteMessageModal1"><i class="far fa-trash-alt"></i> Delete</button>
                     </td>

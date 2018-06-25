@@ -225,6 +225,7 @@ $(document).ready(function() {
             if (result.length !== 0) {
                 result.forEach(function(content) {
                     //display data
+                    $("#client_header").css("display", "block")
                     var html = '';
                     html += '<tr id="rowID">';
                     html += '<td>' + (moment.parseZone(content.createdAt).format('l') === moment.parseZone(new Date()).format('l') ? 'Today' : moment(content.createdAt).format("ll")) + '</td>';
