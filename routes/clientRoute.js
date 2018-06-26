@@ -56,8 +56,7 @@ router.post("/clients/searchQ", function(req, res) {
     Clients.find({
         $or: [
             { pnum: { $regex: new RegExp(req.body.data, "i") } },
-            { email: { $regex: new RegExp(req.body.data, "i") } },
-            { full_name: { $regex: new RegExp(req.body.data, "i") } },
+            { email: { $regex: new RegExp(req.body.data, "i") } }, { full_name: { $regex: new RegExp(req.body.data, "i") } },
             { first_name: { $regex: new RegExp(req.body.data, "i") } }
         ]
 

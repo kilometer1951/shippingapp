@@ -52,8 +52,61 @@
                 border-bottom-color: #1abc9c;
               }
             }
-            
-            
+          
+.dropdown-menu11 {
+    padding: 0px;
+    width: 350px;
+    height:200px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    position: absolute;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index:1;
+   display:none;
+}
+
+
+
+
+
+
+
+.dropdown-menu11 .dropdown-menu-body1 {
+    padding:0px;
+    border-bottom: 1px solid #e0e0e0;
+    font-family: 'PT Sans', sans-serif;
+
+}
+
+.dropdown-menu11 .dropdown-menu-body1 .menu-body-segment1 {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+
+.dropdown-menu11 .dropdown-menu-body1 .menu-body-segment1 span {
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    font-size: 15px;
+    color: #616161;
+
+}
+
+.dropdown-menu11 .dropdown-menu-body1 .menu-body-segment1:hover{
+    cursor: pointer;
+    background-color: #eeeeee;
+    color: #000;
+}
+
+
+
+
+
 
 </style>
 <div class="container-fluid">
@@ -84,7 +137,7 @@
                   </div>
               </div>
             </div>
-        </form>
+         </form>
             <table class="table table-striped">
                 <thead class="table-success">
                   <tr>
@@ -116,8 +169,8 @@
                  <% }) %>
                 </tbody>
               </table>
+        </div>
     </div>
-</div>
 
 
 <!--Delete Client-->
@@ -146,7 +199,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" onclick="closesearch()">
          <div class="section1" style="display:block;">
              <div class="row">
                  <div class="col-md-6">
@@ -190,14 +243,34 @@
                  <div class="row">
                      <div class="col-md-12">
                          <div class="form-group">
-                             <label>Port of Destination</label>
-                             <input  class="form-control" placeholder="Port of Destination" name="portdestination" id="portdestination">
+                              <label>Port of Destination</label>
+                              <input  class="form-control" placeholder="Port of Destination" name="portdestination" id="portdestination" autocomplete="off" onmouseenter="opensearch()" onkeyup="getdata(this.value)">
+                              <div class="dropdown-menu11" id="autocomplete_1">
+                                  
+                                   <div class="dropdown-menu-body1" id="data_1" >
+                                        <div class="menu-body-segment1">
+                                           <span></span>
+                                        </div>
+                                        
+                                   </div>
+                                 
+                               </div>
                          </div>
                      </div>
                      <div class="col-md-6">
                          <div class="form-group">
                              <label>Carrier</label>
-                             <input class="form-control" placeholder="Carrier" name="carrier" id="carrier">
+                             <input class="form-control" placeholder="Carrier" name="carrier" id="carrier" autocomplete="off" onmouseenter="opensearch2()" onkeyup="getdata2(this.value)">
+                             <div class="dropdown-menu11" id="autocomplete_2">
+                                  
+                                   <div class="dropdown-menu-body1" id="data_2" >
+                                        <div class="menu-body-segment1">
+                                           <span></span>
+                                        </div>
+                                        
+                                   </div>
+                                 
+                               </div>
                          </div>
                      </div>
                      <div class="col-md-6" style="margin-top:3px;font-size:20px;">
@@ -280,25 +353,45 @@
                      <div class="col-md-4">
                          <div class="form-group">
                              <label>Bill of Lading Origins(s)</label>
-                             <input class="form-control" name="bill_of_lading_oring" id="bill_of_lading_oring">
+                             <input class="form-control" name="bill_of_lading_oring" id="bill_of_lading_oring" autocomplete="off" onmouseenter="opensearch3()" onkeyup="getdata3(this.value)">
+                          <div class="dropdown-menu11" id="autocomplete_3">
+                                  
+                                   <div class="dropdown-menu-body1" id="data_3" >
+                                        <div class="menu-body-segment1">
+                                           <span></span>
+                                        </div>
+                                        
+                                   </div>
+                                 
+                               </div>
                          </div>
                      </div>
                      <div class="col-md-4">
                          <div class="form-group">
                              <label>Ocean Port(s) of Loading</label>
-                             <input class="form-control" name="ocean_port_of_loading" id="ocean_port_of_loading">
+                             <input class="form-control" name="ocean_port_of_loading" id="ocean_port_of_loading" disabled >
                          </div>
                      </div>
                      <div class="col-md-4">
                          <div class="form-group">
                              <label>Bill of Lading Destination</label>
-                             <input class="form-control" name="bill_of_lading_destination" id="bill_of_lading_destination">
+                             <input class="form-control" name="bill_of_lading_destination" id="bill_of_lading_destination" autocomplete="off" onmouseenter="opensearch4()" onkeyup="getdata4(this.value)">
+                          <div class="dropdown-menu11" id="autocomplete_4">
+                                  
+                                   <div class="dropdown-menu-body1" id="data_4" >
+                                        <div class="menu-body-segment1">
+                                           <span></span>
+                                        </div>
+                                        
+                                   </div>
+                                 
+                               </div>
                          </div>
                      </div>
                      <div class="col-md-4">
                          <div class="form-group">
                              <label>Ocean Port(s) of Discharge</label>
-                             <input class="form-control" name="port_of_discharge" id="port_of_discharge">
+                             <input class="form-control" name="port_of_discharge" id="port_of_discharge" disabled >
                          </div>
                      </div>
                      <div class="col-md-4">

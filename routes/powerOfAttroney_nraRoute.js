@@ -7,6 +7,85 @@ const BookingConfirmation = require("../models/bookingc");
 const async = require('async');
 const moment = require('moment');
 
+//search
+
+router.post("/powerofattorney_searchdata/searchQ", function(req, res) {
+
+    PowerOfAttroney_nra.find({
+        $or: [
+            { portdestination: { $regex: new RegExp(req.body.data, "i") } },
+            { carrier: { $regex: new RegExp(req.body.data, "i") } },
+            { bill_of_lading_oring: { $regex: new RegExp(req.body.data, "i") } },
+            { bill_of_lading_destination: { $regex: new RegExp(req.body.data, "i") } }
+
+        ],
+
+    }, { portdestination: 1, carrier: 1, bill_of_lading_oring: 1, bill_of_lading_destination: 1 }).sort('-createdAt').exec(function(err, foundData) {
+
+        return res.send(foundData);
+    });
+})
+
+// router.post("/powerofattorney_searchdata2/searchQ", function(req, res) {
+
+//     PowerOfAttroney_nra.find({
+//         $or: [
+//             { carrier: { $regex: new RegExp(req.body.data, "i") } },
+
+//         ],
+
+//     }, { carrier: 1 }).sort('-createdAt').exec(function(err, foundData) {
+
+//         return res.send(foundData);
+//     });
+// })
+
+
+
+router.post("/_searchdata/searchQ", function(req, res) {
+
+    PowerOfAttroney_nra.find({
+
+    }, { portdestination: 1 }).sort('-createdAt').limit(10).exec(function(err, foundData) {
+
+        return res.send(foundData);
+    });
+})
+
+
+
+router.post("/_searchdata2/searchQ", function(req, res) {
+
+    PowerOfAttroney_nra.find({
+
+    }, { carrier: 1 }).sort('-createdAt').limit(10).exec(function(err, foundData) {
+
+        return res.send(foundData);
+    });
+})
+
+router.post("/_searchdata3/searchQ", function(req, res) {
+
+    PowerOfAttroney_nra.find({
+
+    }, { bill_of_lading_oring: 1 }).sort('-createdAt').limit(10).exec(function(err, foundData) {
+
+        return res.send(foundData);
+    });
+})
+
+
+router.post("/_searchdata4/searchQ", function(req, res) {
+
+    PowerOfAttroney_nra.find({
+
+    }, { bill_of_lading_destination: 1 }).sort('-createdAt').limit(10).exec(function(err, foundData) {
+
+        return res.send(foundData);
+    });
+})
+
+
 //powerOfAttroney_nra
 router.get('/powerOfAttroney_nra', function(req, res) {
     if (req.user) {

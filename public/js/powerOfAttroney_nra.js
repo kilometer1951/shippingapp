@@ -1,3 +1,325 @@
+function opensearch() {
+    $("#autocomplete_1").css("display", "block");
+    $("#autocomplete_2").css("display", "none");
+    $.post("/_searchdata/searchQ", function(dataFound) {
+        //   console.log(dataFound);
+        $("#data_1").html("");
+
+        dataFound.forEach(function(result) {
+
+            $("#autocomplete_1").css("display", "block");
+
+            var html = "";
+            html += '<div class="menu-body-segment1 selected_name" id="' + result.portdestination + '">';
+            html += '<span >' + result.portdestination + '</span>';
+            html += '</div>';
+
+            $("#data_1").append(html);
+            console.log(result.portdestination)
+        });
+
+
+
+
+
+
+    });
+}
+
+
+function opensearch2() {
+    $("#autocomplete_1").css("display", "none");
+
+    $("#autocomplete_2").css("display", "block");
+    $.post("/_searchdata2/searchQ", function(dataFound) {
+        //   console.log(dataFound);
+        $("#data_2").html("");
+
+        dataFound.forEach(function(result) {
+
+            $("#autocomplete_2").css("display", "block");
+
+            var html = "";
+            html += '<div class="menu-body-segment1 selected_name2" id="' + result.carrier + '">';
+            html += '<span >' + result.carrier + '</span>';
+            html += '</div>';
+
+            $("#data_2").append(html);
+            console.log(result.carrier)
+        });
+
+
+
+
+
+
+    });
+
+
+}
+
+
+function opensearch3() {
+    $("#autocomplete_1").css("display", "none");
+
+    $("#autocomplete_2").css("display", "none");
+    $("#autocomplete_4").css("display", "none");
+    $("#autocomplete_3").css("display", "block");
+    $.post("/_searchdata3/searchQ", function(dataFound) {
+        //   console.log(dataFound);
+        $("#data_3").html("");
+
+        dataFound.forEach(function(result) {
+
+            $("#autocomplete_3").css("display", "block");
+
+            var html = "";
+            html += '<div class="menu-body-segment1 selected_name3" id="' + result.bill_of_lading_oring + '">';
+            html += '<span >' + result.bill_of_lading_oring + '</span>';
+            html += '</div>';
+
+            $("#data_3").append(html);
+            console.log(result.bill_of_lading_oring)
+        });
+
+
+
+
+
+
+    });
+
+
+}
+
+function opensearch4() {
+    $("#autocomplete_1").css("display", "none");
+
+    $("#autocomplete_2").css("display", "none");
+    $("#autocomplete_3").css("display", "none");
+    $("#autocomplete_4").css("display", "block");
+    $.post("/_searchdata4/searchQ", function(dataFound) {
+        //   console.log(dataFound);
+        $("#data_4").html("");
+
+        dataFound.forEach(function(result) {
+
+            $("#autocomplete_4").css("display", "block");
+
+            var html = "";
+            html += '<div class="menu-body-segment1 selected_name4" id="' + result.bill_of_lading_destination + '">';
+            html += '<span >' + result.bill_of_lading_destination + '</span>';
+            html += '</div>';
+
+            $("#data_4").append(html);
+            console.log(result.bill_of_lading_destination)
+        });
+
+
+
+
+
+
+    });
+
+
+}
+
+
+
+
+function closesearch() {
+    $("#autocomplete_1").css("display", "none");
+    $("#autocomplete_2").css("display", "none");
+    $("#autocomplete_3").css("display", "none");
+    $("#autocomplete_4").css("display", "none");
+    // 
+}
+
+function getdata(value) {
+    if (value !== "") {
+
+        $.post("/powerofattorney_searchdata/searchQ", { data: value }, function(dataFound) {
+            //   console.log(dataFound);
+            if (dataFound.length !== 0) {
+                $("#data_1").html("");
+
+                dataFound.forEach(function(result) {
+
+                    $("#autocomplete_1").css("display", "block");
+
+                    var html = "";
+                    html += '<div class="menu-body-segment1 selected_name"  id="' + result.portdestination + '">';
+                    html += '<span>' + result.portdestination + '</span>';
+                    html += '</div>';
+
+                    $("#data_1").append(html);
+                    console.log(result.portdestination)
+                });
+
+
+
+
+            }
+            else {
+                //if no result
+                $("#data_1").html("");
+            }
+
+        });
+
+
+    }
+
+}
+
+
+function getdata2(value) {
+    if (value !== "") {
+
+        $.post("/powerofattorney_searchdata/searchQ", { data: value }, function(dataFound) {
+            //   console.log(dataFound);
+            if (dataFound.length !== 0) {
+                $("#data_2").html("");
+
+                dataFound.forEach(function(result) {
+
+                    $("#autocomplete_2").css("display", "block");
+
+                    var html = "";
+                    html += '<div class="menu-body-segment1 selected_name2"  id="' + result.carrier + '">';
+                    html += '<span>' + result.carrier + '</span>';
+                    html += '</div>';
+
+                    $("#data_2").append(html);
+                    console.log(result.carrier)
+                });
+
+
+
+
+            }
+            else {
+                //if no result
+                $("#data_2").html("");
+            }
+
+        });
+
+
+    }
+
+}
+
+
+
+function getdata3(value) {
+    if (value !== "") {
+
+        $.post("/powerofattorney_searchdata/searchQ", { data: value }, function(dataFound) {
+            console.log(value);
+            if (dataFound.length !== 0) {
+                $("#data_3").html("");
+
+                dataFound.forEach(function(result) {
+
+                    $("#autocomplete_3").css("display", "block");
+
+                    var html = "";
+                    html += '<div class="menu-body-segment1 selected_name3"  id="' + result.bill_of_lading_oring + '">';
+                    html += '<span>' + result.bill_of_lading_oring + '</span>';
+                    html += '</div>';
+
+                    $("#data_3").append(html);
+                    // console.log(result.bill_of_lading_oring)
+                });
+
+
+
+
+            }
+            else {
+                //if no result
+                $("#data_3").html("");
+            }
+
+        });
+
+
+    }
+
+}
+
+
+function getdata4(value) {
+    if (value !== "") {
+
+        $.post("/powerofattorney_searchdata/searchQ", { data: value }, function(dataFound) {
+            console.log(value);
+            if (dataFound.length !== 0) {
+                $("#data_4").html("");
+
+                dataFound.forEach(function(result) {
+
+                    $("#autocomplete_4").css("display", "block");
+
+                    var html = "";
+                    html += '<div class="menu-body-segment1 selected_name4"  id="' + result.bill_of_lading_destination + '">';
+                    html += '<span>' + result.bill_of_lading_destination + '</span>';
+                    html += '</div>';
+
+                    $("#data_4").append(html);
+                    // console.log(result.bill_of_lading_oring)
+                });
+
+
+
+
+            }
+            else {
+                //if no result
+                $("#data_4").html("");
+            }
+
+        });
+
+
+    }
+
+}
+
+$(document).on('click', ".selected_name", function() {
+    var data = $(this).attr("id");
+    $("#portdestination").val(data)
+});
+
+
+
+$(document).on('click', ".selected_name2", function() {
+    var data = $(this).attr("id");
+    $("#carrier").val(data)
+});
+
+
+$(document).on('click', ".selected_name3", function() {
+    var data = $(this).attr("id");
+    $("#bill_of_lading_oring").val(data)
+    $("#ocean_port_of_loading").val(data)
+});
+
+
+$(document).on('click', ".selected_name4", function() {
+    var data = $(this).attr("id");
+    $("#bill_of_lading_destination").val(data)
+    $("#port_of_discharge").val(data)
+});
+
+
+
+
+
+
+
 $(document).ready(function() {
 
     $('#bill_of_lading_oring').on('keyup', function() {
@@ -22,7 +344,7 @@ $(document).ready(function() {
                 var clientdropdown = '';
                 clientdropdown += '<option id="' + content._id + '" value="' + content._id + '">' + content.full_name + '</option>';
                 $("#clientdropdown").append(clientdropdown);
-                console.log(clientdropdown);
+                //   console.log(clientdropdown);
             });
         });
 
