@@ -31,6 +31,15 @@ function opensearch2() {
     $("#autocomplete_1").css("display", "none");
 
     $("#autocomplete_2").css("display", "block");
+    $("#autocomplete_3").css("display", "none");
+    $("#autocomplete_4").css("display", "none");
+    $("#autocomplete_5").css("display", "none");
+    $("#autocomplete_6").css("display", "none");
+    $("#autocomplete_7").css("display", "none");
+    $("#autocomplete_8").css("display", "none");
+    $("#autocomplete_9").css("display", "none");
+    $("#autocomplete_10").css("display", "none");
+
     $.post("/_searchdata2/searchQ", function(dataFound) {
         //   console.log(dataFound);
         $("#data_2").html("");
@@ -65,6 +74,13 @@ function opensearch3() {
     $("#autocomplete_2").css("display", "none");
     $("#autocomplete_4").css("display", "none");
     $("#autocomplete_3").css("display", "block");
+    $("#autocomplete_5").css("display", "none");
+    $("#autocomplete_6").css("display", "none");
+    $("#autocomplete_7").css("display", "none");
+    $("#autocomplete_8").css("display", "none");
+    $("#autocomplete_9").css("display", "none");
+    $("#autocomplete_10").css("display", "none");
+
     $.post("/_searchdata3/searchQ", function(dataFound) {
         //   console.log(dataFound);
         $("#data_3").html("");
@@ -98,6 +114,13 @@ function opensearch4() {
     $("#autocomplete_2").css("display", "none");
     $("#autocomplete_3").css("display", "none");
     $("#autocomplete_4").css("display", "block");
+    $("#autocomplete_5").css("display", "none");
+    $("#autocomplete_6").css("display", "none");
+    $("#autocomplete_7").css("display", "none");
+    $("#autocomplete_8").css("display", "none");
+    $("#autocomplete_9").css("display", "none");
+    $("#autocomplete_10").css("display", "none");
+
     $.post("/_searchdata4/searchQ", function(dataFound) {
         //   console.log(dataFound);
         $("#data_4").html("");
@@ -126,6 +149,247 @@ function opensearch4() {
 }
 
 
+function opensearch5() {
+    $("#autocomplete_1").css("display", "none");
+
+    $("#autocomplete_2").css("display", "none");
+    $("#autocomplete_3").css("display", "none");
+    $("#autocomplete_4").css("display", "none");
+    $("#autocomplete_6").css("display", "none");
+    $("#autocomplete_7").css("display", "none");
+    $("#autocomplete_8").css("display", "none");
+    $("#autocomplete_9").css("display", "none");
+    $("#autocomplete_10").css("display", "none");
+    $("#autocomplete_5").css("display", "block");
+    $.post("/_searchdata5/searchQ", function(dataFound) {
+        //   console.log(dataFound);
+        $("#data_5").html("");
+
+        dataFound.forEach(function(result) {
+
+            $("#autocomplete_5").css("display", "block");
+
+            var html = "";
+            html += '<div class="menu-body-segment1 selected_name5" id="' + result.rate_basis + '">';
+            html += '<span >' + result.rate_basis + '</span>';
+            html += '</div>';
+
+            $("#data_5").append(html);
+            console.log(result.rate_basis)
+        });
+
+
+
+
+
+
+    });
+
+
+}
+
+
+
+function opensearch6() {
+    $("#autocomplete_1").css("display", "none");
+
+    $("#autocomplete_2").css("display", "none");
+    $("#autocomplete_3").css("display", "none");
+    $("#autocomplete_4").css("display", "none");
+    $("#autocomplete_5").css("display", "none");
+    $("#autocomplete_7").css("display", "none");
+    $("#autocomplete_8").css("display", "none");
+    $("#autocomplete_9").css("display", "none");
+    $("#autocomplete_10").css("display", "none");
+    $("#autocomplete_6").css("display", "block");
+    $.post("/_searchdata6/searchQ", function(dataFound) {
+        //   console.log(dataFound);
+        $("#data_6").html("");
+
+        dataFound.forEach(function(result) {
+
+            $("#autocomplete_6").css("display", "block");
+
+            var html = "";
+            html += '<div class="menu-body-segment1 selected_name6" id="' + result.cargo_qantity + '">';
+            html += '<span >' + result.cargo_qantity + '</span>';
+            html += '</div>';
+
+            $("#data_6").append(html);
+            console.log(result.cargo_qantity)
+        });
+
+
+
+
+
+
+    });
+
+
+}
+
+
+
+function opensearch7() {
+    $("#autocomplete_1").css("display", "none");
+
+    $("#autocomplete_2").css("display", "none");
+    $("#autocomplete_3").css("display", "none");
+    $("#autocomplete_4").css("display", "none");
+    $("#autocomplete_5").css("display", "none");
+    $("#autocomplete_6").css("display", "none");
+    $("#autocomplete_8").css("display", "none");
+    $("#autocomplete_9").css("display", "none");
+    $("#autocomplete_10").css("display", "none");
+    $("#autocomplete_7").css("display", "block");
+    $.post("/_searchdata7/searchQ", function(dataFound) {
+        //   console.log(dataFound);
+        $("#data_7").html("");
+
+        dataFound.forEach(function(result) {
+
+            $("#autocomplete_7").css("display", "block");
+
+            var html = "";
+            html += '<div class="menu-body-segment1 selected_name7" id="' + result.origin_service + '">';
+            html += '<span >' + result.origin_service + '</span>';
+            html += '</div>';
+
+            $("#data_7").append(html);
+            console.log(result.origin_service)
+        });
+
+
+
+
+
+
+    });
+
+
+}
+
+
+
+function opensearch8() {
+    $("#autocomplete_1").css("display", "none");
+
+    $("#autocomplete_2").css("display", "none");
+    $("#autocomplete_3").css("display", "none");
+    $("#autocomplete_4").css("display", "none");
+    $("#autocomplete_5").css("display", "none");
+    $("#autocomplete_6").css("display", "none");
+    $("#autocomplete_7").css("display", "none");
+    $("#autocomplete_9").css("display", "none");
+    $("#autocomplete_10").css("display", "none");
+    $("#autocomplete_8").css("display", "block");
+    $.post("/_searchdata8/searchQ", function(dataFound) {
+        //   console.log(dataFound);
+        $("#data_8").html("");
+
+        dataFound.forEach(function(result) {
+
+            $("#autocomplete_8").css("display", "block");
+
+            var html = "";
+            html += '<div class="menu-body-segment1 selected_name8" id="' + result.destination_service + '">';
+            html += '<span >' + result.destination_service + '</span>';
+            html += '</div>';
+
+            $("#data_8").append(html);
+            console.log(result.destination_service)
+        });
+
+
+
+
+
+
+    });
+
+
+}
+
+
+function opensearch9() {
+    $("#autocomplete_1").css("display", "none");
+
+    $("#autocomplete_2").css("display", "none");
+    $("#autocomplete_3").css("display", "none");
+    $("#autocomplete_4").css("display", "none");
+    $("#autocomplete_5").css("display", "none");
+    $("#autocomplete_6").css("display", "none");
+    $("#autocomplete_7").css("display", "none");
+    $("#autocomplete_8").css("display", "none");
+    $("#autocomplete_10").css("display", "none");
+    $("#autocomplete_9").css("display", "block");
+    $.post("/_searchdata9/searchQ", function(dataFound) {
+        //   console.log(dataFound);
+        $("#data_9").html("");
+
+        dataFound.forEach(function(result) {
+
+            $("#autocomplete_9").css("display", "block");
+
+            var html = "";
+            html += '<div class="menu-body-segment1 selected_name9" id="' + result.special_conditions + '">';
+            html += '<span >' + result.special_conditions + '</span>';
+            html += '</div>';
+
+            $("#data_9").append(html);
+            console.log(result.special_conditions)
+        });
+
+
+
+
+
+
+    });
+
+
+}
+
+
+function opensearch10() {
+    $("#autocomplete_1").css("display", "none");
+
+    $("#autocomplete_2").css("display", "none");
+    $("#autocomplete_3").css("display", "none");
+    $("#autocomplete_4").css("display", "none");
+    $("#autocomplete_5").css("display", "none");
+    $("#autocomplete_6").css("display", "none");
+    $("#autocomplete_7").css("display", "none");
+    $("#autocomplete_8").css("display", "none");
+    $("#autocomplete_9").css("display", "none");
+    $("#autocomplete_10").css("display", "block");
+    $.post("/_searchdata10/searchQ", function(dataFound) {
+        //   console.log(dataFound);
+        $("#data_10").html("");
+
+        dataFound.forEach(function(result) {
+
+            $("#autocomplete_10").css("display", "block");
+
+            var html = "";
+            html += '<div class="menu-body-segment1 selected_name10" id="' + result.commodity + '">';
+            html += '<span >' + result.commodity + '</span>';
+            html += '</div>';
+
+            $("#data_10").append(html);
+            console.log(result.commodity)
+        });
+
+
+
+
+
+
+    });
+
+
+}
 
 
 function closesearch() {
@@ -133,6 +397,12 @@ function closesearch() {
     $("#autocomplete_2").css("display", "none");
     $("#autocomplete_3").css("display", "none");
     $("#autocomplete_4").css("display", "none");
+    $("#autocomplete_5").css("display", "none");
+    $("#autocomplete_6").css("display", "none");
+    $("#autocomplete_7").css("display", "none");
+    $("#autocomplete_8").css("display", "none");
+    $("#autocomplete_9").css("display", "none");
+    $("#autocomplete_10").css("display", "none");
     // 
 }
 
@@ -288,6 +558,246 @@ function getdata4(value) {
 
 }
 
+
+
+function getdata5(value) {
+    if (value !== "") {
+
+        $.post("/powerofattorney_searchdata/searchQ", { data: value }, function(dataFound) {
+            console.log(value);
+            if (dataFound.length !== 0) {
+                $("#data_5").html("");
+
+                dataFound.forEach(function(result) {
+
+                    $("#autocomplete_5").css("display", "block");
+
+                    var html = "";
+                    html += '<div class="menu-body-segment1 selected_name5"  id="' + result.rate_basis + '">';
+                    html += '<span>' + result.rate_basis + '</span>';
+                    html += '</div>';
+
+                    $("#data_5").append(html);
+                    // console.log(result.bill_of_lading_oring)
+                });
+
+
+
+
+            }
+            else {
+                //if no result
+                $("#data_5").html("");
+            }
+
+        });
+
+
+    }
+
+}
+
+
+
+function getdata6(value) {
+    if (value !== "") {
+
+        $.post("/powerofattorney_searchdata/searchQ", { data: value }, function(dataFound) {
+            console.log(value);
+            if (dataFound.length !== 0) {
+                $("#data_6").html("");
+
+                dataFound.forEach(function(result) {
+
+                    $("#autocomplete_6").css("display", "block");
+
+                    var html = "";
+                    html += '<div class="menu-body-segment1 selected_name6"  id="' + result.cargo_qantity + '">';
+                    html += '<span>' + result.cargo_qantity + '</span>';
+                    html += '</div>';
+
+                    $("#data_6").append(html);
+                    // console.log(result.bill_of_lading_oring)
+                });
+
+
+
+
+            }
+            else {
+                //if no result
+                $("#data_6").html("");
+            }
+
+        });
+
+
+    }
+
+}
+
+
+
+
+function getdata7(value) {
+    if (value !== "") {
+
+        $.post("/powerofattorney_searchdata/searchQ", { data: value }, function(dataFound) {
+            console.log(value);
+            if (dataFound.length !== 0) {
+                $("#data_7").html("");
+
+                dataFound.forEach(function(result) {
+
+                    $("#autocomplete_7").css("display", "block");
+
+                    var html = "";
+                    html += '<div class="menu-body-segment1 selected_name7"  id="' + result.origin_service + '">';
+                    html += '<span>' + result.origin_service + '</span>';
+                    html += '</div>';
+
+                    $("#data_7").append(html);
+                    // console.log(result.bill_of_lading_oring)
+                });
+
+
+
+
+            }
+            else {
+                //if no result
+                $("#data_7").html("");
+            }
+
+        });
+
+
+    }
+
+}
+
+
+
+function getdata8(value) {
+    if (value !== "") {
+
+        $.post("/powerofattorney_searchdata/searchQ", { data: value }, function(dataFound) {
+            console.log(value);
+            if (dataFound.length !== 0) {
+                $("#data_8").html("");
+
+                dataFound.forEach(function(result) {
+
+                    $("#autocomplete_8").css("display", "block");
+
+                    var html = "";
+                    html += '<div class="menu-body-segment1 selected_name8"  id="' + result.destination_service + '">';
+                    html += '<span>' + result.destination_service + '</span>';
+                    html += '</div>';
+
+                    $("#data_8").append(html);
+                    // console.log(result.bill_of_lading_oring)
+                });
+
+
+
+
+            }
+            else {
+                //if no result
+                $("#data_8").html("");
+            }
+
+        });
+
+
+    }
+
+}
+
+
+
+function getdata9(value) {
+    if (value !== "") {
+
+        $.post("/powerofattorney_searchdata/searchQ", { data: value }, function(dataFound) {
+            console.log(value);
+            if (dataFound.length !== 0) {
+                $("#data_9").html("");
+
+                dataFound.forEach(function(result) {
+
+                    $("#autocomplete_9").css("display", "block");
+
+                    var html = "";
+                    html += '<div class="menu-body-segment1 selected_name9"  id="' + result.special_conditions + '">';
+                    html += '<span>' + result.special_conditions + '</span>';
+                    html += '</div>';
+
+                    $("#data_9").append(html);
+                    // console.log(result.bill_of_lading_oring)
+                });
+
+
+
+
+            }
+            else {
+                //if no result
+                $("#data_9").html("");
+            }
+
+        });
+
+
+    }
+
+}
+
+
+
+function getdata10(value) {
+    if (value !== "") {
+
+        $.post("/powerofattorney_searchdata/searchQ", { data: value }, function(dataFound) {
+            console.log(value);
+            if (dataFound.length !== 0) {
+                $("#data_10").html("");
+
+                dataFound.forEach(function(result) {
+
+                    $("#autocomplete_10").css("display", "block");
+
+                    var html = "";
+                    html += '<div class="menu-body-segment1 selected_name10"  id="' + result.commodity + '">';
+                    html += '<span>' + result.commodity + '</span>';
+                    html += '</div>';
+
+                    $("#data_10").append(html);
+                    // console.log(result.bill_of_lading_oring)
+                });
+
+
+
+
+            }
+            else {
+                //if no result
+                $("#data_10").html("");
+            }
+
+        });
+
+
+    }
+
+}
+
+
+
+
+
+
 $(document).on('click', ".selected_name", function() {
     var data = $(this).attr("id");
     $("#portdestination").val(data)
@@ -313,6 +823,39 @@ $(document).on('click', ".selected_name4", function() {
     $("#bill_of_lading_destination").val(data)
     $("#port_of_discharge").val(data)
 });
+
+
+$(document).on('click', ".selected_name5", function() {
+    var data = $(this).attr("id");
+    $("#rate_basis").val(data)
+});
+
+
+$(document).on('click', ".selected_name6", function() {
+    var data = $(this).attr("id");
+    $("#cargo_qantity").val(data)
+});
+
+$(document).on('click', ".selected_name7", function() {
+    var data = $(this).attr("id");
+    $("#origin_service").val(data)
+});
+
+$(document).on('click', ".selected_name8", function() {
+    var data = $(this).attr("id");
+    $("#destination_service").val(data)
+});
+
+$(document).on('click', ".selected_name9", function() {
+    var data = $(this).attr("id");
+    $("#special_conditions").val(data)
+});
+
+$(document).on('click', ".selected_name10", function() {
+    var data = $(this).attr("id");
+    $("#commodity").val(data)
+});
+
 
 
 

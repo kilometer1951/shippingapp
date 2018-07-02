@@ -16,11 +16,18 @@ router.post("/powerofattorney_searchdata/searchQ", function(req, res) {
             { portdestination: { $regex: new RegExp(req.body.data, "i") } },
             { carrier: { $regex: new RegExp(req.body.data, "i") } },
             { bill_of_lading_oring: { $regex: new RegExp(req.body.data, "i") } },
-            { bill_of_lading_destination: { $regex: new RegExp(req.body.data, "i") } }
+            { bill_of_lading_destination: { $regex: new RegExp(req.body.data, "i") } },
+            { rate_basis: { $regex: new RegExp(req.body.data, "i") } },
+            { cargo_qantity: { $regex: new RegExp(req.body.data, "i") } },
+            { origin_service: { $regex: new RegExp(req.body.data, "i") } },
+            { destination_service: { $regex: new RegExp(req.body.data, "i") } },
+            { special_conditions: { $regex: new RegExp(req.body.data, "i") } },
+            { commodity: { $regex: new RegExp(req.body.data, "i") } }
+
 
         ],
 
-    }, { portdestination: 1, carrier: 1, bill_of_lading_oring: 1, bill_of_lading_destination: 1 }).sort('-createdAt').exec(function(err, foundData) {
+    }, { portdestination: 1, carrier: 1, bill_of_lading_oring: 1, bill_of_lading_destination: 1, rate_basis: 1, cargo_qantity: 1, origin_service: 1, destination_service: 1, special_conditions: 1, commodity: 1 }).sort('-createdAt').exec(function(err, foundData) {
 
         return res.send(foundData);
     });
@@ -84,6 +91,71 @@ router.post("/_searchdata4/searchQ", function(req, res) {
         return res.send(foundData);
     });
 })
+
+
+
+router.post("/_searchdata5/searchQ", function(req, res) {
+
+    PowerOfAttroney_nra.find({
+
+    }, { rate_basis: 1 }).sort('-createdAt').limit(10).exec(function(err, foundData) {
+
+        return res.send(foundData);
+    });
+})
+
+
+///
+router.post("/_searchdata6/searchQ", function(req, res) {
+
+    PowerOfAttroney_nra.find({
+
+    }, { cargo_qantity: 1 }).sort('-createdAt').limit(10).exec(function(err, foundData) {
+
+        return res.send(foundData);
+    });
+})
+
+router.post("/_searchdata7/searchQ", function(req, res) {
+
+    PowerOfAttroney_nra.find({
+
+    }, { origin_service: 1 }).sort('-createdAt').limit(10).exec(function(err, foundData) {
+
+        return res.send(foundData);
+    });
+})
+
+router.post("/_searchdata8/searchQ", function(req, res) {
+
+    PowerOfAttroney_nra.find({
+
+    }, { destination_service: 1 }).sort('-createdAt').limit(10).exec(function(err, foundData) {
+
+        return res.send(foundData);
+    });
+})
+
+router.post("/_searchdata9/searchQ", function(req, res) {
+
+    PowerOfAttroney_nra.find({
+
+    }, { special_conditions: 1 }).sort('-createdAt').limit(10).exec(function(err, foundData) {
+
+        return res.send(foundData);
+    });
+})
+
+router.post("/_searchdata10/searchQ", function(req, res) {
+
+    PowerOfAttroney_nra.find({
+
+    }, { commodity: 1 }).sort('-createdAt').limit(10).exec(function(err, foundData) {
+
+        return res.send(foundData);
+    });
+})
+
 
 
 //powerOfAttroney_nra
