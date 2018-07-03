@@ -26,7 +26,7 @@ router.get("/bookingconfirmation", function(req, res) {
                     .find({})
 
                     .sort('-createdAt')
-                    // .populate("Client")
+                    .populate("Client")
                     .exec(function(err, foundAllData) {
                         callback(err, foundAllData);
                     });
@@ -35,7 +35,7 @@ router.get("/bookingconfirmation", function(req, res) {
         ], (err, results) => {
             var clientsData = results[0];
             var foundAllData = results[1];
-            res.render("main/booking_confirm", { title: 'Oldsailor Ocean Shipping LLC || Booking Confirmation', clientsData: clientsData, foundAllData: foundAllData });
+            return res.render("main/booking_confirm", { title: 'Oldsailor Ocean Shipping LLC || Booking Confirmation', clientsData: clientsData, foundAllData: foundAllData });
 
         });
     }

@@ -118,7 +118,7 @@ $(document).ready(function() {
         data.notes = $("#notes").val();
 
 
-
+        $(".createForm").css("display", "none");
 
         $.ajax({
             type: 'POST',
@@ -224,6 +224,7 @@ $(document).ready(function() {
             console.log(result.length);
             if (result.length !== 0) {
                 result.forEach(function(content) {
+
                     //display data
                     $("#client_header").css("display", "block")
                     var html = '';
