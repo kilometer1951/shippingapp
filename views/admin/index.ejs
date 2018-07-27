@@ -91,13 +91,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Email:</label>
-                      <input type="email" class="form-control" name="email" required >
+                      <input type="email" class="form-control" name="email" required id="email">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Password</label>
-                      <input type="password" class="form-control" name="pword" required>
+                      <input type="password" class="form-control" name="pword" required id="pword">
                     </div>
                 </div>
            </div>
@@ -252,6 +252,11 @@
 </div>
  
 <script>
+$(document).ready(function(){
+    $("#email").val("");
+    $("#pword").val("");
+    
+});
     //delete
     //get  id
     $(document).on('click', '.deleteMessage1', function() {
