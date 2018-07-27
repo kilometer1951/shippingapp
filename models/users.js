@@ -10,7 +10,7 @@ var UserSchema = new mongoose.Schema({
     last_name: String,
     username: String,
     photo: { type: String, default: 'https://s.pinimg.com/images/user/default_280.png' },
-    email: { type: String, unique: true, lowercase: true },
+    email: { type: String, lowercase: true },
     password: { type: String, default: '' },
     role: String,
     first_time_loggin: Boolean,

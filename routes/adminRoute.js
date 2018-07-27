@@ -7,11 +7,45 @@ const Cargos = require("../models/cargo");
 const Users = require("../models/users");
 const async = require('async');
 const moment = require('moment');
+const authFunctions = require("../functions/authfunctions");
+
+
+
+router.post("/admin/newuser", function(req, res) {
+
+
+    // //user does not exist save and authenticate user
+    var newUser = new Users();
+    newUser.first_name = authFunctions.capitalize(req.body.fname);
+    newUser.last_name = authFunctions.capitalize(req.body.lname);
+    newUser.email = req.body.email;
+    newUser.username = req.body.email;
+    newUser.password = newUser.encryptPassword("12");
+    newUser.role = req.body.role;
+    newUser.first_time_loggin = false;
+    newUser.save();
+    res.redirect('/admin/index');
 
 
 
 
-//CONSIGNEE
+
+});
+
+
+//delete user
+router.delete("/admin/deluser/:id/delete", function(req, res) {
+    Users.findByIdAndRemove(req.params.id, function(err) {
+        if (err)
+            return console.log(err);
+        else
+            return res.send(req.params.id);
+    });
+
+});
+
+
+//index
 router.get('/admin/index', function(req, res) {
 
     if (req.user) {
