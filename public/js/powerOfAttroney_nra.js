@@ -19,10 +19,6 @@ function opensearch() {
         });
 
 
-
-
-
-
     });
 }
 
@@ -39,6 +35,7 @@ function opensearch2() {
     $("#autocomplete_8").css("display", "none");
     $("#autocomplete_9").css("display", "none");
     $("#autocomplete_10").css("display", "none");
+    $("#autocomplete_11").css("display", "none");
 
     $.post("/_searchdata2/searchQ", function(dataFound) {
         //   console.log(dataFound);
@@ -80,6 +77,8 @@ function opensearch3() {
     $("#autocomplete_8").css("display", "none");
     $("#autocomplete_9").css("display", "none");
     $("#autocomplete_10").css("display", "none");
+    $("#autocomplete_11").css("display", "none");
+
 
     $.post("/_searchdata3/searchQ", function(dataFound) {
         //   console.log(dataFound);
@@ -120,6 +119,8 @@ function opensearch4() {
     $("#autocomplete_8").css("display", "none");
     $("#autocomplete_9").css("display", "none");
     $("#autocomplete_10").css("display", "none");
+    $("#autocomplete_11").css("display", "none");
+
 
     $.post("/_searchdata4/searchQ", function(dataFound) {
         //   console.log(dataFound);
@@ -161,6 +162,8 @@ function opensearch5() {
     $("#autocomplete_9").css("display", "none");
     $("#autocomplete_10").css("display", "none");
     $("#autocomplete_5").css("display", "block");
+    $("#autocomplete_11").css("display", "none");
+
     $.post("/_searchdata5/searchQ", function(dataFound) {
         //   console.log(dataFound);
         $("#data_5").html("");
@@ -202,6 +205,8 @@ function opensearch6() {
     $("#autocomplete_9").css("display", "none");
     $("#autocomplete_10").css("display", "none");
     $("#autocomplete_6").css("display", "block");
+    $("#autocomplete_11").css("display", "none");
+
     $.post("/_searchdata6/searchQ", function(dataFound) {
         //   console.log(dataFound);
         $("#data_6").html("");
@@ -243,6 +248,8 @@ function opensearch7() {
     $("#autocomplete_9").css("display", "none");
     $("#autocomplete_10").css("display", "none");
     $("#autocomplete_7").css("display", "block");
+    $("#autocomplete_11").css("display", "none");
+
     $.post("/_searchdata7/searchQ", function(dataFound) {
         //   console.log(dataFound);
         $("#data_7").html("");
@@ -284,6 +291,8 @@ function opensearch8() {
     $("#autocomplete_9").css("display", "none");
     $("#autocomplete_10").css("display", "none");
     $("#autocomplete_8").css("display", "block");
+    $("#autocomplete_11").css("display", "none");
+
     $.post("/_searchdata8/searchQ", function(dataFound) {
         //   console.log(dataFound);
         $("#data_8").html("");
@@ -324,6 +333,8 @@ function opensearch9() {
     $("#autocomplete_8").css("display", "none");
     $("#autocomplete_10").css("display", "none");
     $("#autocomplete_9").css("display", "block");
+    $("#autocomplete_11").css("display", "none");
+
     $.post("/_searchdata9/searchQ", function(dataFound) {
         //   console.log(dataFound);
         $("#data_9").html("");
@@ -364,6 +375,8 @@ function opensearch10() {
     $("#autocomplete_8").css("display", "none");
     $("#autocomplete_9").css("display", "none");
     $("#autocomplete_10").css("display", "block");
+    $("#autocomplete_11").css("display", "none");
+
     $.post("/_searchdata10/searchQ", function(dataFound) {
         //   console.log(dataFound);
         $("#data_10").html("");
@@ -392,6 +405,41 @@ function opensearch10() {
 }
 
 
+function opensearch11() {
+    $("#autocomplete_1").css("display", "none");
+
+    $("#autocomplete_2").css("display", "none");
+    $("#autocomplete_3").css("display", "none");
+    $("#autocomplete_4").css("display", "none");
+    $("#autocomplete_5").css("display", "none");
+    $("#autocomplete_6").css("display", "none");
+    $("#autocomplete_7").css("display", "none");
+    $("#autocomplete_8").css("display", "none");
+    $("#autocomplete_9").css("display", "none");
+    $("#autocomplete_10").css("display", "none");
+    $("#autocomplete_11").css("display", "block");
+    $.post("/_searchdata11/searchQ", function(dataFound) {
+        //   console.log(dataFound);
+        $("#data_11").html("");
+
+        dataFound.forEach(function(result) {
+
+            $("#autocomplete_11").css("display", "block");
+
+            var html = "";
+            html += '<div class="menu-body-segment1 selected_name11" id="' + result.carrier_rep + '">';
+            html += '<span >' + result.carrier_rep + '</span>';
+            html += '</div>';
+
+            $("#data_11").append(html);
+            console.log(result.commodity)
+        });
+
+    });
+
+
+}
+
 function closesearch() {
     $("#autocomplete_1").css("display", "none");
     $("#autocomplete_2").css("display", "none");
@@ -403,6 +451,7 @@ function closesearch() {
     $("#autocomplete_8").css("display", "none");
     $("#autocomplete_9").css("display", "none");
     $("#autocomplete_10").css("display", "none");
+    $("#autocomplete_11").css("display", "none");
     // 
 }
 
@@ -796,6 +845,45 @@ function getdata10(value) {
 
 
 
+function getdata11(value) {
+    if (value !== "") {
+
+        $.post("/powerofattorney_searchdata/searchQ", { data: value }, function(dataFound) {
+            console.log(value);
+            if (dataFound.length !== 0) {
+                $("#data_11").html("");
+
+                dataFound.forEach(function(result) {
+
+                    $("#autocomplete_11").css("display", "block");
+
+                    var html = "";
+                    html += '<div class="menu-body-segment1 selected_name11"  id="' + result.carrier_rep + '">';
+                    html += '<span>' + result.carrier_rep + '</span>';
+                    html += '</div>';
+
+                    $("#data_11").append(html);
+                    // console.log(result.bill_of_lading_oring)
+                });
+
+
+
+
+            }
+            else {
+                //if no result
+                $("#data_11").html("");
+            }
+
+        });
+
+
+    }
+
+}
+
+
+
 
 
 $(document).on('click', ".selected_name", function() {
@@ -859,6 +947,10 @@ $(document).on('click', ".selected_name10", function() {
 
 
 
+$(document).on('click', ".selected_name11", function() {
+    var data = $(this).attr("id");
+    $("#carrier_rep").val(data)
+});
 
 
 

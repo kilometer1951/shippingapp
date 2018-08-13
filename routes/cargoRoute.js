@@ -13,7 +13,9 @@ const moment = require('moment');
 router.get('/cargo', function(req, res) {
     if (req.user) {
         //get clients
-
+        var perPage = 4;
+        var pageQuery = parseInt(req.query.page);
+        var pageNumber = pageQuery ? pageQuery : 1;
         async.parallel([
 
             function(callback) {
@@ -25,6 +27,8 @@ router.get('/cargo', function(req, res) {
                 Cargos.find({})
                     .populate("Client")
                     .sort('-_id')
+                    .skip((perPage * pageNumber) - perPage)
+                    .limit(perPage)
                     .exec(function(err, foundData) {
                         callback(err, foundData);
                     });
@@ -33,7 +37,21 @@ router.get('/cargo', function(req, res) {
         ], (err, results) => {
             var clientsData = results[0];
             var CargoData = results[1];
-            return res.render("main/cargo", { title: 'Oldsailor Ocean Shipping LLC || Cargo', clientsData: clientsData, CargoData: CargoData });
+            Cargos.count().exec(function(err, count) {
+                if (err) {
+                    console.log(err)
+                }
+                else {
+                    return res.render("main/cargo", {
+                        title: 'Oldsailor Ocean Shipping LLC || Cargo',
+                        clientsData: clientsData,
+                        CargoData: CargoData,
+                        current: pageNumber,
+                        pages: Math.ceil(count / perPage)
+                    });
+
+                }
+            })
         });
 
     }

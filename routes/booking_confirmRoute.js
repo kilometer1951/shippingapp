@@ -12,6 +12,9 @@ const moment = require('moment');
 router.get("/bookingconfirmation", function(req, res) {
 
     if (req.user) {
+        var perPage = 7;
+        var pageQuery = parseInt(req.query.page);
+        var pageNumber = pageQuery ? pageQuery : 1;
         async.parallel([
 
             function(callback) {
@@ -27,6 +30,8 @@ router.get("/bookingconfirmation", function(req, res) {
 
                     .sort('-createdAt')
                     .populate("Client")
+                    .skip((perPage * pageNumber) - perPage)
+                    .limit(perPage)
                     .exec(function(err, foundAllData) {
                         callback(err, foundAllData);
                     });
@@ -35,7 +40,21 @@ router.get("/bookingconfirmation", function(req, res) {
         ], (err, results) => {
             var clientsData = results[0];
             var foundAllData = results[1];
-            return res.render("main/booking_confirm", { title: 'Oldsailor Ocean Shipping LLC || Booking Confirmation', clientsData: clientsData, foundAllData: foundAllData });
+            BookingConfirmation.count().exec(function(err, count) {
+                if (err) {
+                    console.log(err)
+                }
+                else {
+                    return res.render("main/booking_confirm", {
+                        title: 'Oldsailor Ocean Shipping LLC || Booking Confirmation',
+                        clientsData: clientsData,
+                        foundAllData: foundAllData,
+                        current: pageNumber,
+                        pages: Math.ceil(count / perPage)
+                    });
+
+                }
+            })
 
         });
     }

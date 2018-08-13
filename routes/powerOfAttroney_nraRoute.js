@@ -22,12 +22,13 @@ router.post("/powerofattorney_searchdata/searchQ", function(req, res) {
             { origin_service: { $regex: new RegExp(req.body.data, "i") } },
             { destination_service: { $regex: new RegExp(req.body.data, "i") } },
             { special_conditions: { $regex: new RegExp(req.body.data, "i") } },
-            { commodity: { $regex: new RegExp(req.body.data, "i") } }
+            { commodity: { $regex: new RegExp(req.body.data, "i") } },
+            { carrier_rep: { $regex: new RegExp(req.body.data, "i") } }
 
 
         ],
 
-    }, { portdestination: 1, carrier: 1, bill_of_lading_oring: 1, bill_of_lading_destination: 1, rate_basis: 1, cargo_qantity: 1, origin_service: 1, destination_service: 1, special_conditions: 1, commodity: 1 }).sort('-createdAt').exec(function(err, foundData) {
+    }, { portdestination: 1, carrier: 1, bill_of_lading_oring: 1, bill_of_lading_destination: 1, rate_basis: 1, cargo_qantity: 1, origin_service: 1, destination_service: 1, special_conditions: 1, commodity: 1, carrier_rep: 1 }).sort('-createdAt').exec(function(err, foundData) {
 
         return res.send(foundData);
     });
@@ -156,11 +157,23 @@ router.post("/_searchdata10/searchQ", function(req, res) {
     });
 })
 
+router.post("/_searchdata11/searchQ", function(req, res) {
+
+    PowerOfAttroney_nra.find({
+
+    }, { carrier_rep: 1 }).sort('-createdAt').limit(10).exec(function(err, foundData) {
+
+        return res.send(foundData);
+    });
+})
 
 
 //powerOfAttroney_nra
 router.get('/powerOfAttroney_nra', function(req, res) {
     if (req.user) {
+        var perPage = 4;
+        var pageQuery = parseInt(req.query.page);
+        var pageNumber = pageQuery ? pageQuery : 1;
         //get clients
 
         async.parallel([
@@ -175,6 +188,8 @@ router.get('/powerOfAttroney_nra', function(req, res) {
                     .find({})
                     .populate("Client")
                     .sort('-createdAt')
+                    .skip((perPage * pageNumber) - perPage)
+                    .limit(perPage)
                     .exec(function(err, foundAllData) {
                         callback(err, foundAllData);
                     });
@@ -183,7 +198,21 @@ router.get('/powerOfAttroney_nra', function(req, res) {
         ], (err, results) => {
             var clientsData = results[0];
             var foundAllData = results[1];
-            return res.render("main/powerOfAttroney_nra", { title: 'Oldsailor Ocean Shipping LLC || Cargo', clientsData: clientsData, foundAllData: foundAllData });
+            PowerOfAttroney_nra.count().exec(function(err, count) {
+                if (err) {
+                    console.log(err)
+                }
+                else {
+                    return res.render("main/powerOfAttroney_nra", {
+                        title: 'Oldsailor Ocean Shipping LLC || POA',
+                        clientsData: clientsData,
+                        foundAllData: foundAllData,
+                        current: pageNumber,
+                        pages: Math.ceil(count / perPage)
+                    });
+
+                }
+            })
         });
 
     }

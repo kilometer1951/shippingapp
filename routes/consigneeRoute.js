@@ -11,10 +11,28 @@ const async = require('async');
 router.get('/consignee', function(req, res) {
     if (req.user) {
         //get clients
+        var perPage = 7;
+        var pageQuery = parseInt(req.query.page);
+        var pageNumber = pageQuery ? pageQuery : 1;
         Consignees.find({})
             .sort('-_id')
+            .skip((perPage * pageNumber) - perPage)
+            .limit(perPage)
             .exec(function(err, foundData) {
-                return res.render("main/consignee", { title: 'Oldsailor Ocean Shipping LLC || Consignee', data: foundData });
+                Consignees.count().exec(function(err, count) {
+                    if (err) {
+                        console.log(err)
+                    }
+                    else {
+                        return res.render("main/consignee", {
+                            title: 'Oldsailor Ocean Shipping LLC || Consignee',
+                            data: foundData,
+                            current: pageNumber,
+                            pages: Math.ceil(count / perPage)
+                        });
+
+                    }
+                })
             });
     }
     else {

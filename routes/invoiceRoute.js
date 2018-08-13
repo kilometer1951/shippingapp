@@ -16,6 +16,8 @@ const moment = require('moment');
 router.get("/invoice", function(req, res) {
 
     if (req.user) {
+
+
         async.parallel([
 
             function(callback) {
@@ -28,6 +30,7 @@ router.get("/invoice", function(req, res) {
                     .find({})
                     .populate("Client")
                     .sort('-_id')
+
                     .exec(function(err, foundAllData) {
                         callback(err, foundAllData);
                     });
@@ -36,7 +39,7 @@ router.get("/invoice", function(req, res) {
         ], (err, results) => {
             var clientsData = results[0];
             var foundAllData = results[1];
-            res.render("main/invoice", { title: 'Oldsailor Ocean Shipping LLC || Dock Receipt', clientsData: clientsData, foundAllData: foundAllData });
+
 
         });
     }

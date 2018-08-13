@@ -14,6 +14,9 @@ const moment = require('moment');
 router.get("/dock_r", function(req, res) {
 
     if (req.user) {
+        var perPage = 7;
+        var pageQuery = parseInt(req.query.page);
+        var pageNumber = pageQuery ? pageQuery : 1;
         async.parallel([
 
             function(callback) {
@@ -26,6 +29,8 @@ router.get("/dock_r", function(req, res) {
                     .find({})
                     .populate("Client")
                     .sort('-createdAt')
+                    .skip((perPage * pageNumber) - perPage)
+                    .limit(perPage)
                     .exec(function(err, foundAllData) {
                         callback(err, foundAllData);
                     });
@@ -34,7 +39,21 @@ router.get("/dock_r", function(req, res) {
         ], (err, results) => {
             var clientsData = results[0];
             var foundAllData = results[1];
-            res.render("main/dockRecipt", { title: 'Oldsailor Ocean Shipping LLC || Dock Receipt', clientsData: clientsData, foundAllData: foundAllData });
+            Dock_R.count().exec(function(err, count) {
+                if (err) {
+                    console.log(err)
+                }
+                else {
+                    return res.render("main/dockRecipt", {
+                        title: 'Oldsailor Ocean Shipping LLC || Dock Receipt',
+                        clientsData: clientsData,
+                        foundAllData: foundAllData,
+                        current: pageNumber,
+                        pages: Math.ceil(count / perPage)
+                    });
+
+                }
+            })
 
         });
     }
@@ -49,6 +68,9 @@ router.get("/dock_r", function(req, res) {
 router.get("/invoice", function(req, res) {
 
     if (req.user) {
+        var perPage = 7;
+        var pageQuery = parseInt(req.query.page);
+        var pageNumber = pageQuery ? pageQuery : 1;
         async.parallel([
 
             function(callback) {
@@ -61,6 +83,8 @@ router.get("/invoice", function(req, res) {
                     .find({})
                     .populate("Client")
                     .sort('-_id')
+                    .skip((perPage * pageNumber) - perPage)
+                    .limit(perPage)
                     .exec(function(err, foundAllData) {
                         callback(err, foundAllData);
                     });
@@ -69,8 +93,21 @@ router.get("/invoice", function(req, res) {
         ], (err, results) => {
             var clientsData = results[0];
             var foundAllData = results[1];
-            res.render("main/invoice", { title: 'Oldsailor Ocean Shipping LLC || Dock Receipt', clientsData: clientsData, foundAllData: foundAllData });
+            Dock_R.count().exec(function(err, count) {
+                if (err) {
+                    console.log(err)
+                }
+                else {
+                    return res.render("main/invoice", {
+                        title: 'Oldsailor Ocean Shipping LLC || Invoice',
+                        clientsData: clientsData,
+                        foundAllData: foundAllData,
+                        current: pageNumber,
+                        pages: Math.ceil(count / perPage)
+                    });
 
+                }
+            })
         });
     }
     else {

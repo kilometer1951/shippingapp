@@ -10,13 +10,31 @@ const moment = require('moment');
 router.get('/clients', function(req, res) {
     if (req.user) {
         var t = req.cookies;
+        var perPage = 7;
+        var pageQuery = parseInt(req.query.page);
+        var pageNumber = pageQuery ? pageQuery : 1;
         // t.req.cookies['connect.sid'].split('.')[1]
         //   console.log(t['connect.sid'])
         //get clients
         Clients.find({})
             .sort('-createdAt')
+            .skip((perPage * pageNumber) - perPage)
+            .limit(perPage)
             .exec(function(err, foundData) {
-                return res.render("main/clients", { title: 'Oldsailor Ocean Shipping LLC || Clients', data: foundData });
+                Clients.count().exec(function(err, count) {
+                    if (err) {
+                        console.log(err)
+                    }
+                    else {
+                        return res.render("main/clients", {
+                            title: 'Oldsailor Ocean Shipping LLC || Clients',
+                            data: foundData,
+                            current: pageNumber,
+                            pages: Math.ceil(count / perPage)
+                        });
+
+                    }
+                })
             });
     }
     else {
