@@ -125,7 +125,6 @@
                     <td><%=content.Client[0].full_name%></td>
                     <td>
                         <a class="btn btn-success btn-sm " href="/r_r/<%=content._id%>/email/<%=content.Client[0]._id%>/cargo/<%=content.Cargo%>/consignee/<%=content.Consignee%>/booking_c/<%=content.BookingConfirmation%>"><i class="fas fa-envelope-open"></i> Email with clients name</a>
-                        <a class="btn btn-success btn-sm " href="/d_r_2/<%=content._id%>/email/<%=content.Client[0]._id%>/cargo/<%=content.Cargo%>/consignee/<%=content.Consignee%>/booking_c/<%=content.BookingConfirmation%>"><i class="fas fa-envelope-open"></i> Email with company name</a>
                         <a class="btn btn-warning btn-sm " href="/bill_of_lading__/<%=content._id%>/email/<%=content.Client[0]._id%>/cargo/<%=content.Cargo%>/consignee/<%=content.Consignee%>/booking_c/<%=content.BookingConfirmation%>"><i class="fas fa-envelope-open"></i> Email Bill of Lading</a>
                         <a class="btn btn-info btn-sm" href="/r_r/<%=content._id%>/editRoute"><i class="far fa-edit"></i> Edit</a>
                         <button class="btn btn-danger btn-sm deleteMessage1" id="<%=content._id%>" data-toggle="modal" data-target=".deleteMessageModal1"><i class="far fa-trash-alt"></i> Delete</button>
