@@ -13,7 +13,7 @@ function getClients(value) {
                     client_table += '<td>' + result.first_name + '</td>';
                     client_table += '<td>' + result.email + '</td>';
                     client_table += '<td>';
-                    client_table += '<button class="btn btn-outline-info btn-sm newCargoBtn" id="' + result._id + '"><i class="fas fa-plus"></i> New Container</button>';
+                    client_table += '<button class="btn btn-outline-info btn-sm newCargoBtn" id="' + result._id + '"><i class="fas fa-plus"></i> New Roro</button>';
                     client_table += '</td>';
                     client_table += '</tr>';
 
@@ -45,10 +45,9 @@ function getClients(value) {
 
                 client_table += '<tr>';
                 client_table += '<td>' + result.first_name + '</td>';
-                client_table += '<td>' + result.last_name + '</td>';
                 client_table += '<td>' + result.email + '</td>';
                 client_table += '<td>';
-                client_table += '<button class="btn btn-outline-info btn-sm newCargoBtn" id="' + result._id + '"><i class="fas fa-plus"></i> New Cargo</button>';
+                client_table += '<button class="btn btn-outline-info btn-sm newCargoBtn" id="' + result._id + '"><i class="fas fa-plus"></i> New Roro</button>';
                 client_table += '</td>';
                 client_table += '</tr>';
 
@@ -126,23 +125,23 @@ $(document).ready(function() {
         //ajax call
         $.get("/clientsBasedId/" + client_id, function(data) {
             //display text and div
-            $("#clientName").text("New Cargo for: " + data.full_name);
+            $("#clientName").text("New Roro for: " + data.full_name);
             $(".client_ID").attr("id", data._id);
 
             // ajax call then check if you have to clear text or assign va value to it clear 
 
-            $.ajax({
-                url: "/checkcargourl__/" + client_id,
-                type: "GET",
-                success: function(response) {
-                    //    console.log(response)
-                    $(".saveAndNew").attr("id", response);
-                    $(".saveAndClose").attr("id", response);
-                },
-                error: function(argument) {
-                    // body...
-                }
-            })
+            // $.ajax({
+            //     url: "/checkcargourl__/" + client_id,
+            //     type: "GET",
+            //     success: function(response) {
+            //         //    console.log(response)
+            //         $(".saveAndNew").attr("id", response);
+            //         $(".saveAndClose").attr("id", response);
+            //     },
+            //     error: function(argument) {
+            //         // body...
+            //     }
+            // })
 
             $(".saveAndNew").attr("id", "");
             $(".saveAndClose").attr("id", "");
@@ -176,7 +175,7 @@ $(document).ready(function() {
 
         var cargo_id = $(this).attr("id");
         saveCargo(cargo_id);
-        window.location.href = "/cargo";
+        window.location.href = "/roro";
     });
 
 
@@ -194,7 +193,7 @@ $(document).ready(function() {
         data.personal_effect = $("#personal_effect").val();
 
         //send data to server
-        $.post("/cargo/new", { data: data }, function(result) {
+        $.post("/roro/new", { data: data }, function(result) {
             console.log(result._id);
             //add cargo id to save button
             $(".saveAndNew").attr("id", result._id);
@@ -246,7 +245,7 @@ $(document).ready(function() {
             data.vin = $("#vin").val();
             data.aes = $("#aes").val();
             //send data to server
-            $.post('/cargo/' + id + '/addmorecars', { data: data }, function(result) {
+            $.post('/roro/' + id + '/addmorecars', { data: data }, function(result) {
                 console.log(result);
                 //append new car to table
                 $("#cars_columnId" + id).prepend($("#cardetails").val() + ', ');
@@ -283,7 +282,7 @@ $(document).ready(function() {
     $(document).on('click', '.delete1', function() {
         var id = $(this).attr("id");
 
-        $.post("/cargo/" + id + "/delete?_method=DELETE", function(result) {
+        $.post("/roro/" + id + "/delete?_method=DELETE", function(result) {
 
             location.reload();
 
@@ -299,7 +298,7 @@ $(document).ready(function() {
         //clear table data and wait for new data from server
         $(".cargo_table_body").html("");
         //ajax call to display data
-        $.get('/cargo/' + value + '/fetchCargo_perclient', function(result) {
+        $.get('/roro/' + value + '/fetchCargo_perclient', function(result) {
             $(".client_table_body").html('');
             console.log(result.length);
             if (result.length !== 0) {
@@ -360,7 +359,7 @@ $(document).ready(function() {
         data.personal_effect = $("#personal_effect").val();
 
         //send data to server
-        $.post('/cargo/' + cargo_id + '/edit_personaleffect', { data: data }, function(result) {
+        $.post('/roro/' + cargo_id + '/edit_personaleffect', { data: data }, function(result) {
             console.log(result);
 
 
@@ -389,7 +388,7 @@ function updateCars(car_id, cargo_id) {
     data.aes = $("#aes" + car_id).val();
     data.car_id = car_id;
     //send data to server
-    $.post('/cargo/' + cargo_id + '/edit', { data: data }, function(result) {
+    $.post('/roro/' + cargo_id + '/edit', { data: data }, function(result) {
         console.log(result);
 
 

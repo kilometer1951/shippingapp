@@ -19,11 +19,13 @@ var
     clientRoute = require("./routes/clientRoute"),
     consigneeRoute = require("./routes/consigneeRoute"),
     cargoRoute = require("./routes/cargoRoute"),
+    roroRoute = require("./routes/roroRoute"),
     powerOfAttroney_nraRoute = require("./routes/powerOfAttroney_nraRoute"),
     booking_confirmRoute = require("./routes/booking_confirmRoute"),
     merge_nra_bc = require("./routes/merge_nra_bc"),
     nextpageRoute = require("./routes/nextpageRoute"),
     dock_rROute = require("./routes/dock_rROute"),
+    roro_rROute = require("./routes/roro_rROute"),
     authRoute = require("./routes/authRoute"),
     ectnRoute = require("./routes/ectnRoute"),
     invoiceRoute = require("./routes/invoiceRoute"),
@@ -121,11 +123,13 @@ app.use(indexRoute);
 app.use(clientRoute);
 app.use(consigneeRoute);
 app.use(cargoRoute);
+app.use(roroRoute);
 app.use(powerOfAttroney_nraRoute);
 app.use(booking_confirmRoute);
 app.use(merge_nra_bc);
 app.use(nextpageRoute);
 app.use(dock_rROute);
+app.use(roro_rROute);
 app.use(authRoute);
 app.use(ectnRoute);
 app.use(invoiceRoute);

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Edit Cargo</title>
+    <title>Edit Roro</title>
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
      <!--<link rel="stylesheet" href="/css/newcargo.css">-->
     
@@ -75,7 +75,7 @@
 <body>
    <div class="container-fluid"><br>
       <div class="cargoSection">
-          <h3 class="text-center" style="padding:20px;">Edit Container</h3>
+          <h3 class="text-center" style="padding:20px;">Edit RORO</h3>
           <% foundData.Cars.forEach(function(cars){ %>
              <% if(cars.cardetails !== "") {%>
                   <button class="btn btn-danger btn-sm open_del_dialog" id="<%=cars._id%>" data-toggle="modal" data-target=".deleteMessageModal1" style="float:right;"><i class="far fa-trash-alt"></i> Delete</button>
@@ -107,7 +107,7 @@
                       </div>
                       <div class="col-md-6" style="text-align:center;">
                           <div class="form-group">
-                            <a class="btn btn-warning" href="/cargo">Return Back</a>
+                            <a class="btn btn-warning" href="/roro">Return Back</a>
                           </div>
                       </div>
                     </div>
@@ -129,7 +129,7 @@
               </div>
               <div class="col-md-6" style="text-align:center;">
                   <div class="form-group">
-                    <a class="btn btn-warning" href="/cargo">Return Back</a>
+                    <a class="btn btn-warning" href="/roro">Return Back</a>
                   </div>
               </div>
             </div>
@@ -163,7 +163,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
-<script src="/js/cargo.js"></script>
+<script src="/js/roro.js"></script>
 <script>
 
 
@@ -178,7 +178,7 @@
        var car_id = $(this).attr("id"); 
        var cargo_id_10 = $(".cargo_id_10").attr("id"); 
        
-       $.post("/cars/"+ car_id +"/delete/"+ cargo_id_10, function(data) {
+       $.post("/roro/"+ car_id +"/delete/"+ cargo_id_10, function(data) {
            location.reload();
        });
        

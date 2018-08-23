@@ -36,7 +36,10 @@
         <a class="nav-link" href="consignee">Consignee</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/cargo">Cargo</a>
+        <a class="nav-link" href="/cargo">Container</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="/roro">RORO</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/powerOfAttroney_nra">POA / NRA Contract</a>
@@ -49,7 +52,7 @@
                <div class="dropdown-menu-header" id="dropdown-menu-header" onclick="window.location.href='/invoice'">
                    <span><i class="far fa-file-alt"></i> Invoice</span>
                </div>
-               <div class="dropdown-menu-body" id="dropdown-menu-body"  onclick="window.location.href='/ectn'">
+               <div class="dropdown-menu-body" id="dropdown-menu-body"  onclick="window.location.href='/ectn'" style="display:none">
                     <div class="menu-body-segment">
                        <span><i class="fab fa-wpforms"></i> ECTN Form</span>
                    </div>
@@ -59,12 +62,17 @@
                        <span><i class="far fa-credit-card"></i> Dock Receipt</span>
                    </div>
                </div>
+               <div class="dropdown-menu-body" id="dropdown-menu-body" onclick="window.location.href='/roro_r'">
+                    <div class="menu-body-segment">
+                       <span><i class="far fa-credit-card"></i> Roro Receipt</span>
+                   </div>
+               </div>
                <!--<div class="dropdown-menu-body" id="dropdown-menu-body" onclick="window.location.href='/bill_lading'">-->
                <!--     <div class="menu-body-segment">-->
                <!--        <span><i class="fas fa-bullseye"></i> Bill of Lading</span>-->
                <!--    </div>-->
                <!--</div>-->
-               <div class="dropdown-menu-body" id="dropdown-menu-body">
+               <div class="dropdown-menu-body" id="dropdown-menu-body" style="display:none">
                     <div class="menu-body-segment">
                        <span><i class="far fa-money-bill-alt"></i> Commercial Invoice</span>
                    </div>
@@ -95,10 +103,7 @@
            </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+  
     <div class="nav-item dropdown" style="margin-right:55px;">
         <a class="nav-link dropdown-toggle"  id="navbarDropdown_4" style="cursor:pointer;">
          <img src="<%=user.photo%>" width="30" height="30" alt=""> <%=user.first_name%>

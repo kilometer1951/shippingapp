@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title><%=stringText(ClientData.full_name)%>(DOCK RECEIPT)</title>
+        <title><%=stringText(ClientData.full_name)%>(RORO RECEIPT)</title>
          <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -11,7 +11,7 @@
        line-height:1em;
        font-size:24px;
    }
-    textarea {
+   textarea {
        border: none;
        outline:none;
        resize: none;
@@ -58,7 +58,7 @@ th, td {
         <span style="font-size:17px;"><b>FMC-OTI No: <%=stringText("026435N")%></b></span>
     </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <div style="display:inline-block;">
-        <span style="font-size:20px"><b>SHIPPING INSTRUCTIONS</b></span><br>
+        <span style="font-size:20px"><b>DOCK&nbsp;RECEIPT</b></span><br>
         <span style="font-size:12px;">Date: <%=moment(Dock_R.createdAt).format("l")%></span>
         
     </div><br>
@@ -68,12 +68,18 @@ th, td {
                 <div class="col-md-6" style="border-right:1px solid #000;">
                     <!--Shipper -->
                      <div>
-                        <b style="font-size:16px;"><%=stringText("SHIPPER EXPORTER")%></b><br>
-                        <span style="font-size:15px;"><%=stringText("OLDSAILORS OCEAN SHIPPING LLC")%>,</span><br>
-                        <span style="font-size:15px;"><%=stringText("13903 CHADSWORTH TERRACE")%></span><br>
-                        <span style="font-size:15px;">LAUREL, MD, 20707,</span>
-                        <span style="font-size:15px;">&nbsp;USA,</span>&nbsp;
-                        <span style="font-size:15px;">Tel:301-213-6961</span>
+                         <b style="font-size:16px;"><%=stringText("SHIPPER EXPORTER")%></b><br>
+                         <% if(Dock_R.cleint_is_agent !== "" ) { %>
+                         <% console.log(Dock_R.cleint_is_agent + "m") %>
+                           <span style="font-size:16px;"><%=stringText(Dock_R.cleint_is_agent === "Yes" ? ClientData.full_name +"\nAS AGENT FOR OLDSAILORS OCEAN SHIPPING \n" : "OLDSAILORS OCEAN SHIPPING AS AGENT FOR \n"+ClientData.full_name)%></span><br>
+                         <% } else { %>
+                           <span style="font-size:18px;"><%=stringText(ClientData.full_name)%>,</span><br>
+                         <% } %>
+                        <span style="font-size:18px;"><%=stringText(ClientData.address)%></span><br>
+                        <span style="font-size:18px;"><%=stringText(ClientData.City !== null ? ClientData.City.cityname + "," : "")%>&nbsp;&nbsp;</span>
+                        <span style="font-size:18px;"><%=stringText(ClientData.State !== null ? ClientData.State.statename + "," : "")%></span><br>
+                        <span style="font-size:18px;"><%=stringText(ClientData.zipcode)%>, USA,</span>&nbsp;
+                        <span style="font-size:18px;">Tel:<%=ClientData.pnum%></span>
                      </div>
                      <!-- CONSIGNEE  -->
                      <div  style="border-top:1px solid #000;">
@@ -82,7 +88,6 @@ th, td {
                         <span style="font-size:18px;"><%=stringText(Consignee.address)%>,</span><br>
                         <span style="font-size:18px;"><%=stringText(Consignee.city)%>,&nbsp;<%=stringText(Consignee.state)%>,</span><br>
                         <span style="font-size:18px;"><%=stringText(Consignee.Country !== null ? Consignee.Country.countryname : "")%>,&nbsp;Tel: <%=stringText(Consignee.pnum)%></span>
-
                      </div>
                      <div  style="border-top:1px solid #000;">
                         <div class="row">
@@ -225,7 +230,7 @@ th, td {
                         <%=Dock_R.n_country%></span><br>
                         <span><%=Dock_R.n_pnum !== "" ? "Tel: "+Dock_R.n_pnum : "" %></span>
                      </div>
-                    <div style="border-top:1px solid #000;">
+                     <div style="border-top:1px solid #000;">
                           <b style="font-size:14px;">POINT AND COUNTRY OF ORIGIN</b><br> 
                         <span style="font-size:25px;"><%=Dock_R.point_and_contry_of_origin === "" ? "USA" : Dock_R.point_and_contry_of_origin %></span><br>
                      </div>
@@ -262,17 +267,17 @@ th, td {
                        <div class="col-md-2" style="border:1px solid #000;">
                            <div class="row">
                                <div style="padding:7px;">
-                                <b> CONTAINER&nbsp;#</b><br>
-                               <span style="font-size:18px;"><%=Dock_R.container_num%></span><br><br>
-                                <b>SEAL&nbsp;#:</b>
-                               <%=Dock_R.seal_num%><br><br>
+                                <b> FREIGHT:</b><br>
+                               <span style="font-size:18px;"><%=Dock_R.seal_num%></span><br><br>
+                                <b>IN TRANSIT:</b><br>
+                               <%=Dock_R.container_num%><br><br>
                                <b>CUT&nbsp;OFF&nbsp;DATE</b><br>
                                <%=BookingConfirmation.cut_off_date !== null ? moment(BookingConfirmation.cut_off_date).format("l") : ""%><br><br>
-                               <b>SAILING&nbsp;DATE</b><br>
-                                <%=BookingConfirmation.sail_date !== null ? moment(BookingConfirmation.sail_date).format("l") : ""%><br><br>
+                               
                                <b>ARRIVAL&nbsp;DATE</b><br>
-                             
-                               <%=BookingConfirmation.arrival_date !== null ? moment(BookingConfirmation.arrival_date).format("l") : ""%><br>
+                               <%=BookingConfirmation.arrival_date !== null ? moment(BookingConfirmation.arrival_date).format("l") : ""%><br><br>
+                              <b>UNIT:</b>
+                               <%=Dock_R.unit%><br><br>
                                </div>
                            </div>
                        </div> 
@@ -288,8 +293,8 @@ th, td {
                                               <span>VIN:<%=carsdata.vin.toUpperCase()%></span><br><br>
                                            </span>
                                         <% }) %>
-                                      <div style="">
-                                       <textarea id="text_field"><%-Cargos.personal_effect.toUpperCase()%></textarea>
+                                        <div style="">
+                                       <textarea id="text_field"><%=Cargos.personal_effect.toUpperCase()%></textarea>
                                        </div>
                                      </div>
                                      
@@ -299,7 +304,7 @@ th, td {
                                        <span ><b> <%=stringText("Total Weight")%></b></span>
                                    </div>
                                    <div style="float:left;font-size:13px;">
-                                       <span><b><%=stringText("SHIPPER ON THIS DOCUMENT CONFIRMS THAT, GAS TANK")%></b></span><br>
+                                       <span><b><%=stringText("SHIPPER ON THIS DOCK RECEIPT CONFIRMS THAT, GAS TANK")%></b></span><br>
                                        <span><b><%=stringText(" HAS BEEN DRAINED OFF FUEL, BATTERIES DISCONNECTED,")%></b></span><br>
                                        <span><b><%=stringText("VEHICLES HAVE BEEN BLOCKED AND BRACED, CONTAINER LOADED ")%></b></span>
                                        <span><b><%=stringText("IN ACCORDANCE TO GENERAL INTO IMDG CODE PARAGRAPH 12.3.7 & 17.7.7")%></b></span><br>
@@ -323,7 +328,7 @@ th, td {
                                    </div>
                                    </div>
                                     <div style="font-size:16px;"><br>
-                                       <span ><b> <%= parseFloat(Cargos.total_weight).toFixed(2)%>kg</b></span>
+                                       <span ><b> <%=parseFloat(Cargos.total_weight).toFixed(2)%>kg</b></span>
                                    </div>
                                    
                                </div>
@@ -396,7 +401,7 @@ th, td {
   <a href="mailto:<%=ClientData.email%>" class="btn btn-success"><i class="fas fa-envelope-open"></i> Send Email</a>
 </form>
 
-  <a href="/dock_r" class="btn btn-warning"> Cancel</a>
+  <a href="/roro_r" class="btn btn-warning"> Cancel</a>
 
 <br>
 <br>
@@ -428,11 +433,14 @@ $('#create_pdf').on('click', function () {
 //           });
            window.print();
            $("#send_emailForm").css("display", "block");
-});     
+}); 
 
   window.setTimeout( function() {
     $("textarea").height( $("textarea")[0].scrollHeight );
 }, 1);
+
+
+  //increase hieght of textarea as you type
 
 // (function () {  
   

@@ -101,7 +101,7 @@
 <div class="container-fluid">
   
     <div style="margin-top:70px;"></div>
-    <h3 class="text-center">Container Contents</h3>
+    <h3 class="text-center">RORO Contents</h3>
     <div class="client-body" id="clientBody">
         <form>
             <div class="row">
@@ -117,7 +117,7 @@
               </div>
               <div class="col-md-4">
                   <div class="form-group">
-                    <button type="button" class="btn btn-primary newCargo" id="newCargo" onclick="window.location.href='/cargo/displaynewcargo'">New Container</button>
+                    <button type="button" class="btn btn-primary newCargo" id="newCargo" onclick="window.location.href='/cargo/displaynewroro'">New Roro</button>
                   </div>
               </div>
               <div class="col-md-4" >
@@ -151,7 +151,7 @@
                     <td><%=content.personal_effect%></td>
                     <td>
                         <button class="btn btn-outline-dark btn-sm openAddMoreCars" id="<%=content._id%>" data-toggle="modal" data-target="#addMoreCarsModal"><i class="fas fa-plus"></i> Add more cars</button>
-                        <a class="btn btn-outline-info btn-sm openEditModal" href="cargo/<%=content._id%>/editRoute"><i class="far fa-edit"></i> Edit</a>
+                        <a class="btn btn-outline-info btn-sm openEditModal" href="roro/<%=content._id%>/editRoute"><i class="far fa-edit"></i> Edit</a>
                         <button class="btn btn-outline-danger btn-sm deleteMessage1" id="<%=content._id%>" data-toggle="modal" data-target=".deleteMessageModal1"><i class="far fa-trash-alt"></i> Delete</button>
                     </td>
                   </tr>
@@ -274,4 +274,4 @@
   </p>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
-<script src="/js/cargo.js"></script>
+<script src="/js/roro.js"></script>

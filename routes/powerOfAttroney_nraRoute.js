@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Clients = require("../models/client");
 const Cargos = require("../models/cargo");
+const Roro = require("../models/roro");
 const Country = require("../models/country");
 const PowerOfAttroney_nra = require("../models/powerOfAttroney_nraModel");
 const BookingConfirmation = require("../models/bookingc");
@@ -228,6 +229,22 @@ router.get("/cargo/:client_id/fetchCargo_perclient_2", function(req, res) {
 
     //get that clients cargos
     Cargos
+        .find({ Client: req.params.client_id })
+        .populate("Client")
+        .sort('-createdAt')
+        .exec(function(err, foundAllData) {
+            return res.send(foundAllData)
+        });
+
+
+});
+
+
+//Fetch Cargo per client by id during POA / NRA from creation
+router.get("/roro/:client_id/fetchCargo_perclient_2", function(req, res) {
+
+    //get that clients cargos
+    Roro
         .find({ Client: req.params.client_id })
         .populate("Client")
         .sort('-createdAt')

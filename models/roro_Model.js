@@ -1,9 +1,8 @@
-
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 
-var dock_rSchema = new mongoose.Schema({
+var roro_rSchema = new mongoose.Schema({
   createdAt: { type: Date },
   Client: [{
     type: Schema.Types.ObjectId,
@@ -28,6 +27,7 @@ var dock_rSchema = new mongoose.Schema({
   seal_num: String,
   demurrage: String,
   container_num: String,
+  unit: String,
   aes_num: String,
   originals_tobe_released: String,
   cleint_is_agent: String,
@@ -69,4 +69,4 @@ var dock_rSchema = new mongoose.Schema({
 
 
 
-module.exports = mongoose.model('Dock_R', dock_rSchema);
+module.exports = mongoose.model('Roro_R', roro_rSchema);
