@@ -503,7 +503,6 @@ router.get("/r_r/:id/email/:client_id/cargo/:cargo_id/consignee/:consignee_id/bo
         function(callback) {
             BookingConfirmation
                 .findOne({ _id: req.params.bc_id })
-                .sort('-createdAt')
                 .exec(function(err, foundAllData) {
                     callback(err, foundAllData);
                 });
@@ -530,6 +529,7 @@ router.get("/r_r/:id/email/:client_id/cargo/:cargo_id/consignee/:consignee_id/bo
         var Dock_R = results[0];
         var ClientData = results[1];
         var BookingConfirmation = results[2];
+        //  console.log(BookingConfirmation.booking_number)
         var Cargos = results[3];
         var Consignee = results[4];
         //    console.log(BookingConfirmation)
