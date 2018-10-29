@@ -131,18 +131,18 @@ $(document).ready(function() {
 
             // ajax call then check if you have to clear text or assign va value to it clear 
 
-            $.ajax({
-                url: "/checkcargourl__/" + client_id,
-                type: "GET",
-                success: function(response) {
-                    //    console.log(response)
-                    $(".saveAndNew").attr("id", response);
-                    $(".saveAndClose").attr("id", response);
-                },
-                error: function(argument) {
-                    // body...
-                }
-            })
+            // $.ajax({
+            //     url: "/checkcargourl__/" + client_id,
+            //     type: "GET",
+            //     success: function(response) {
+            //         //    console.log(response)
+            //         $(".saveAndNew").attr("id", response);
+            //         $(".saveAndClose").attr("id", response);
+            //     },
+            //     error: function(argument) {
+            //         // body...
+            //     }
+            // })
 
             $(".saveAndNew").attr("id", "");
             $(".saveAndClose").attr("id", "");
@@ -164,6 +164,7 @@ $(document).ready(function() {
         });
 
     });
+    
 
     $(document).on('click', '.saveAndNew', function() {
 

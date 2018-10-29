@@ -87,25 +87,24 @@ router.get('/cargo/displaynewcargo', function(req, res) {
 });
 
 
+// //check per day
+// router.get("/checkcargourl__/:id", function(req, res) {
+//     //  console.log(req.params.id);
+//     // var date = new Date();
+//     // date.setHours(0, 0, 0, 0)
+//     // //console.log(date)
 
-//check per day
-router.get("/checkcargourl__/:id", function(req, res) {
-    //  console.log(req.params.id);
-    var date = new Date();
-    date.setHours(0, 0, 0, 0)
-    //console.log(date)
+//     Cargos.findOne({ Client: req.params.id }, function(err, foundData) {
+//         if (foundData) {
+//             //       console.log("here")
+//             return res.send(foundData._id);
+//         }
+//         else {
+//             return res.send("");
+//         }
 
-    Cargos.findOne({ createdAt: date, Client: req.params.id }, function(err, foundData) {
-        if (foundData) {
-            //       console.log("here")
-            return res.send(foundData._id);
-        }
-        else {
-            return res.send("");
-        }
-
-    });
-});
+//     });
+// });
 
 
 
