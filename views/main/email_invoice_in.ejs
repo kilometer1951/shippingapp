@@ -99,6 +99,8 @@
                                  <span><b><%=Invoice_In.label_charge1%></b></span><br>
                                  <span><b><%=Invoice_In.label_charge2%></b></span><br>
                                  <span><b><%=Invoice_In.label_charge4%></b></span><br>
+                                 <span><b><%=Invoice_In.label_charge5%></b></span><br>
+                                 <span><b><%=Invoice_In.label_charge6%></b></span><br>
                                  <span><b>INVOICE TOTAL</b></span><br>
                                  <span><b>BALANCE DUE</b></span>
                              </div>
@@ -112,6 +114,8 @@
                                  <span><%=Invoice_In.more_invoice_fields !== "" ? "$"+Invoice_In.more_invoice_fields : "" %></span><br>
                                  <span><%=Invoice_In.more_invoice_fields_2 !== "" ? "$"+Invoice_In.more_invoice_fields_2 : "" %></span><br>
                                  <span><%=Invoice_In.more_invoice_fields_3 !== "" ? "$"+Invoice_In.more_invoice_fields_3: "" %></span><br>
+                                 <span><%-Invoice_In.more_invoice_fields_5  ? "$"+Invoice_In.more_invoice_fields_5: "" %></span><br>
+                                 <span><%-Invoice_In.more_invoice_fields_6  ? "$"+Invoice_In.more_invoice_fields_6: "" %></span><br>
                                  <span><%=Invoice_In.invoice_total !== "" ? "$"+Invoice_In.invoice_total : "" %></span><br>
                                  <span><%=Invoice_In.balance_due !== "" ? "$"+Invoice_In.balance_due : "" %></span>
                              </div>

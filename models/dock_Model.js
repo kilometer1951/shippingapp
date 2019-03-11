@@ -1,4 +1,3 @@
-
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -61,6 +60,12 @@ var dock_rSchema = new mongoose.Schema({
 
 
   label_charge1: String,
+
+  more_invoice_fields_5: String,
+  label_charge5: String,
+
+  more_invoice_fields_6: String,
+  label_charge6: String,
 
 
 
