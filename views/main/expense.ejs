@@ -1,0 +1,217 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+<style>
+    .client-body {
+        margin-top:20px;
+        z-index:-1;
+    }
+    
+    .clientDataSection {
+        height:70vh;
+        overflow-y:auto;
+        overflow-x:hidden;
+    }
+/*    tbody {*/
+/*    display:block;*/
+/*    height:65vh;*/
+/*    overflow:auto;*/
+/*}*/
+/*  thead, tbody tr {*/
+/*    display:table;*/
+/*    width:100%;*/
+/*    table-layout:fixed;*/
+/*}*/
+.error_expense {
+    padding:5px;
+    margin-bottom:10px;
+    background-color:#ff4444;
+    border-radius:5px;
+    color:#fff;
+    display:none;
+    }
+
+
+</style>
+<div class="container-fluid">
+    <div style="margin-top:70px;"></div>
+    <h3 class="text-center">Expenses</h3>
+    <div class="client-body" id="clientBody">
+        <form>
+            <div class="row">
+             
+              <div class="col-md-12">
+                  <div class="form-group">
+                    <button type="button" class="btn btn-primary newExpense" data-toggle="modal" data-target="#newexpenseModal" id="newExpense">New Expense</button>
+                  </div>
+              </div>
+            </div>
+        </form>
+        <div class="table-responsive">
+             <table class="table table-striped table-dark">
+                <thead style="background:#3F729B;">
+                  <tr>
+                    <th>Date Added</th>
+                    <th>Expense</th>
+                    <th>Amount</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody class="expense_table_body">
+                  <%  data.forEach(function(content){ %>
+                  <tr >
+                    <td><%=(moment.parseZone(content.createdAt).format('l') === moment.parseZone(new Date()).format('l') ? 'Today': moment(content.createdAt).format("ll"))%></td>
+                    <td><%= content.expense%></td>
+                    <td>$<%= content.amount%></td>
+                    <td>
+                        <button class="btn btn-info btn-sm openEditModal" id="<%= content._id%>" data-toggle="modal" data-target="#editExpenseModal"><i class="far fa-edit"></i> Edit</button>
+                        <button class="btn btn-danger btn-sm deleteMessage" id="<%= content._id%>" data-toggle="modal" data-target=".deleteMessageModal"><i class="far fa-trash-alt"></i> Delete</button>
+                    </td>
+                  </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+        </div>
+    </div>
+    <% if (pages && pages > 0) { %>
+    <ul class="pagination justify-content-center">
+        <% if (current == 1) { %>
+        <li class="page-item disabled"><a class="page-link" style="display:none;">First</a></li>
+        <% } else { %>
+        <li class="page-item" ><a href="/expense" class="page-link" >First</a></li>
+        <% } %>
+ 
+        <% if (current == 1) { %>
+        <li class="page-item disabled"><a class="page-link" style="display:none;">Previous</a></li>
+        <% } else { %>
+        <li class="page-item"><a href="/expense?page=<%= Number(current) - 1 %>" class="page-link" >Previous</a></li>
+        <% } %>
+ 
+        <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+        
+        <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+        <% if (i == current) { %>
+        <li class="page-item active"><a class="page-link"><%= i %></a></li>
+        <% } else { %>
+        <li class="page-item"><a href="/expense?page=<%= i %>" class="page-link"><%= i %></a></li>
+        <% } %>
+       
+        <% } %>
+ 
+        <% if (current == pages) { %>
+        <li class="page-item disabled"><a class="page-link" style="display:none;">Next</a></li>
+        <% } else { %>
+        <li class="page-item"><a href="/expense?page=<%= Number(current) + 1 %>" class="page-link">Next</a></li>
+        <% } %>
+ 
+        <% if (current == pages) { %>
+        <li class="page-item disabled"><a class="page-link" style="display:none;">Last</a></li>
+        <% } else { %>
+        <li class="page-item"><a href="/expense?page=<%= pages %>" class="page-link">Last</a></li>
+        <% } %>
+    </ul>
+    <% } %>
+
+</div>
+
+<!-- New Client Modal -->
+<div class="modal fade" id="newexpenseModal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-dialog modal-lg" role="document">
+    <div class="modal-content" style="background-color:#fafafa  ;">
+      <div class="modal-header" style="margin: 0 auto;">
+        <h5>New Expense</h5>
+      </div>
+      <div class="modal-body">
+        <form action="javascript:void(0)">
+           <div class="error_expense" id="error_expense">
+             <p class="text-center" style="padding-top:10px;">Error Saving. All fields are required</p>
+           </div>
+             <div class="row " style=" background-color:#e0f2f1; padding:10px;">
+               <div class="col-md-12">
+                <div class="form-group">
+                  <label for="expense">Expense Name</label>
+                  <input class="form-control" name="expense" id="expense" autocomplete="on">
+                </div>
+              </div>
+             </div>
+            
+              <div class="row"  style=" background-color:#c5e1a5 ; padding:10px;">
+               <div class="col-md-12">
+                <div class="form-group">
+                  <label for="amount">Amount</label>
+                  <input class="form-control" name="amount" id="amount" >
+                </div>
+              </div>
+              </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" id="saveandnew">Save and New</button>
+        <button type="button" class="btn btn-primary" id="saveandclose">Save and close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closemodal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Edit Client Modal -->
+<div class="modal fade" id="editExpenseModal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-dialog modal-lg" role="document">
+    <div class="modal-content" style="background-color:#fafafa;">
+      <div class="modal-header" style="margin: 0 auto;">
+        <h5>Expense Update</h5>
+      </div>
+      <div class="modal-body" id="editmodal_body">
+       <div class="row " style=" background-color:#e0f2f1; padding:10px;">
+           <div class="col-md-12">
+            <div class="form-group">
+              <label for="expense">Expense Name</label>
+              <input class="form-control" name="expense" id="expense_edit" autocomplete="on">
+            </div>
+          </div>
+         </div>
+        
+          <div class="row"  style=" background-color:#c5e1a5 ; padding:10px;">
+           <div class="col-md-12">
+            <div class="form-group">
+              <label for="amount">Amount</label>
+              <input class="form-control" name="amount" id="amount_edit" >
+            </div>
+          </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary updateRecord" id="">Update Record</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closemodal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Delete Client-->
+<div class="modal fade deleteMessageModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+         <div style="padding:10px;text-align:center;">
+           <p>Delete this data ?</p>
+           <span id="client_id"></span>
+           <button class="btn btn-info" data-dismiss="modal">Cancel</button>
+           <button class="btn btn-danger delete" id="">Delete</button>
+         </div>
+    </div>
+  </div>
+</div>
+
+
+<% if(data.length === 0){ %>
+
+<div class="nodata_expesne" style="text-align:center;font-size:40px;">
+  <p>
+    <span>No Expense Found...</span>
+  </p>
+</div>
+<% } %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+<script src="/js/expense.js"></script>

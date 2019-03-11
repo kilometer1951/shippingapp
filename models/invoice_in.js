@@ -26,6 +26,12 @@ var invoice_independent_rSchema = new mongoose.Schema({
   for_transhipment_to: String,
   label_charge3: String,
 
+  more_invoice_fields_5: String,
+  label_charge5: String,
+
+  more_invoice_fields_6: String,
+  label_charge6: String,
+
   more_invoice_fields_3: String,
   label_charge4: String,
 

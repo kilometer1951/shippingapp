@@ -79,10 +79,16 @@ router.post("/invoice/new/:id", function(req, res) {
         more_invoice_fields_2: req.body.more_invoice_fields_2,
         more_invoice_fields_3: req.body.more_invoice_fields_3,
 
+        more_invoice_fields_5: req.body.more_invoice_fields_5,
+        more_invoice_fields_6: req.body.more_invoice_fields_6,
+
         label_charge1: req.body.label_charge1,
         label_charge2: req.body.label_charge2,
         label_charge3: req.body.label_charge3,
         label_charge4: req.body.label_charge4,
+
+        label_charge5: req.body.label_charge5,
+        label_charge6: req.body.label_charge6,
 
 
 
@@ -148,11 +154,16 @@ router.post("/invoice/:id/edit", function(req, res) {
         more_invoice_fields: more_invoice_fields,
         more_invoice_fields_2: req.body.more_invoice_fields_2,
         more_invoice_fields_3: req.body.more_invoice_fields_3,
+        more_invoice_fields_5: req.body.more_invoice_fields_5,
+        more_invoice_fields_6: req.body.more_invoice_fields_6,
 
         label_charge1: req.body.label_charge1,
         label_charge2: req.body.label_charge2,
         label_charge3: req.body.label_charge3,
         label_charge4: req.body.label_charge4,
+        label_charge5: req.body.label_charge5,
+        label_charge6: req.body.label_charge6
+
 
 
     };
@@ -312,11 +323,16 @@ router.post("/invoice_in/new/", function(req, res) {
         more_invoice_fields: more_invoice_fields,
         more_invoice_fields_2: req.body.more_invoice_fields_2,
         more_invoice_fields_3: req.body.more_invoice_fields_3,
+        more_invoice_fields_5: req.body.more_invoice_fields_5,
+        more_invoice_fields_6: req.body.more_invoice_fields_6,
 
         label_charge1: req.body.label_charge1,
         label_charge2: req.body.label_charge2,
         label_charge3: req.body.label_charge3,
         label_charge4: req.body.label_charge4,
+        label_charge5: req.body.label_charge5,
+        label_charge6: req.body.label_charge6
+
 
 
 
@@ -388,11 +404,16 @@ router.post("/invoice_in/:id/edit", function(req, res) {
         more_invoice_fields: more_invoice_fields,
         more_invoice_fields_2: req.body.more_invoice_fields_2,
         more_invoice_fields_3: req.body.more_invoice_fields_3,
+        more_invoice_fields_5: req.body.more_invoice_fields_5,
+        more_invoice_fields_6: req.body.more_invoice_fields_6,
 
         label_charge1: req.body.label_charge1,
         label_charge2: req.body.label_charge2,
         label_charge3: req.body.label_charge3,
         label_charge4: req.body.label_charge4,
+        label_charge5: req.body.label_charge5,
+        label_charge6: req.body.label_charge6
+
 
 
     };

@@ -47,10 +47,16 @@ $(document).ready(function() {
         data.more_invoice_fields_2 = $("#more_invoice_fields_2").val();
         data.more_invoice_fields_3 = $("#more_invoice_fields_3").val();
 
+        data.more_invoice_fields_5 = $("#more_invoice_fields_5").val();
+        data.more_invoice_fields_6 = $("#more_invoice_fields_6").val();
+
         data.label_charge1 = $("#label_charge1").val();
         data.label_charge2 = $("#label_charge2").val();
         data.label_charge3 = $("#label_charge3").val();
         data.label_charge4 = $("#label_charge4").val();
+
+        data.label_charge5 = $("#label_charge5").val();
+        data.label_charge6 = $("#label_charge6").val();
 
         console.log(data)
 

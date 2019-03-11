@@ -29,7 +29,8 @@ var
     authRoute = require("./routes/authRoute"),
     ectnRoute = require("./routes/ectnRoute"),
     invoiceRoute = require("./routes/invoiceRoute"),
-    adminRoute = require("./routes/adminRoute");
+    adminRoute = require("./routes/adminRoute"),
+    expenseRoute = require("./routes/expenseRoute");
 
 
 
@@ -134,6 +135,7 @@ app.use(authRoute);
 app.use(ectnRoute);
 app.use(invoiceRoute);
 app.use(adminRoute);
+app.use(expenseRoute);
 
 
 app.listen(process.env.PORT, process.env.IP, function() {

@@ -58,7 +58,7 @@ th, td {
         <span style="font-size:17px;"><b>FMC-OTI No: <%=stringText("026435N")%></b></span>
     </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <div style="display:inline-block;">
-        <span style="font-size:20px"><b>DOCK&nbsp;RECEIPT</b></span><br>
+        <span style="font-size:20px"><b>SHIPPING INSTRUCTIONS</b></span><br>
         <span style="font-size:12px;">Date: <%=moment(Dock_R.createdAt).format("l")%></span>
         
     </div><br>
@@ -86,6 +86,7 @@ th, td {
                         <b style="font-size:16px;"><%=stringText("CONSIGNEE")%></b><br>
                         <span style="font-size:18px;"><%=stringText(Consignee.full_name)%></span><br>
                         <span style="font-size:18px;"><%=stringText(Consignee.address)%>,</span><br>
+                        <span style="font-size:18px;"><%-Consignee.email !== "" ? stringText(Consignee.email) + ",<br />" : ""%></span>
                         <span style="font-size:18px;"><%=stringText(Consignee.city)%>,&nbsp;<%=stringText(Consignee.state)%>,</span><br>
                         <span style="font-size:18px;"><%=stringText(Consignee.Country !== null ? Consignee.Country.countryname : "")%>,&nbsp;Tel: <%=stringText(Consignee.pnum)%></span>
                      </div>

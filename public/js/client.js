@@ -90,8 +90,8 @@ $(document).ready(function() {
     //get states data
     $('.newClient').on('click', function() {
         //ajax call
-
         $.get("/states", function(data) {
+
             data.forEach(function(content) {
                 var states = '';
                 states += '<option id="' + content._id + '" value="' + content._id + '">' + content.statename + '</option>';
@@ -466,32 +466,110 @@ $(document).ready(function() {
 
 
     //close modal
-    $('#closemodal').on('click', function() {
+    $('#closemodal_client').on('click', function() {
 
-        $("#state").html("<option>Select a state</option>");
-        $("#city").html("<option>Select a city</option>");
-        clearInputs();
+        location.reload();
+
+    });
+    $('#closemodal_cosignee').on('click', function() {
+
+        location.reload();
 
     });
 
-    function clearInputs() {
 
-        $("#cfirst_name").val('');
-        $("#clast_name").val('');
-        $("#cfull_name").val('');
-        $("#cpnum").val('');
-        $("#cemail").val('');
-        $("#address").val('');
-        $("#zipcode").val('');
-        $("#tax").val('');
-        $("#passport").val('');
-        $("#fax").val('');
-        $("#ssn").val('');
-        $(".error").css("display", "none")
-    }
+    $(document).on('click', '#saveandfillconsignee', function() {
+
+        $(".form_1").fadeOut(function() {
+            $("#loading_form").css({ display: "block" });
+            $("#btn_group").css({ display: "none" });
+            $("#label_text").css({ display: "none" });
+            setTimeout(function() {
+                $("#loading_form").css({ display: "none" });
+                $(".form_2").css({ display: "block" });
+                $("#label_text").css({ display: "block" });
+                $("#label_text").text("New Consignee");
+
+                $("#btn_group").css({ display: "block" });
+                $("#btn_group_client").css({ display: "none" });
+                $("#btn_group_consignee").css({ display: "block" });
+            }, 3000);
+        });
+
+        $.get("/displayDropdowndataForConsignee", function(data) {
+            data.countries.forEach(function(content) {
+                var countries = '';
+                countries += '<option id="' + content._id + '" value="' + content._id + '">' + content.countryname + '</option>';
+                $("#ccountry").append(countries);
+                //  console.log(countries);
+            });
+
+        });
+
+
+        var data = {};
+        data.cfirst_name = $("#cfirst_name").val();
+        data.clast_name = $("#clast_name").val();
+        data.cfull_name = $("#cfirst_name").val();
+        data.cpnum = $("#cpnum").val();
+        data.cemail = $("#cemail").val();
+        data.address = $("#address").val();
+        data.state = $("#state").val();
+        data.city = $("#city").val();
+        data.zipcode = $("#zipcode").val();
+        data.tax = $("#tax").val();
+        data.passport = $("#passport").val();
+        data.fax = $("#fax").val();
+        data.ssn = $("#ssn").val();
+
+        $.post("/client/new", { data: data }, function(result) {
+            clearInputs();
+            $(".client_id").attr("id", result._id);
+            var id = $(".client_id").attr("id");
+
+
+        });
+
+        $(document).on('click', '#saveandclose_c', function() {
+            var data = {};
+            data.cfirst_name = $("#ccfirst_name").val();
+            data.clast_name = $("#cclast_name").val();
+            data.cfull_name = $("#ccfirst_name").val() + ' ' + $("#cclast_name").val();
+            data.cpnum = $("#ccpnum").val();
+            data.cemail = $("#ccemail").val();
+            data.address = $("#caddress").val();
+            data.state = $("#cstate").val();
+            data.city = $("#ccity").val();
+            data.careof = $("#careof").val();
+            data.postalcode = $("#cpostalcode").val();
+            data.client = $(".client_id").attr("id");
+            data.country = $("#ccountry").val();
+
+            $.post("/consignee/new", { data: data }, function(result) {
+                location.reload();
+
+            });
+        })
+
+        function clearInputs() {
+
+            $("#cfirst_name").val('');
+            $("#clast_name").val('');
+            $("#cfull_name").val('');
+            $("#cpnum").val('');
+            $("#cemail").val('');
+            $("#address").val('');
+            $("#zipcode").val('');
+            $("#tax").val('');
+            $("#passport").val('');
+            $("#fax").val('');
+            $("#ssn").val('');
+            $(".error").css("display", "none")
+        }
 
 
 
 
 
+    });
 });
