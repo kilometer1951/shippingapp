@@ -182,6 +182,7 @@ $(document).ready(function() {
                 $("#state").html("<option>Select a state</option>");
                 $("#city").html("<option>Select a city</option>");
                 clearInputs();
+                location.reload();
                 $('#newclientsModal').modal('toggle');
             }
 
@@ -551,21 +552,6 @@ $(document).ready(function() {
             });
         })
 
-        function clearInputs() {
-
-            $("#cfirst_name").val('');
-            $("#clast_name").val('');
-            $("#cfull_name").val('');
-            $("#cpnum").val('');
-            $("#cemail").val('');
-            $("#address").val('');
-            $("#zipcode").val('');
-            $("#tax").val('');
-            $("#passport").val('');
-            $("#fax").val('');
-            $("#ssn").val('');
-            $(".error").css("display", "none")
-        }
 
 
 
@@ -573,3 +559,19 @@ $(document).ready(function() {
 
     });
 });
+
+function clearInputs() {
+
+    $("#cfirst_name").val('');
+    $("#clast_name").val('');
+    $("#cfull_name").val('');
+    $("#cpnum").val('');
+    $("#cemail").val('');
+    $("#address").val('');
+    $("#zipcode").val('');
+    $("#tax").val('');
+    $("#passport").val('');
+    $("#fax").val('');
+    $("#ssn").val('');
+    $(".error").css("display", "none")
+}
