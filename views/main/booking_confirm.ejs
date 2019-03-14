@@ -232,12 +232,15 @@
           <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">New Booking Confirmation</h5>
         <p class="poa_nra_id_" id=""></p>
+         <p class="cargo_id" id=""></p>
+         <p class="bookingc_id" id=""></p>
         <button type="button" class="close" onclick="location.reload()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-         <div class="section1" style="display:block;">
+         <div class="bookingForm" style="display:block;">
+             <div class="section1" style="display:block;">
              <div class="row">
                  <div class="col-md-6">
                      <div class="form-group">
@@ -387,12 +390,172 @@
                      </div>
                  </div>
              </div>
+         </div>
+          <div id="loading_form" style="text-align:center;display:none;">
+            <img src="http://www.dariusland.com/images/load.gif" style="width:200px; height:200px;"/>
+            <p>Saving and Redirecting to Dock Receipt</p>
+          </div>
+         <div class="dock_form" style="display:none;">
+               <!--<div class="error" id="error">-->
+          <!--   <p class="text-center" style="padding-top:10px;">Select a Consignee</p>-->
+          <!-- </div>-->
+         <div class="section1_" style="display:block;">
+             <div class="row">
+                 
+                 <table class="table table-striped table_1" style="display:none;">
+                    <thead class="table-success">
+                      <tr>
+                        <th>Date Added</th>
+                        <th style="background-color:#00897b;color:#fff;">Cars</th>
+                        <th style="background-color:#01579b;color:#fff;">Personal Effect</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody class="cargo_table_body"></tbody>
+               </table>
+             </div>
+             
+         </div>
+         <div class="nodata1" style="text-align:center;font-size:40px;display:none;">
+                  <p>
+                    <i class="fas fa-people-carry"></i><br>
+                    <span class="nodata1_text">No Cargo Found</span>
+                  </p>
+               </div>
+         <div class="loader1"></div>
+         <div class="section2_" style="display:none;">
+               <div class="row section2_row"></div>
+         </div>
+         <div class="section3_" style="display:none;">
+                   <h5 style="text-align:center;">Select Clients Booking Confirmation</h5>
+                   <table class="table table-striped">
+                    <thead class="table-success">
+                      <tr>
+                        <th>Date Added</th>
+                        <th style="background-color:#00897b  ;color:#fff;">Vessel Name</th>
+                        <th>Booking Number</th>
+                        <th>Voyage Number</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody class="table_body_bc"></tbody>
+                  </table>
+                  <button class="btn btn-warning b_3_"> Back</button>
+         </div>
+         <div class="section4_" style="display:none;">
+                <div style="border:1px solid #eeeeee  ;padding:10px;">
+                    <h5 style="text-align:center;">Notify Party</h5>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                               <label>Name</label>
+                               <input class="form-control" id="n_name">
+                          </div>
+                       </div>
+                       <div class="col-md-4">
+                          <div class="form-group">
+                               <label>Address</label>
+                               <input class="form-control" id="n_address">
+                          </div>
+                       </div>
+                       <div class="col-md-4">
+                          <div class="form-group">
+                               <label>Country</label>
+                               <input class="form-control" id="n_country">
+                          </div>
+                       </div>
+                       <div class="col-md-4">
+                          <div class="form-group">
+                               <label>Phone Number</label>
+                               <input class="form-control" id="n_pnum">
+                          </div>
+                       </div>
+                    </div>
+                </div>
+                <br>
+                <div style="border:1px solid #eeeeee;padding:10px;">
+                    <h5 style="text-align:center;">Marsk</h5>
+                    <div class="row">
+                        <div class="col-md-4">
+                          <div class="form-group">
+                               <label>Seal Number</label>
+                               <input class="form-control" id="seal_num">
+                          </div>
+                       </div>
+                       <div class="col-md-4">
+                          <div class="form-group">
+                               <label>Demurrage</label>
+                               <input class="form-control" id="demurrage">
+                          </div>
+                       </div>
+                       <div class="col-md-4">
+                          <div class="form-group">
+                               <label>Container Number</label>
+                               <input class="form-control" id="container_num" autocomplete="off" name="container_num">
+                          </div>
+                       </div>
+                       <div class="col-md-4">
+                          <div class="form-group">
+                               <label>AES Number</label>
+                               <input class="form-control" id="aes_num">
+                          </div>
+                       </div>
+                       <div class="col-md-4">
+                          <div class="form-group">
+                               <label>Originals to be released</label>
+                               <input class="form-control" id="originals_tobe_released">
+                          </div>
+                       </div>
+                       <div class="col-md-4" style="font-size:20px;">
+                         <div class="form-group">
+                             <label>Client as Agent</label><br>
+                             <label class="radio-inline " style="margin-right:30px;">
+                               <input type="radio" name="agent" id="yes" Value="Yes"> Yes
+                             </label>
+                             <label class="radio-inline">
+                                <input type="radio" name="agent" id="no" value="No"> No
+                             </label>
+                         </div>
+                     </div>
+                     <div class="col-md-4">
+                          <div class="form-group">
+                               <label>Fowarding Agent References</label>
+                               <textarea class="form-control" id="fowarding_agent_ref" style="resize:none;" name="fowarding_agent_ref"></textarea>
+                          </div>
+                       </div>
+                       <div class="col-md-4">
+                          <div class="form-group">
+                               <label>For Transhipment to</label>
+                               <input class="form-control" id="for_transhipment_to"  name="for_transhipment_to">
+                          </div>
+                       </div>
+                       <div class="col-md-4">
+                          <div class="form-group">
+                               <label>Point and country of origin</label>
+                               <input class="form-control" id="point_and_contry_of_origin"  name="point_and_contry_of_origin">
+                          </div>
+                       </div>
+                    </div>
+                </div>
+         </div>
+         </div>
       </div>
       <div class="modal-footer" style="display:none;">
-        <button class="btn btn-warning back_3" id="" style="float:right;"><i class="fas fa-arrow-left"></i> Back</button>
-        <button type="submit" class="btn btn-primary">Create Form</button>
-        <!--<button type="button" class="btn btn-primary createFormAndEmail">Create Form and Email</button>-->
-        <button type="button" class="btn btn-secondary" onclick="location.reload()">Close</button>
+        <div class="book_form_btns" style="display:block">
+           <button class="btn btn-warning saveandfilldockreceipt" id="saveandfilldockreceipt" style="margin-right:20px;"><i class="fas fa-arrow-right"></i> Save and Redirect to Dock Receipt</button>
+
+            <button class="btn btn-danger back_3" id="" style="float:right;"><i class="fas fa-arrow-left"></i> Back</button>
+            
+            <button type="submit" class="btn btn-primary">Create Form</button>
+            <!--<button type="button" class="btn btn-primary createFormAndEmail">Create Form and Email</button>-->
+            <button type="button" class="btn btn-secondary" onclick="location.reload()">Close</button>
+        </div>
+        <div class="dock_form_btns" style="display:none;">
+             <button class="btn btn-warning b_4_" id="" style="float:right;"><i class="fas fa-arrow-left"></i> Back</button>
+            <button type="button" class="btn btn-primary createForm_doc">Create Form</button>
+            <!--<button type="button" class="btn btn-primary createFormAndEmail">Create Form and Email</button>-->
+            <button type="button" class="btn btn-secondary" onclick="location.reload()">Close</button>
+        </div>
       </div>
       </form>
     </div>
@@ -409,3 +572,4 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
 <script src="/js/booking_confirm.js"></script>
+
