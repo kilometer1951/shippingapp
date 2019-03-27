@@ -467,7 +467,7 @@ $(document).ready(function() {
             personal_effect += '</div>';
             personal_effect += '<div class="col-md-12"><div class="form-group">';
             personal_effect += '<label style="color:#3F729B;">Total Weight</label>';
-            personal_effect += '<input class="form-control total_weight" id="total_weight"  disabled value="' + data.total_weight + '"> ';
+            personal_effect += '<input class="form-control total_weight" id="total_weight"   value="' + data.total_weight + '"> ';
             personal_effect += '</div>';
             personal_effect += '</div>';
 
