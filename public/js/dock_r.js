@@ -161,10 +161,9 @@ $(document).ready(function() {
             personal_effect += '</div>';
             personal_effect += '<div class="col-md-12"><div class="form-group">';
             personal_effect += '<label style="color:#3F729B;">Total Weight</label>';
-            personal_effect += '<input class="form-control total_weight" id="total_weight"   value="' + data.total_weight + '"> ';
+            personal_effect += '<input class="form-control total_weight" id="total_weight"   > ';
             personal_effect += '</div>';
             personal_effect += '</div>';
-
 
             $(".section2").css("display", "block");
             $(".section2_row").append(personal_effect);
@@ -173,60 +172,73 @@ $(document).ready(function() {
             var m = document.getElementsByClassName("measurement");
             //weight calculation
             $(".next_2").click(function() {
+                if ($(".total_weight").val() === "") {
+                    var total_weight = 0;
 
-                var total_weight = 0;
+                    var data = {};
+                    var personal_effect_weight = parseFloat($(".personal_effect_weight").val()) || 0;
+                    var personal_effect_m = parseFloat($(".personal_effect_m").val()) || 0;
 
-                var data = {};
-                var personal_effect_weight = parseFloat($(".personal_effect_weight").val()) || 0;
-                var personal_effect_m = parseFloat($(".personal_effect_m").val()) || 0;
+                    for (var i = 0; i < g.length; i++) {
+                        if (g[i].value !== "") {
+                            total_weight += parseFloat(g[i].value);
+                        }
+                        //update cargo db
+                        data.cargo_id_11 = $(".cargo_id").attr("id");
+                        data.car_id = g[i].id;
+                        data.weight = g[i].value;
+                        console.log(total_weight);
+                        $.post("/_update_cargo_dock_1_", { data: data }, function(result) {
+                            //console.log(result);
+                        });
+                        //    }
 
-                for (var i = 0; i < g.length; i++) {
-                    if (g[i].value !== "") {
-                        total_weight += parseFloat(g[i].value);
                     }
-                    //update cargo db
+                    $(".total_weight").val(total_weight + personal_effect_weight);
+                    //alert(personal_effect_weight)
+
+                    for (var i = 0; i < m.length; i++) {
+                        //update cargo db
+                        data.cargo_id_11 = $(".cargo_id").attr("id");
+                        data.car_id = m[i].id;
+                        data.measurement = m[i].value;
+                        //  console.log(data);
+                        $.post("/_update_cargo_dock_3_", { data: data }, function(result) {
+                            //console.log(result);
+                        });
+
+                    }
+
+
+
+                    //update total weight and personal effect
+                    data.personal_effect_weight = personal_effect_weight;
+                    data.personal_effect_m = personal_effect_m;
+                    data.total_weight = $(".total_weight").val();
                     data.cargo_id_11 = $(".cargo_id").attr("id");
-                    data.car_id = g[i].id;
-                    data.weight = g[i].value;
-                    console.log(total_weight);
-                    $.post("/_update_cargo_dock_1_", { data: data }, function(result) {
-                        //console.log(result);
+                    $.post("/_update_cargo_dock_2_", { data: data }, function(result) {
+                        //  console.log(result);
                     });
-                    //    }
-
                 }
-                $(".total_weight").val(total_weight + personal_effect_weight);
-                //alert(personal_effect_weight)
-
-                for (var i = 0; i < m.length; i++) {
-                    //update cargo db
+                else {
+                    var data = {};
+                    //update total weight and personal effect
+                    data.personal_effect_weight = 0;
+                    data.personal_effect_m = 0;
+                    data.total_weight = $(".total_weight").val();
                     data.cargo_id_11 = $(".cargo_id").attr("id");
-                    data.car_id = m[i].id;
-                    data.measurement = m[i].value;
-                    //  console.log(data);
-                    $.post("/_update_cargo_dock_3_", { data: data }, function(result) {
-                        //console.log(result);
+                    $.post("/_update_cargo_dock_2_", { data: data }, function(result) {
+                        //  console.log(result);
                     });
-
                 }
-
-
-
-                //update total weight and personal effect
-                data.personal_effect_weight = personal_effect_weight;
-                data.personal_effect_m = personal_effect_m;
-                data.total_weight = $(".total_weight").val();
-                data.cargo_id_11 = $(".cargo_id").attr("id");
-                $.post("/_update_cargo_dock_2_", { data: data }, function(result) {
-                    //  console.log(result);
-                });
-
 
             });
 
 
 
         });
+
+
 
     });
 

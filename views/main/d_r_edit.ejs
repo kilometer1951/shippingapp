@@ -247,7 +247,7 @@ $(document).ready(function() {
             var m = document.getElementsByClassName("measurement");
             //weight calculation
             $(".next_2").click(function() {
-
+ if ($(".total_weight").val() === "") {
                 var total_weight = 0;
 
                 var data = {};
@@ -295,7 +295,18 @@ $(document).ready(function() {
                     //  console.log(result);
                 });
                      location.reload();
-
+} else {
+    var data = {};
+                    //update total weight and personal effect
+                    data.personal_effect_weight = 0;
+                    data.personal_effect_m = 0;
+                    data.total_weight = $(".total_weight").val();
+                    data.cargo_id_11 = $(".cargo_id").attr("id");
+                    $.post("/_update_cargo_dock_2_", { data: data }, function(result) {
+                        //  console.log(result);
+                    });
+                    location.reload();
+}
             });
 
 

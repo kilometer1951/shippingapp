@@ -320,12 +320,12 @@ th, td {
                                    <div style="margin-top:5px;height:564px; font-size:20px;">
                                         <% Cargos.Cars.forEach(function(carsdata){ %>
                                            <span style="text-align:left;">
-                                             <br><span><%=carsdata.weight !== undefined ? carsdata.weight+"kg" : "" %></span>
+                                             <br><span><%=carsdata.weight !== "" ? carsdata.weight+"kg" : "" %></span>
                                            </span><br><br>
                                      <% }) %>
                                     
                                    <div style="margin-top:26px;">
-                                        <span><%=Cargos.personal_effect !== "" ? Cargos.personal_effect_weight+"kg" : "" %></span>
+                                        <span><%=Cargos.personal_effect_weight !== "0" ? Cargos.personal_effect_weight+"kg" : "" %></span>
                                    </div>
                                    </div>
                                     <div style="font-size:16px;"><br>
