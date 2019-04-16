@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title><%=stringText(ClientData.full_name)%>(DOCK RECEIPT)</title>
+        <title><%=stringText(ClientData.full_name)%>(SHIPPING INSTRUCTIONS)</title>
          <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -68,7 +68,7 @@ th, td {
                 <div class="col-md-6" style="border-right:1px solid #000;">
                     <!--Shipper -->
                      <div>
-                        <b style="font-size:16px;"><%=stringText("SHIPPING EXPORTER")%></b><br>
+                        <b style="font-size:16px;"><%=stringText("SHIPPER/EXPORTER")%></b><br>
                         <span style="font-size:15px;"><%=stringText("OLDSAILORS OCEAN SHIPPING LLC")%>,</span><br>
                         <span style="font-size:15px;"><%=stringText("13903 CHADSWORTH TERRACE")%></span><br>
                         <span style="font-size:15px;">LAUREL, MD, 20707,</span>
@@ -271,7 +271,7 @@ th, td {
                                <b>SAILING&nbsp;DATE</b><br>
                                 <%=BookingConfirmation.sail_date !== null ? moment(BookingConfirmation.sail_date).format("l") : ""%><br><br>
                                <b>ARRIVAL&nbsp;DATE</b><br>
-                             
+                              
                                <%=BookingConfirmation.arrival_date !== null ? moment(BookingConfirmation.arrival_date).format("l") : ""%><br>
                                </div>
                            </div>
@@ -288,8 +288,8 @@ th, td {
                                               <span>VIN:<%=carsdata.vin.toUpperCase()%></span><br><br>
                                            </span>
                                         <% }) %>
-                                      <div style="">
-                                       <textarea id="text_field"><%-Cargos.personal_effect.toUpperCase()%></textarea>
+                                        <div style="">
+                                       <textarea id="text_field"><%=Cargos.personal_effect.toUpperCase()%></textarea>
                                        </div>
                                      </div>
                                      
@@ -299,7 +299,7 @@ th, td {
                                        <span ><b> <%=stringText("Total Weight")%></b></span>
                                    </div>
                                    <div style="float:left;font-size:13px;">
-                                       <span><b><%=stringText("SHIPPER ON THIS DOCUMENT CONFIRMS THAT, GAS TANK")%></b></span><br>
+                                       <span><b><%=stringText("SHIPPER ON THIS DOCK RECEIPT CONFIRMS THAT, GAS TANK")%></b></span><br>
                                        <span><b><%=stringText(" HAS BEEN DRAINED OFF FUEL, BATTERIES DISCONNECTED,")%></b></span><br>
                                        <span><b><%=stringText("VEHICLES HAVE BEEN BLOCKED AND BRACED, CONTAINER LOADED ")%></b></span>
                                        <span><b><%=stringText("IN ACCORDANCE TO GENERAL INTO IMDG CODE PARAGRAPH 12.3.7 & 17.7.7")%></b></span><br>
@@ -314,16 +314,16 @@ th, td {
                                    <div style="margin-top:5px;height:564px; font-size:20px;">
                                         <% Cargos.Cars.forEach(function(carsdata){ %>
                                            <span style="text-align:left;">
-                                             <br><span><%=carsdata.weight !== undefined ? carsdata.weight+"kg" : "" %></span>
+                                             <br><span><%=carsdata.weight !== "" ? carsdata.weight+"kg" : "" %></span>
                                            </span><br><br>
                                      <% }) %>
                                     
                                    <div style="margin-top:26px;">
-                                        <span><%=Cargos.personal_effect !== "" ? Cargos.personal_effect_weight+"kg" : "" %></span>
+                                        <span><%=Cargos.personal_effect_weight !== "0" ? Cargos.personal_effect_weight+"kg" : "" %></span>
                                    </div>
                                    </div>
                                     <div style="font-size:16px;"><br>
-                                       <span ><b> <%= parseFloat(Cargos.total_weight).toFixed(2)%>kg</b></span>
+                                       <span ><b> <%=parseFloat(Cargos.total_weight).toFixed(2)%>kg</b></span>
                                    </div>
                                    
                                </div>
@@ -428,11 +428,14 @@ $('#create_pdf').on('click', function () {
 //           });
            window.print();
            $("#send_emailForm").css("display", "block");
-});     
+}); 
 
   window.setTimeout( function() {
     $("textarea").height( $("textarea")[0].scrollHeight );
 }, 1);
+
+
+  //increase hieght of textarea as you type
 
 // (function () {  
   
