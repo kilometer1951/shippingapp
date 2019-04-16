@@ -53,22 +53,20 @@ th, td {
   <div class="container">
   
     <div style="display:inline-block;">
-       <span style="font-size:17px;"><b><%=stringText("OLDSAILORS OCEAN SHIPPING LLC")%></b> </span><br>
-      
-        <span style="font-size:17px;"><b>FMC-OTI No: <%=stringText("026435N")%></b></span>
+
     </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <div style="display:inline-block;">
-        <span style="font-size:20px"><b>DOCK RECEIPT</b></span><br>
+    <div style="display:inline-block;float:right;">
+        <span style="font-size:20px;"><b>DOCK RECEIPT</b></span><br>
         <span style="font-size:12px;">Date: <%=moment(Dock_R.createdAt).format("l")%></span>
         
     </div><br>
-     <div class="row">
+     <div class="row" style="margin-top:40px;">
          <div style="border-top:1px solid #000;width:100%;">
             <div class="row">
                 <div class="col-md-6" style="border-right:1px solid #000;">
                     <!--Shipper -->
                      <div>
-                         <b style="font-size:16px;"><%=stringText("SHIPPING INSTRUCTIONS")%></b><br>
+                         <b style="font-size:16px;"><%=stringText("SHIPPING EXPORTER")%></b><br>
                          <% if(Dock_R.cleint_is_agent !== "" ) { %>
                          <% console.log(Dock_R.cleint_is_agent + "m") %>
                            <span style="font-size:16px;"><%=stringText(Dock_R.cleint_is_agent === "Yes" ? ClientData.full_name +"\nAS AGENT FOR OLDSAILORS OCEAN SHIPPING \n" : "OLDSAILORS OCEAN SHIPPING AS AGENT FOR \n"+ClientData.full_name)%></span><br>
