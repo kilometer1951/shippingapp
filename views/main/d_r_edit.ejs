@@ -203,12 +203,12 @@ $(document).ready(function() {
                     html += '</div>';
                     html += '<div class="col-md-3">';
                     html += '<div class="form-group">';
-                    html += '<label>Weight</label><input class="form-control weight" id="' + content._id + '" value="' + content.weight + '" type="number" step="any">';
+                    html += `<label>Weight</label><input class="form-control weight" id="${content._id}" value="${ content.weight === undefined ? 0 : content.weight }" type="number" step="any">`;
                     html += '</div>';
                     html += '</div>';
                     html += '<div class="col-md-3">';
                     html += '<div class="form-group">';
-                    html += '<label>Measurement</label><input class="form-control measurement" id="' + content._id + '" value="' + content.measurement + '" type="number" step="any">';
+                    html += `<label>Measurement</label><input class="form-control measurement" id="${ content._id }" value="${ content.measurement === undefined ? 0 : content.measurement}" type="number" step="any">`;
                     html += '</div>';
                     html += '</div>';
                     //  alert()
@@ -228,9 +228,9 @@ $(document).ready(function() {
             personal_effect += '<div class="col-md-4">';
             personal_effect += '<div class="form-group">';
             personal_effect += '<label>Weight</label>';
-            personal_effect += '<input class="form-control personal_effect_weight" id="' + data._id + '" value = "' + data.personal_effect_weight + '" type="number" step="any">';
+            personal_effect += `<input class="form-control personal_effect_weight" id="${data._id }" value = "${data.personal_effect_weight === undefined ? 0 : data.personal_effect_weight}" type="number" step="any" >`;
             personal_effect += '<label>Measurement</label>';
-            personal_effect += '<input class="form-control personal_effect_m" id="' + data._id + '" value = "' + data.personal_effect_m + '" type="number" step="any"><br>';
+            personal_effect += `<input class="form-control personal_effect_m" id="${ data._id }" value = "${data.personal_effect_m === undefined ? 0 : data.personal_effect_m }" type="number" step="any"><br>`;
             personal_effect += '<button class="btn btn-info next_2" > Update and Close</button>'
             personal_effect += '</div>';
             personal_effect += '</div>';
@@ -248,6 +248,7 @@ $(document).ready(function() {
             //weight calculation
             $(".next_2").click(function() {
  if ($(".total_weight").val() === "") {
+              
                 var total_weight = 0;
 
                 var data = {};
@@ -296,14 +297,51 @@ $(document).ready(function() {
                 });
                      location.reload();
 } else {
+    var total_weight = 0;
+
+                var data = {};
+                var personal_effect_weight = parseFloat($(".personal_effect_weight").val()) || 0;
+                var personal_effect_m = parseFloat($(".personal_effect_m").val()) || 0;
+
+                for (var i = 0; i < g.length; i++) {
+                    if (g[i].value !== "") {
+                        total_weight += parseFloat(g[i].value);
+                    }
+                    //update cargo db
+                    data.cargo_id_11 = $(".cargo_id").attr("id");
+                    data.car_id = g[i].id;
+                    data.weight = g[i].value;
+                    console.log(total_weight);
+                    $.post("/_update_cargo_dock_1_", { data: data }, function(result) {
+                        //console.log(result);
+                    });
+                    //    }
+
+                }
+                //alert(personal_effect_weight)
+
+                for (var i = 0; i < m.length; i++) {
+                    //update cargo db
+                    data.cargo_id_11 = $(".cargo_id").attr("id");
+                    data.car_id = m[i].id;
+                    data.measurement = m[i].value;
+                    //  console.log(data);
+                    $.post("/_update_cargo_dock_3_", { data: data }, function(result) {
+                        //console.log(result);
+                    });
+
+                }
+
+    
     var data = {};
                     //update total weight and personal effect
+                    
                     data.personal_effect_weight = 0;
                     data.personal_effect_m = 0;
                     data.total_weight = $(".total_weight").val();
                     data.cargo_id_11 = $(".cargo_id").attr("id");
                     $.post("/_update_cargo_dock_2_", { data: data }, function(result) {
-                        //  console.log(result);
+                          console.log(result);
                     });
                     location.reload();
 }
